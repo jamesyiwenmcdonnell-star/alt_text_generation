@@ -16,6 +16,25 @@ JAR_PATH = "./pdffigures2/pdffigures2.jar"
 EXTRACT_OUT_DIR = "./pdffigures2_out"
 RESULTS_PATH = "./alt_text_results.json"   # or .csv — decide below
 RUNPOD_API_KEY = "" #TODO: change to os environ before deploying
+RUNPOD_POD_CONFIG = {
+    "name": "internvl3.5-8b-pod",
+    "imageName": "vllm/vllm-openai:v0.10.1",
+    "gpuTypeIds": ["NVIDIA A40", "NVIDIA RTX A6000", "NVIDIA L40s"],
+    "gpuTypePriority": "availability",
+    "gpuCount": 1,
+    "containerDiskInGb": 30,
+    "volumeInGb": 5,
+    "ports": ["8000/http"],
+    "dockerStartCmd": [
+        "OpenGVLab/InternVL3_5-8B",
+        "--trust-remote-code",
+        "--host", "0.0.0.0",
+        "--port", "8000",
+    ],
+    "env": {
+        "HF_TOKEN": os.environ["HF_TOKEN"]
+    },
+}
 
 #Checks if the required services and files have been created in order to run pdf_batch_runner.py
 def configChecks():
@@ -138,7 +157,21 @@ class Pod:
         self.pod_id = pod_id
         self.port = port
 
-    #<----Pod status check functions----->
+#<----Pod start/stop functions----->
+
+    def startPod (self, payload, api_key):
+        url = "https://rest.runpod.io/v1/pods"
+        headers = {
+            "Authorization": f"Bearer {RUNPOD_API_KEY}",
+            "Content-Type": "application/json",
+        }
+
+
+
+
+
+
+#<----Pod status check functions----->
     def __get_pod_status(self, api_key):
         url = f"https://rest.runpod.io/v1/pods/{self.pod_id}"  # bug fix: was `pod_id`
         headers = {"Authorization": f"Bearer {api_key}"}

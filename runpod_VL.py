@@ -1,20 +1,8 @@
 """
-Compare image-description quality across multiple vision-language models
-served from RunPod (vLLM OpenAI-compatible endpoints).
-
-For a chosen model (or all of them, one after another), sends every image in
-IMAGE_DIR through that model's system prompt and records the description +
-response time. Each model gets its own CSV in results/, so you can compare
-runs side by side or hand individual files off separately.
 
 MODELS CONFIGURED
 ------------------
-    Qwen3-VL-32B-Thinking
-    Qwen3-VL-32B-Instruct
-    InternVL3.5-8B
-    InternVL3-78B
-    Qwen2.5-VL-72B
-    Gemma-3-27B
+InternVL3.5-8B
 
 USAGE
 -----
