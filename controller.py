@@ -3,7 +3,7 @@ import os
 import requests
 from pathlib import Path
 from gpu_utils import pick_available_gpu
-from pod import Pod, podStatus
+from pod import Pod, podStatus, list_pods, terminate_pod_by_id
 
 # --- config ---
 RUNPOD_ENDPOINT = "..."      # your pod's exposed URL
@@ -12,8 +12,8 @@ INPUT_DIR = "./PDFTesting"
 JAR_PATH = "./pdffigures2/pdffigures2.jar"
 EXTRACT_OUT_DIR = "./pdffigures2_out"
 RESULTS_PATH = "./alt_text_results.json"   # or .csv — decide below
-RUNPOD_API_KEY = ""  # bug fix: was hardcoded — never commit real keys
-HF_TOKEN = ""
+RUNPOD_API_KEY = " " # bug fix: was hardcoded — never commit real keys
+HF_TOKEN = " "
 
 RUNPOD_POD_CONFIG = {
     "name": "internvl3.5-8b-pod",
@@ -24,7 +24,10 @@ RUNPOD_POD_CONFIG = {
     "volumeInGb": 5,
     "ports": ["8000/http"],
     "dockerStartCmd": [
-        "OpenGVLab/InternVL3_5-8B",
+        # v0.10.1's entrypoint is `python3 -m vllm.entrypoints.openai.api_server`,
+        # which has no positional model argument -- --model is required. (Only
+        # v0.11+'s `vllm serve` entrypoint accepts a bare model name.)
+        "--model", "OpenGVLab/InternVL3_5-8B",
         "--trust-remote-code",
         "--host", "0.0.0.0",
         "--port", "8000",
@@ -55,39 +58,40 @@ def start_new_pod(api_key: str) -> Pod:
     return pod
 
 
-# <----configChecks----->
-
-def configChecks():
-    result = subprocess.run(["colima", "status"], capture_output=True, text=True)
-    if result.returncode == 1:
-        print("Colima is not running. Please start Colima and try again.")
-        return "Colima not running"
-
-    if not Path(JAR_PATH).exists():
-        print("pdffigures2.0 jar file has not been created, check step 3 in SETUP.md ")
-        return "pdffigures2.0 jar not created"
-
-    return "Valid"
+def stop_pod(pod: Pod, api_key: str) -> None:
+    """Stops a running pod without deleting it -- storage is preserved and it
+    can be restarted later. Use this over terminate_pod() when you just want
+    to pause billing for compute between runs."""
+    pod.stop_pod(api_key)
+    print(f"Pod stopped: {pod.pod_id} — status {pod.pod_status}")
 
 
-def run_extraction():
-    PROJECT_ROOT = Path(__file__).resolve().parent
-    cmd = [
-        "docker", "run", "--rm",
-        "-v", f"{PROJECT_ROOT}:/work",
-        "-w", "/work",
-        "--entrypoint", "bash",
-        "pdffigures2-builder",
-        "-c", "python3 pdf_batch_runner.py --input-dir ./PDFTesting --jar ./pdffigures2/pdffigures2.jar --output-dir ./pdffigures2_out --dpi 300 --java-heap 6g -v",
-    ]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+def terminate_pod(pod: Pod, api_key: str) -> None:
+    """Permanently deletes a pod and its storage -- not reversible."""
+    pod.terminate_pod(api_key)
+    print(f"Pod terminated: {pod.pod_id} — status {pod.pod_status}")
 
-    print(result.stderr)
-    if result.returncode != 0:
-        print("EXTRACTION FAILED. SEE LOGS ABOVE")
-        return False
 
-    return True
+def terminate_all_pods(api_key: str) -> None:
+    """Terminates every pod on the account that's currently RUNNING or EXITED
+    (stopped) -- skips pods already TERMINATED. Useful for cleaning up stray
+    pods left over from a crashed or interrupted run."""
+    pods = list_pods(api_key)
+    live_pods = [p for p in pods if p.get("desiredStatus") in ("RUNNING", "EXITED")]
+
+    if not live_pods:
+        print("No running or stopped pods found.")
+        return
+
+    for p in live_pods:
+        pod_id = p["id"]
+        print(f"Terminating {pod_id} ({p.get('name', '?')}) — was {p.get('desiredStatus')}")
+        try:
+            terminate_pod_by_id(pod_id, api_key)
+            print("  terminated")
+        except requests.RequestException as e:
+            print(f"  FAILED: {e}")
+
 
 
 def load_manifest():
@@ -112,16 +116,16 @@ def save_result(row, result):
 
 
 def main():
-    configStatus = configChecks()
-    if (configStatus == "pdffigures2.0 jar not created"):
-        if not run_extraction():
-            return
-    elif configStatus == "Colima not running":
-        return 
-
+    print("INFO: Application will terminate all pods currently running or paused")
+    terminate_all_pods(RUNPOD_API_KEY)
     pod = start_new_pod(RUNPOD_API_KEY)
     print(f"Pod ready: {pod.pod_id} — status {pod.pod_status}")
+    print(f"Stopping pod")
+    stop_pod(pod, RUNPOD_API_KEY)
+    print(f"Terminating pod")
+    terminate_pod(pod, RUNPOD_API_KEY)
 
+    """
     manifest_rows = load_manifest()
     existing = load_existing_results()
 
@@ -133,7 +137,7 @@ def main():
             save_result(row, result)
         except Exception as e:
             print(f"Failed on {row.get('image_path')}: {e}")
-
+    """
 
 if __name__ == "__main__":
     main()

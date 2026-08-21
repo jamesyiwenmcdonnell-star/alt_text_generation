@@ -22,11 +22,13 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends sbt && \
     rm -rf /var/lib/apt/lists/*
 
-# For pdf_batch_runner.py (stdlib only, nothing to install) and diagnose_tagging.py
-# (needs pikepdf). PyPI ships prebuilt manylinux wheels for pikepdf on both amd64
-# and arm64, so this shouldn't need a compiler -- if it ever falls back to building
-# from source, add `qpdf` + `build-essential` to the apt install above.
-RUN pip3 install --no-cache-dir pikepdf
+# For pdf_batch_runner.py (stdlib only, nothing to install), diagnose_tagging.py
+# (needs pikepdf), and controller.py/pod.py/gpu_utils.py (need requests for the
+# RunPod REST + GraphQL calls). PyPI ships prebuilt manylinux wheels for pikepdf
+# on both amd64 and arm64, so this shouldn't need a compiler -- if it ever falls
+# back to building from source, add `qpdf` + `build-essential` to the apt install
+# above.
+RUN pip3 install --no-cache-dir pikepdf requests
 
 WORKDIR /build
 

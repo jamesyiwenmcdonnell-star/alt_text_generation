@@ -9,12 +9,16 @@ import requests
 import json
 from pathlib import Path
 
+REQUEST_TIMEOUT = 30  # seconds -- RunPod's GraphQL API has no SLA on response time;
+                       # without this, a slow/unreachable network hangs silently forever
+
 def check_for_id_drift(api_key: str, snapshot_path: str = "gpu_ids_snapshot.txt"):
     query = "query { gpuTypes { id displayName } }"
     response = requests.post(
         "https://api.runpod.io/graphql",
         params={"api_key": api_key},
         json={"query": query},
+        timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
     current_ids = {g["id"] for g in response.json()["data"]["gpuTypes"]}
@@ -71,6 +75,7 @@ def get_gpu_stock_status(gpu_type_id: str, api_key: str, gpu_count: int = 1) -> 
         "https://api.runpod.io/graphql",
         params={"api_key": api_key},
         json={"query": query, "variables": {"id": gpu_type_id, "gpuCount": gpu_count}},
+        timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
     body = response.json()
@@ -93,6 +98,7 @@ def check_gpu_id(gpu_type_id: str, api_key: str) -> str:
         "https://api.runpod.io/graphql",
         params={"api_key": api_key},
         json={"query": query, "variables": {"id": gpu_type_id}},
+        timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
     body = response.json()
@@ -109,6 +115,7 @@ def list_all_gpu_ids(api_key: str, out_path: str = "gpu_types.json"):
         "https://api.runpod.io/graphql",
         params={"api_key": api_key},
         json={"query": query},
+        timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
     body = response.json()
@@ -140,6 +147,7 @@ def pick_available_gpu(api_key: str) -> str | None:
     gpu_candidates = extract_gpu_ids()                                  #Extracting GPU Ids from gpu_ids_snapshot.txt
 
     for gpu_id in gpu_candidates:
+        print(f"Checking availability: {gpu_id!r} ...")
         status = check_gpu_id(gpu_id, api_key)
         if status == "invalid_id":
             print(f"WARNING: {gpu_id!r} is not a recognized GPU type")
