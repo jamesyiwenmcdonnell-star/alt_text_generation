@@ -41,6 +41,14 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
+# pdf_batch_runner.py itself lives at the project root, so these are fixed
+# relative to its own location -- independent of the caller's cwd, unlike the
+# old CLI-only --input-dir/--jar (which were required with no default).
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_INPUT_DIR = SCRIPT_DIR / "PDFTesting"
+DEFAULT_JAR_PATH = SCRIPT_DIR / "pdffigures2" / "pdffigures2.jar"
+DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "pdffigures2_out"
+
 
 # --------------------------------------------------------------------------- #
 # File management
@@ -377,9 +385,11 @@ def write_validation_report(issues: list[dict], output_csv: Path, logger: loggin
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--input-dir", required=True, type=Path, help="Folder to search for PDFs")
-    parser.add_argument("--jar", required=True, type=Path, help="Path to pdffigures2-assembly-*.jar")
-    parser.add_argument("--output-dir", default=Path("./pdffigures2_out"), type=Path)
+    parser.add_argument("--input-dir", default=DEFAULT_INPUT_DIR, type=Path,
+                         help=f"Folder to search for PDFs (default: {DEFAULT_INPUT_DIR})")
+    parser.add_argument("--jar", default=DEFAULT_JAR_PATH, type=Path,
+                         help=f"Path to pdffigures2-assembly-*.jar (default: {DEFAULT_JAR_PATH})")
+    parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, type=Path)
     parser.add_argument("--dpi", type=int, default=300)
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument(
@@ -404,28 +414,43 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = parse_args(argv)
+def extract_images(
+    input_dir: Path = DEFAULT_INPUT_DIR,
+    jar_path: Path = DEFAULT_JAR_PATH,
+    output_dir: Path = DEFAULT_OUTPUT_DIR,
+    dpi: int = 300,
+    threads: int = 4,
+    java_heap: str = "4g",
+    batch_size: int = 1,
+    recursive: bool = True,
+    skip_done: bool = False,
+    logger: logging.Logger | None = None,
+) -> dict:
+    """Runs the full pdffigures2 extraction pipeline: finds PDFs under
+    input_dir, invokes pdffigures2 batch-by-batch, and builds manifest.csv +
+    validation_report.csv in output_dir. Callable directly (e.g. from
+    controller.py) instead of only via the CLI below.
 
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(asctime)s %(levelname)s %(message)s",
-    )
-    logger = logging.getLogger("pdf_batch_runner")
+    Returns a dict with pdfs_found, manifest_path, validation_path, and
+    figures_dir (the last three are None if no PDFs were found at all).
+    """
+    logger = logger or logging.getLogger("pdf_batch_runner")
+    input_dir = Path(input_dir)
+    jar_path = Path(jar_path)
+    output_dir = Path(output_dir)
 
-    if not args.jar.exists():
-        logger.error("jar not found: %s (build it with `sbt assembly`, see pdffigures2_guide.md)", args.jar)
-        return 1
+    if not jar_path.exists():
+        raise FileNotFoundError(f"jar not found: {jar_path} (build it with `sbt assembly`, see SETUP.md)")
 
-    pdfs = find_pdfs(args.input_dir, recursive=not args.no_recursive)
+    pdfs = find_pdfs(input_dir, recursive=recursive)
     if not pdfs:
-        logger.warning("no PDFs found under %s", args.input_dir)
-        return 0
-    logger.info("found %d PDFs under %s", len(pdfs), args.input_dir)
+        logger.warning("no PDFs found under %s", input_dir)
+        return {"pdfs_found": 0, "manifest_path": None, "validation_path": None, "figures_dir": None}
+    logger.info("found %d PDFs under %s", len(pdfs), input_dir)
 
-    layout = make_output_layout(args.output_dir)
+    layout = make_output_layout(output_dir)
 
-    if args.skip_done:
+    if skip_done:
         before = len(pdfs)
         pdfs = [p for p in pdfs if not already_processed(p, layout["data"])]
         logger.info("skipping %d already-processed PDFs, %d remaining", before - len(pdfs), len(pdfs))
@@ -433,18 +458,18 @@ def main(argv: list[str] | None = None) -> int:
     if not pdfs:
         logger.info("nothing left to process")
     else:
-        batch_size = max(1, args.batch_size)
+        batch_size = max(1, batch_size)
         chunks = [pdfs[i:i + batch_size] for i in range(0, len(pdfs), batch_size)]
         logger.info(
             "processing %d PDFs in %d batch(es) of up to %d (one JVM invocation each)",
             len(pdfs), len(chunks), batch_size,
         )
         config = ExtractionConfig(
-            jar_path=args.jar,
-            output_dir=args.output_dir,
-            dpi=args.dpi,
-            threads=args.threads,
-            extra_jvm_args=[f"-Xmx{args.java_heap}"],
+            jar_path=jar_path,
+            output_dir=output_dir,
+            dpi=dpi,
+            threads=threads,
+            extra_jvm_args=[f"-Xmx{java_heap}"],
         )
         failed_batches = 0
         for i, chunk in enumerate(chunks, start=1):
@@ -458,16 +483,50 @@ def main(argv: list[str] | None = None) -> int:
                 logger.error("batch %s raised, continuing with remaining batches", label)
         if failed_batches:
             logger.warning(
-                "%d/%d batches failed -- re-run with --skip-done to retry only "
+                "%d/%d batches failed -- re-run with skip_done=True to retry only "
                 "the PDFs missing output", failed_batches, len(chunks),
             )
 
-    manifest_path = args.output_dir / "manifest.csv"
+    manifest_path = output_dir / "manifest.csv"
     build_manifest(layout["data"], layout["figures"], manifest_path, logger)
 
-    validation_path = args.output_dir / "validation_report.csv"
+    validation_path = output_dir / "validation_report.csv"
     issues = validate_figure_sequences(layout["data"], logger)
     write_validation_report(issues, validation_path, logger)
+
+    return {
+        "pdfs_found": len(pdfs),
+        "manifest_path": manifest_path,
+        "validation_path": validation_path,
+        "figures_dir": layout["figures"],
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s",
+    )
+    logger = logging.getLogger("pdf_batch_runner")
+
+    try:
+        extract_images(
+            input_dir=args.input_dir,
+            jar_path=args.jar,
+            output_dir=args.output_dir,
+            dpi=args.dpi,
+            threads=args.threads,
+            java_heap=args.java_heap,
+            batch_size=args.batch_size,
+            recursive=not args.no_recursive,
+            skip_done=args.skip_done,
+            logger=logger,
+        )
+    except FileNotFoundError as exc:
+        logger.error(str(exc))
+        return 1
 
     return 0
 

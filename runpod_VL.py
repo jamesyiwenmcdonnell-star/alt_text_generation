@@ -1,34 +1,33 @@
 """
-
-MODELS CONFIGURED
-------------------
+MODEL CONFIGURED
+----------------
 InternVL3.5-8B
 
 USAGE
 -----
-1. For each model in MODEL_CONFIGS, set "pod_id" to the id in that pod's
-   RunPod proxy URL (the part before "-8000.proxy.runpod.net", e.g.
-   "gn4axx2p5q2qyo"). That's the only thing you need to change when you
-   spin a model up on a new pod.
-2. Optionally fill in a per-model "system_prompt". Leave it as "" to fall
-   back to DEFAULT_SYSTEM_PROMPT.
-3. Edit IMAGE_DIR to point at the folder containing your test images
-   (png/jpg/jpeg/webp).
-4. Set TEST_MODE = True to smoke-test a single endpoint with one image
-   (prints the raw description, no CSV). TEST_MODE always uses
-   TEST_MODE_MODEL (InternVL3.5-8B by default), regardless of what you'd
-   otherwise pick, so you don't need every pod up just to sanity-check one.
-5. Run:  python vl_comparison.py
-   When TEST_MODE is off, the script asks whether to run every model
-   sequentially or just one — pick by number or by name.
+generate_alt_text(pod_id, image_dir=IMAGE_DIR, port=8000, api_key="EMPTY",
+                   system_prompt=None) describes every image in image_dir
+using the model served at https://<pod_id>-<port>.proxy.runpod.net, and
+writes one CSV of results to OUTPUT_DIR. pod_id is whatever RunPod assigned
+the pod for this run (e.g. Pod.pod_id from pod.py) -- pods are ephemeral, so
+there's no sensible hardcoded default; the caller always supplies it.
 
-Output: results/vl_comparison_<model>_<timestamp>.csv, one file per model.
+Call it from controller.py once pdf_batch_runner.py has populated the
+figures folder, e.g.:
+    from runpod_VL import generate_alt_text
+    generate_alt_text(pod.pod_id, image_dir="./pdffigures2_out/figures")
+
+Standalone smoke test:
+    python runpod_VL.py <pod_id>
+Set TEST_MODE = True first to test a single image (TEST_IMAGE, or the first
+image found in IMAGE_DIR) instead of the whole folder.
 """
 
+import os
+import sys
 import base64
 import csv
 import glob
-import os
 import time
 from datetime import datetime
 
@@ -39,85 +38,78 @@ from openai import OpenAI
 # CONFIG — edit these
 # ---------------------------------------------------------------------------
 
-# One entry per model. To switch which pod a model points at, just change
-# its "pod_id" — that's the identifier in the pod's RunPod proxy URL
-# (https://<pod_id>-<port>.proxy.runpod.net/v1).
-#
-# "system_prompt" left as "" falls back to DEFAULT_SYSTEM_PROMPT below.
-# Fill one in per-model once you want to try model-specific prompting.
+MODEL_NAME = "InternVL3.5-8B"
+DEFAULT_PORT = 8000
+DEFAULT_API_KEY = "EMPTY"
 
-MODEL_CONFIGS = {
-    "InternVL3.5-8B": {
-        "pod_id": "gn4axx2p5q2qyo",
-        "port": 8000,
-        "api_key": "EMPTY",
-        "system_prompt": (
-            "You are an accessibility image-description assistant. You generate alt text that "
-            "lets a non-sighted reader reconstruct the layout and content of an image in their "
-            "own mind — not just its meaning or purpose, but its actual visual structure: what "
-            "is where, what it says, what color it is, and how the pieces connect.  CORE METHOD: "
-            "DESCRIBE BY READING ORDER AND POSITION 1. Open by stating the overall layout and "
-            "reading order — e.g., \"left to right,\" \"top to bottom,\" how many distinct "
-            "regions/objects the image contains and where each sits relative to the others. 2. "
-            "Then walk through each region in that order. For a structured diagram (pyramid, "
-            "funnel, flowchart, stacked chart, infographic), move systematically through its "
-            "layers or sections (e.g., base to apex, or start to end) rather than jumping "
-            "around. 3. For each element, state in this order where relevant: its position, its "
-            "color, any text it contains (read closely, near-verbatim, both primary label and "
-            "any smaller secondary text), and any icons, symbols, or motifs attached to it and "
-            "where they sit (e.g., \"near the right edge,\" \"at the base\"). 4. Describe "
-            "connecting elements explicitly: arrows (direction, curvature, what they run "
-            "from/to, their label if any), dashed lines, paths, arcs — state their position and "
-            "trajectory, not just that they exist. 5. If the image contains a secondary scene "
-            "or illustration alongside a diagram, describe it after the diagram, in the same "
-            "manner: main subject, their action/pose, objects around them, whats on any screen "
-            "or surface, then background elements.  WHAT TO INCLUDE - Exact or near-exact text "
-            "as it appears, including small/secondary text under headings - Named colors for "
-            "distinct bands, sections, or elements (not just \"colored\" — say dark blue, "
-            "orange, pale blue, etc.) - Icons and symbols, described literally (a computer "
-            "monitor icon, a magnifying glass over a plot, a wind/flow symbol) with their "
-            "position - Spatial relationships between every element and its neighbors, so the "
-            "structure could be redrawn from the text alone  WHAT TO AVOID - Do not open with "
-            "\"Image of,\" \"This shows,\" \"A diagram depicting,\" or any framing phrase — go "
-            "straight into the description - Do not interpret meaning, intent, or takeaway "
-            "(\"this represents growth,\" \"this suggests progress\") — describe only what is "
-            "visually depicted - Do not compress a data-dense or multi-section image down to a "
-            "vague one-line gloss — within the word limit below, prioritize the overall layout, "
-            "key text, and structural relationships over exhaustive minor detail - Do not use "
-            "bullet points, headers, or line breaks — output one continuous descriptive "
-            "paragraph - Do not add commentary on style or aesthetics unless explicitly asked  "
-            "OUTPUT Return only the description itself, as a single flowing paragraph, no "
-            "preamble and no closing remarks. The description must be 120 to 150 words — no "
-            "shorter and no longer, regardless of image complexity. For a simple image, use the "
-            "full range to add spatial and structural detail; for a complex multi-part image, "
-            "select and prioritize only the most important regions, text, and connections to "
-            "fit within this limit."
-        ),
-    },
-}
+# The system prompt actually in use today (equivalent to the old
+# MODEL_CONFIGS["InternVL3.5-8B"]["system_prompt"]). Pass system_prompt=
+# explicitly to generate_alt_text()/run_test_mode() to override it, e.g.
+# with DEFAULT_SYSTEM_PROMPT below.
+MODEL_SYSTEM_PROMPT = (
+    "You are an accessibility image-description assistant. You generate alt text that "
+    "lets a non-sighted reader reconstruct the layout and content of an image in their "
+    "own mind — not just its meaning or purpose, but its actual visual structure: what "
+    "is where, what it says, what color it is, and how the pieces connect.  CORE METHOD: "
+    "DESCRIBE BY READING ORDER AND POSITION 1. Open by stating the overall layout and "
+    "reading order — e.g., \"left to right,\" \"top to bottom,\" how many distinct "
+    "regions/objects the image contains and where each sits relative to the others. 2. "
+    "Then walk through each region in that order. For a structured diagram (pyramid, "
+    "funnel, flowchart, stacked chart, infographic), move systematically through its "
+    "layers or sections (e.g., base to apex, or start to end) rather than jumping "
+    "around. 3. For each element, state in this order where relevant: its position, its "
+    "color, any text it contains (read closely, near-verbatim, both primary label and "
+    "any smaller secondary text), and any icons, symbols, or motifs attached to it and "
+    "where they sit (e.g., \"near the right edge,\" \"at the base\"). 4. Describe "
+    "connecting elements explicitly: arrows (direction, curvature, what they run "
+    "from/to, their label if any), dashed lines, paths, arcs — state their position and "
+    "trajectory, not just that they exist. 5. If the image contains a secondary scene "
+    "or illustration alongside a diagram, describe it after the diagram, in the same "
+    "manner: main subject, their action/pose, objects around them, whats on any screen "
+    "or surface, then background elements.  WHAT TO INCLUDE - Exact or near-exact text "
+    "as it appears, including small/secondary text under headings - Named colors for "
+    "distinct bands, sections, or elements (not just \"colored\" — say dark blue, "
+    "orange, pale blue, etc.) - Icons and symbols, described literally (a computer "
+    "monitor icon, a magnifying glass over a plot, a wind/flow symbol) with their "
+    "position - Spatial relationships between every element and its neighbors, so the "
+    "structure could be redrawn from the text alone  WHAT TO AVOID - Do not open with "
+    "\"Image of,\" \"This shows,\" \"A diagram depicting,\" or any framing phrase — go "
+    "straight into the description - Do not interpret meaning, intent, or takeaway "
+    "(\"this represents growth,\" \"this suggests progress\") — describe only what is "
+    "visually depicted - Do not compress a data-dense or multi-section image down to a "
+    "vague one-line gloss — within the word limit below, prioritize the overall layout, "
+    "key text, and structural relationships over exhaustive minor detail - Do not use "
+    "bullet points, headers, or line breaks — output one continuous descriptive "
+    "paragraph - Do not add commentary on style or aesthetics unless explicitly asked  "
+    "OUTPUT Return only the description itself, as a single flowing paragraph, no "
+    "preamble and no closing remarks. The description must be 120 to 150 words — no "
+    "shorter and no longer, regardless of image complexity. For a simple image, use the "
+    "full range to add spatial and structural detail; for a complex multi-part image, "
+    "select and prioritize only the most important regions, text, and connections to "
+    "fit within this limit."
+)
 
-# Model TEST_MODE always uses, regardless of the interactive prompt.
-TEST_MODE_MODEL = "InternVL3.5-8B"
-
-# Folder containing the images to test (png/jpg/jpeg/webp). Create this
-# folder and add your test images, or point this at wherever they live.
+# Folder scanned when generate_alt_text() is called without an explicit
+# image_dir -- e.g. standalone runs. controller.py should pass its own
+# figures folder explicitly instead of relying on this default.
 IMAGE_DIR = os.path.expanduser("~/Desktop/testImages")
 
-# Where to write the results CSVs.
+# Where CSVs get written.
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 
-# Set True to smoke-test your setup: sends ONE image to TEST_MODE_MODEL,
-# prints the raw description + timing, and exits — no CSV, no looping over
-# the full image set, no interactive prompt. Use this first to confirm
-# connectivity and the chat template are working before burning time on a
-# full run.
+# Set True to smoke-test your setup: sends ONE image, prints the raw
+# description + timing, and exits — no CSV, no looping over the full image
+# set. Use this first to confirm connectivity and the chat template are
+# working before burning time on a full run.
 TEST_MODE = False
 
-# Image used in TEST_MODE. If None, falls back to the first image found in
-# IMAGE_DIR (or the file below, if IMAGE_DIR is empty).
+# Image used in TEST_MODE. If None/missing, falls back to the first image
+# found in IMAGE_DIR.
 TEST_IMAGE = os.path.expanduser("~/Desktop/test.png")
 
-# Used for any model whose "system_prompt" above is left as "".
+# An alternate system prompt (variable-length output, explicit <think>-tag
+# suppression) -- not used by default; pass system_prompt=DEFAULT_SYSTEM_PROMPT
+# to try it instead of MODEL_SYSTEM_PROMPT.
 DEFAULT_SYSTEM_PROMPT = (
     "Do not think, reason, or plan before answering. Never output a <think> block, "
     "chain-of-thought, reasoning trace, draft, or any meta-commentary about how you "
@@ -195,18 +187,13 @@ def mime_type(path):
     return "jpeg" if ext == "jpg" else ext
 
 
-def resolve_model_cfg(name):
-    """Turn a MODEL_CONFIGS entry into everything needed to actually hit the
-    endpoint: a full base_url built from pod_id/port, and an effective
-    system prompt (falls back to DEFAULT_SYSTEM_PROMPT if left blank)."""
-    raw = MODEL_CONFIGS[name]
-    base_url = f"https://{raw['pod_id']}-{raw.get('port', 8000)}.proxy.runpod.net/v1"
-    system_prompt = raw.get("system_prompt") or DEFAULT_SYSTEM_PROMPT
+def build_cfg(pod_id, port=DEFAULT_PORT, api_key=DEFAULT_API_KEY, system_prompt=None):
+    """Everything needed to hit one pod's OpenAI-compatible endpoint."""
     return {
-        "name": name,
-        "base_url": base_url,
-        "api_key": raw.get("api_key", "EMPTY"),
-        "system_prompt": system_prompt,
+        "name": MODEL_NAME,
+        "base_url": f"https://{pod_id}-{port}.proxy.runpod.net/v1",
+        "api_key": api_key,
+        "system_prompt": system_prompt or MODEL_SYSTEM_PROMPT,
     }
 
 
@@ -257,9 +244,9 @@ def describe_image(client, model_id, image_path, system_prompt):
     return None, None, str(last_error)
 
 
-def run_test_mode():
-    """Smoke test: one image, TEST_MODE_MODEL only, full output printed so
-    you can eyeball that the server responds correctly."""
+def run_test_mode(pod_id, port=DEFAULT_PORT, api_key=DEFAULT_API_KEY, system_prompt=None):
+    """Smoke test: one image, full output printed so you can eyeball that
+    the server responds correctly."""
     test_image = TEST_IMAGE
     if not test_image or not os.path.isfile(test_image):
         candidates = find_images(IMAGE_DIR)
@@ -268,7 +255,7 @@ def run_test_mode():
             return
         test_image = candidates[0]
 
-    cfg = resolve_model_cfg(TEST_MODE_MODEL)
+    cfg = build_cfg(pod_id, port, api_key, system_prompt)
     print(f"TEST_MODE on — using {test_image}")
     print(f"\n=== {cfg['name']} ({cfg['base_url']}) ===")
 
@@ -286,7 +273,7 @@ def run_test_mode():
 
 
 def run_model(cfg, images):
-    """Run every image through one model. Returns a list of row dicts, or
+    """Run every image through the model. Returns a list of row dicts, or
     None if the endpoint was unreachable."""
     client, model_id = connect_model(cfg)
     if model_id is None:
@@ -322,53 +309,35 @@ def write_csv(model_name, rows):
     return out_path
 
 
-def prompt_model_choice():
-    """Ask whether to run every model sequentially or just one. Returns a
-    list of model names to run, in order."""
-    names = list(MODEL_CONFIGS.keys())
-    all_index = len(names) + 1
+def generate_alt_text(pod_id, image_dir=None, port=DEFAULT_PORT, api_key=DEFAULT_API_KEY, system_prompt=None):
+    """Describes every image in image_dir using the model served at pod_id,
+    writing one CSV of results. pod_id is whatever RunPod assigned the pod
+    for this run (pods are ephemeral, so there's no sensible hardcoded
+    default) -- e.g. call as generate_alt_text(pod.pod_id, image_dir=...)
+    after pdf_batch_runner.py has populated the figures folder."""
+    image_dir = image_dir or IMAGE_DIR
 
-    print("\nAvailable models:")
-    for i, name in enumerate(names, 1):
-        print(f"  {i}. {name}")
-    print(f"  {all_index}. ALL (run sequentially)")
-
-    choice = input(f"\nRun all models sequentially, or pick one [1-{all_index}, or type a name]: ").strip()
-
-    if choice.lower() in ("all", "a", str(all_index)):
-        return names
-    if choice.isdigit() and 1 <= int(choice) <= len(names):
-        return [names[int(choice) - 1]]
-    if choice in MODEL_CONFIGS:
-        return [choice]
-
-    print(f"Unrecognized choice '{choice}' — defaulting to ALL.")
-    return names
-
-
-def main():
     if TEST_MODE:
-        run_test_mode()
+        run_test_mode(pod_id, port, api_key, system_prompt)
         return
 
-    images = find_images(IMAGE_DIR)
+    images = find_images(image_dir)
     if not images:
-        print(f"No images found in {IMAGE_DIR} (looked for {', '.join(IMAGE_EXTENSIONS)}).")
-        print("Create the folder and add your test images, or edit IMAGE_DIR at the top of this script.")
+        print(f"No images found in {image_dir} (looked for {', '.join(IMAGE_EXTENSIONS)}).")
         return
 
-    print(f"Found {len(images)} image(s) in {IMAGE_DIR}")
+    print(f"Found {len(images)} image(s) in {image_dir}")
 
-    selected = prompt_model_choice()
-    print(f"\nRunning: {', '.join(selected)}")
-
-    for name in selected:
-        cfg = resolve_model_cfg(name)
-        print(f"\n=== {name} ({cfg['base_url']}) ===")
-        rows = run_model(cfg, images)
-        if rows:
-            write_csv(name, rows)
+    cfg = build_cfg(pod_id, port, api_key, system_prompt)
+    print(f"\n=== {cfg['name']} ({cfg['base_url']}) ===")
+    rows = run_model(cfg, images)
+    if rows:
+        write_csv(cfg["name"], rows)
 
 
 if __name__ == "__main__":
-    main()
+    arg_pod_id = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("POD_ID")
+    if not arg_pod_id:
+        print("Usage: python runpod_VL.py <pod_id>  (or set POD_ID env var)")
+        raise SystemExit(1)
+    generate_alt_text(arg_pod_id)
