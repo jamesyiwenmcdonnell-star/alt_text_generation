@@ -14,7 +14,6 @@ EXTRACT_OUT_DIR = "./pdffigures2_out"
 RESULTS_PATH = "./alt_text_results.json"   # or .csv — decide below
 RUNPOD_API_KEY = ""  # bug fix: was hardcoded — never commit real keys
 HF_TOKEN = ""
-GPU_CANDIDATES = ["NVIDIA A40", "NVIDIA RTX A6000", "NVIDIA L40S"]  # bug fix: was "L40s" (wrong case)
 
 RUNPOD_POD_CONFIG = {
     "name": "internvl3.5-8b-pod",
@@ -40,9 +39,9 @@ RUNPOD_POD_CONFIG = {
 
 def start_new_pod(api_key: str) -> Pod:
     """Picks an available GPU, then creates and waits for a new pod."""
-    best_gpu = pick_available_gpu(GPU_CANDIDATES, api_key)
+    best_gpu = pick_available_gpu(api_key)
     if best_gpu is None:
-        raise RuntimeError(f"No available GPU among candidates: {GPU_CANDIDATES}")
+        raise RuntimeError("No available GPU among the candidates in gpu_ids_snapshot.txt")
 
     print(f"Selected GPU: {best_gpu}")
 
@@ -64,8 +63,7 @@ def configChecks():
         print("Colima is not running. Please start Colima and try again.")
         return "Colima not running"
 
-    result = subprocess.run(["ls", " pdffigures2/pdffigures2.jar"], capture_output=True, text=True)
-    if result.returncode == 0:
+    if not Path(JAR_PATH).exists():
         print("pdffigures2.0 jar file has not been created, check step 3 in SETUP.md ")
         return "pdffigures2.0 jar not created"
 

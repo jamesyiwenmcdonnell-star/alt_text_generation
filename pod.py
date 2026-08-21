@@ -95,5 +95,7 @@ class Pod:
             state = self.app_startup_pod_checker(api_key)
             if state in (podStatus.READY, podStatus.RUNNING_MODEL):
                 return state
+            if state in (podStatus.TERMINATED, podStatus.EXITED):
+                raise RuntimeError(f"Pod {self.pod_id} entered {state} while waiting for it to become ready")
             time.sleep(interval_s)
         raise TimeoutError(f"Pod {self.pod_id} not ready after {timeout_s}s")
