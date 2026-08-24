@@ -24,12 +24,17 @@ RUN apt-get update && \
 
 # For pdf_batch_runner.py (stdlib only, nothing to install), diagnose_tagging.py
 # (needs pikepdf), controller.py/pod.py/gpu_utils.py (need requests for the
-# RunPod REST + GraphQL calls), and runpod_VL.py (needs openai to talk to the
-# vLLM pod's OpenAI-compatible endpoint). PyPI ships prebuilt manylinux wheels
-# for pikepdf on both amd64 and arm64, so this shouldn't need a compiler -- if
-# it ever falls back to building from source, add `qpdf` + `build-essential`
-# to the apt install above.
-RUN pip3 install --no-cache-dir pikepdf requests openai
+# RunPod REST + GraphQL calls), runpod_VL.py (needs openai to talk to the
+# vLLM pod's OpenAI-compatible endpoint), and api_server.py (needs fastapi +
+# uvicorn for the intake API, python-multipart for its file-upload endpoint --
+# plain uvicorn, not uvicorn[standard]: its extras aren't needed for a
+# single-worker, no-hot-reload internal API). job_store.py/worker.py use only
+# sqlite3 (stdlib) and telegram_status.py talks to Telegram's Bot API via
+# plain requests -- neither needs a new package. PyPI ships prebuilt manylinux
+# wheels for pikepdf on both amd64 and arm64, so this shouldn't need a
+# compiler -- if it ever falls back to building from source, add `qpdf` +
+# `build-essential` to the apt install above.
+RUN pip3 install --no-cache-dir pikepdf requests openai fastapi uvicorn python-multipart
 
 WORKDIR /build
 

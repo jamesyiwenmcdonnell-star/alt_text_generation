@@ -312,6 +312,56 @@ def write_csv(model_name, rows):
     return out_path
 
 
+def generate_alt_text_for_manifest(pod_id, api_key, manifest_path, output_csv,
+                                    port=DEFAULT_PORT, system_prompt=None):
+    """Like generate_alt_text(), but describes exactly the figures listed in
+    a pdf_batch_runner.py manifest.csv instead of glob-scanning a folder --
+    so results carry pdf_name/figure_name/page/caption through to output_csv,
+    traceable back to which PDF and figure each description belongs to.
+    Figures pdffigures2 detected but couldn't rasterize (empty image_path in
+    the manifest) are recorded with an explanatory error rather than skipped
+    silently. Doesn't touch MODEL_SYSTEM_PROMPT/DEFAULT_SYSTEM_PROMPT."""
+    with open(manifest_path, newline="", encoding="utf-8") as f:
+        manifest_rows = list(csv.DictReader(f))
+
+    cfg = build_cfg(pod_id, port, api_key, system_prompt)
+    print(f"\n=== {cfg['name']} ({cfg['base_url']}) ===")
+    client, model_id = connect_model(cfg)
+    if model_id is None:
+        raise RuntimeError(f"could not reach {cfg['base_url']} -- see warning above")
+
+    out_rows = []
+    for row in manifest_rows:
+        label = f"{row.get('pdf_name')} {row.get('fig_type')}{row.get('figure_name')}"
+        image_path = row.get("image_path") or ""
+
+        if not image_path:
+            print(f"  -> {label} ... SKIPPED (no rasterized image)")
+            out_rows.append({**row, "alt_text": "", "time_sec": "", "error": "no rasterized image for this figure"})
+            continue
+
+        print(f"  -> {label} ...", end=" ", flush=True)
+        description, elapsed, error = describe_image(client, model_id, image_path, cfg["system_prompt"])
+        if error:
+            print(f"FAILED ({error})")
+            out_rows.append({**row, "alt_text": "", "time_sec": "", "error": error})
+        else:
+            print(f"done in {elapsed:.1f}s")
+            out_rows.append({**row, "alt_text": description, "time_sec": round(elapsed, 2), "error": ""})
+
+    fieldnames = ["pdf_name", "figure_name", "fig_type", "page", "caption", "image_path", "alt_text", "time_sec", "error"]
+    out_dir = os.path.dirname(output_csv)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(out_rows)
+
+    print(f"Saved results to {output_csv}")
+    return output_csv
+
+
 def generate_alt_text(pod_id, api_key, image_dir=None, port=DEFAULT_PORT, system_prompt=DEFAULT_SYSTEM_PROMPT):
     """Describes every image in image_dir using the model served at pod_id,
     writing one CSV of results. pod_id is whatever RunPod assigned the pod

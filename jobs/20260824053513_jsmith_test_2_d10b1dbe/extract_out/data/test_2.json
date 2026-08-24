@@ -1,0 +1,841 @@
+[{
+  "caption": "Figure 2.6 (a) Logarithmic spiral and (b) Snail shell.",
+  "captionBoundary": {
+    "x1": 112.20819854736328,
+    "x2": 319.7967529296875,
+    "y1": 554.1752319335938,
+    "y2": 560.17822265625
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "2.6",
+  "page": 5,
+  "regionBoundary": {
+    "x1": 84.0,
+    "x2": 349.2,
+    "y1": 412.8,
+    "y2": 546.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure2.6-1.png"
+}, {
+  "caption": "Figure 2.5 Archimedean spiral.",
+  "captionBoundary": {
+    "x1": 153.58180236816406,
+    "x2": 278.41448974609375,
+    "y1": 232.6627960205078,
+    "y2": 238.66580200195312
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.5",
+  "page": 5,
+  "regionBoundary": {
+    "x1": 126.0,
+    "x2": 306.0,
+    "y1": 70.8,
+    "y2": 220.07999999999998
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure2.5-1.png"
+}, {
+  "caption": "Figure 4.7 Ars Magna by Gerolamo Cardano.",
+  "captionBoundary": {
+    "x1": 128.18519592285156,
+    "x2": 303.8021545410156,
+    "y1": 394.2490234375,
+    "y2": 400.25201416015625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.7",
+  "page": 10,
+  "regionBoundary": {
+    "x1": 114.96,
+    "x2": 317.03999999999996,
+    "y1": 72.0,
+    "y2": 384.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.7-1.png"
+}, {
+  "caption": "Figure 6.13 Monument for Newton in the Dutch Art Institute.",
+  "captionBoundary": {
+    "x1": 95.4583969116211,
+    "x2": 336.54681396484375,
+    "y1": 338.99749755859375,
+    "y2": 345.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.13",
+  "page": 24,
+  "regionBoundary": {
+    "x1": 120.96,
+    "x2": 311.03999999999996,
+    "y1": 72.96,
+    "y2": 326.15999999999997
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure6.13-1.png"
+}, {
+  "caption": "Figure 10.19 Richard Phillips Feynman.",
+  "captionBoundary": {
+    "x1": 137.01199340820312,
+    "x2": 294.9853820800781,
+    "y1": 546.5654907226562,
+    "y2": 552.5684814453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.19",
+  "page": 37,
+  "regionBoundary": {
+    "x1": 126.0,
+    "x2": 306.0,
+    "y1": 354.0,
+    "y2": 535.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.19-1.png"
+}, {
+  "caption": "Figure 7.2 Möbius strip in Taichung city, Taiwan.",
+  "captionBoundary": {
+    "x1": 119.92320251464844,
+    "x2": 312.07867431640625,
+    "y1": 278.99749755859375,
+    "y2": 285.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.2",
+  "page": 25,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 378.0,
+    "y1": 72.0,
+    "y2": 264.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure7.2-1.png"
+}, {
+  "caption": "Figure 4.12 Melancholia 1 and Dürer’s magic square.",
+  "captionBoundary": {
+    "x1": 112.0416030883789,
+    "x2": 319.9592590332031,
+    "y1": 525.4616088867188,
+    "y2": 531.464599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.12",
+  "page": 14,
+  "regionBoundary": {
+    "x1": 108.0,
+    "x2": 324.0,
+    "y1": 72.0,
+    "y2": 508.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.12-1.png"
+}, {
+  "caption": "Figure 5.4 The Pascaline, one of the first digital calculators, created by Pascal.",
+  "captionBoundary": {
+    "x1": 64.05879974365234,
+    "x2": 367.9361572265625,
+    "y1": 195.67127990722656,
+    "y2": 201.67428588867188
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.4",
+  "page": 20,
+  "regionBoundary": {
+    "x1": 90.0,
+    "x2": 342.0,
+    "y1": 72.0,
+    "y2": 184.07999999999998
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure5.4-1.png"
+}, {
+  "caption": "Figure 7.11 Galois memorial.",
+  "captionBoundary": {
+    "x1": 157.29299926757812,
+    "x2": 274.71240234375,
+    "y1": 362.99749755859375,
+    "y2": 369.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.11",
+  "page": 29,
+  "regionBoundary": {
+    "x1": 108.0,
+    "x2": 325.2,
+    "y1": 72.0,
+    "y2": 352.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure7.11-1.png"
+}, {
+  "caption": "Figure 3.8 Leonardo of Pisa (Fibonacci).",
+  "captionBoundary": {
+    "x1": 135.99229431152344,
+    "x2": 296.0176696777344,
+    "y1": 298.45220947265625,
+    "y2": 304.4552001953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.8",
+  "page": 6,
+  "regionBoundary": {
+    "x1": 126.96,
+    "x2": 305.03999999999996,
+    "y1": 72.96,
+    "y2": 290.15999999999997
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure3.8-1.png"
+}, {
+  "caption": "Figure 7.10 Introduction to Galois’s La Lettre Testament.",
+  "captionBoundary": {
+    "x1": 104.7489013671875,
+    "x2": 327.24432373046875,
+    "y1": 214.7042999267578,
+    "y2": 220.70730590820312
+  },
+  "figType": "Figure",
+  "imageText": ["“My", "dear", "friend,", "I", "have", "analyzed", "several", "new", "ideas.", "One", "concerning", "the", "theory", "of", "equations;", "the", "other,", "integral", "functions.", "In", "the", "theory", "of", "equations,", "I", "have", "studied", "as", "to", "in", "which", "cases", "the", "equations", "are", "solvable", "by", "radicals,", "which", "has", "provided", "me", "with", "an", "opportunity", "to", "go", "into", "this", "theory", "in", "depth", "and", "describe", "all", "possible", "trans-", "formations", "on", "an", "equation,", "even", "when", "it", "is", "not", "solvable", "by", "radicals.", "All", "this", "can", "be", "put", "in", "three", "papers.", "The", "first", "one", "is", "written,", "and,", "in", "spite", "of", "what", "Poisson", "has", "said,", "I", "stand", "by", "it,", "with", "the", "corrections", "that", "I", "have", "indicated.", "The", "second", "contains", "rather", "interesting", "applications", "from", "the", "theory", "of", "equations.", "…", "The", "Last", "Mathematical", "Testament", "of", "Galois"],
+  "name": "7.10",
+  "page": 28,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 379.2,
+    "y1": 72.0,
+    "y2": 203.04
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure7.10-1.png"
+}, {
+  "caption": "Figure 5.6 Pierre de Fermat and his statue in the Museé des Augustins.",
+  "captionBoundary": {
+    "x1": 77.13469696044922,
+    "x2": 354.862548828125,
+    "y1": 564.55322265625,
+    "y2": 570.5562133789062
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.6",
+  "page": 21,
+  "regionBoundary": {
+    "x1": 54.96,
+    "x2": 377.03999999999996,
+    "y1": 409.91999999999996,
+    "y2": 553.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure5.6-1.png"
+}, {
+  "caption": "Figure 10.7 Alan Turing and the Turing Machine.",
+  "captionBoundary": {
+    "x1": 119.06629943847656,
+    "x2": 312.93310546875,
+    "y1": 564.5531005859375,
+    "y2": 570.5560913085938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.7",
+  "page": 33,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 378.0,
+    "y1": 369.84,
+    "y2": 553.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.7-1.png"
+}, {
+  "caption": "Figure 3.14 Golden rectangle in the Parthenon.",
+  "captionBoundary": {
+    "x1": 122.88749694824219,
+    "x2": 309.1160583496094,
+    "y1": 291.8614196777344,
+    "y2": 297.8644104003906
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.14",
+  "page": 9,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 360.0,
+    "y1": 72.0,
+    "y2": 275.03999999999996
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure3.14-1.png"
+}, {
+  "caption": "Figure 4.11 Self portrait of Dürer at age 22.",
+  "captionBoundary": {
+    "x1": 129.76019287109375,
+    "x2": 302.2506408691406,
+    "y1": 297.5403137207031,
+    "y2": 303.5433044433594
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.11",
+  "page": 13,
+  "regionBoundary": {
+    "x1": 134.88,
+    "x2": 297.12,
+    "y1": 72.0,
+    "y2": 288.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.11-1.png"
+}, {
+  "caption": "Figure 1.3 Sir Austin Henry Layard.",
+  "captionBoundary": {
+    "x1": 145.05160522460938,
+    "x2": 286.9519348144531,
+    "y1": 326.99749755859375,
+    "y2": 333.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.3",
+  "page": 2,
+  "regionBoundary": {
+    "x1": 126.0,
+    "x2": 306.0,
+    "y1": 78.96,
+    "y2": 315.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure1.3-1.png"
+}, {
+  "caption": "Figure 10.6 Hollerith’s tabulating machine.",
+  "captionBoundary": {
+    "x1": 130.55430603027344,
+    "x2": 301.44769287109375,
+    "y1": 564.5531005859375,
+    "y2": 570.5560913085938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.6",
+  "page": 32,
+  "regionBoundary": {
+    "x1": 78.0,
+    "x2": 354.0,
+    "y1": 325.92,
+    "y2": 553.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.6-1.png"
+}, {
+  "caption": "Figure 10.5 First ten binary numbers.",
+  "captionBoundary": {
+    "x1": 140.5384063720703,
+    "x2": 291.46478271484375,
+    "y1": 295.23712158203125,
+    "y2": 301.2401123046875
+  },
+  "figType": "Figure",
+  "imageText": ["Binary", "1", "10", "11", "100", "101", "110", "111", "1000", "1001", "1010", "Decimal", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+  "name": "10.5",
+  "page": 32,
+  "regionBoundary": {
+    "x1": 58.8,
+    "x2": 373.2,
+    "y1": 244.79999999999998,
+    "y2": 284.15999999999997
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.5-1.png"
+}, {
+  "caption": "Figure 10.10 John Von Neumann.",
+  "captionBoundary": {
+    "x1": 149.27499389648438,
+    "x2": 282.72210693359375,
+    "y1": 578.4705200195312,
+    "y2": 584.4735107421875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.10",
+  "page": 34,
+  "regionBoundary": {
+    "x1": 132.96,
+    "x2": 299.03999999999996,
+    "y1": 349.91999999999996,
+    "y2": 567.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.10-1.png"
+}, {
+  "caption": "Figure 10.9 Kathleen McNulty Antonelli (left) and Kathleen Booth (right).",
+  "captionBoundary": {
+    "x1": 71.75430297851562,
+    "x2": 360.24530029296875,
+    "y1": 328.4435119628906,
+    "y2": 334.4465026855469
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.9",
+  "page": 34,
+  "regionBoundary": {
+    "x1": 78.0,
+    "x2": 354.0,
+    "y1": 151.92,
+    "y2": 317.03999999999996
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.9-1.png"
+}, {
+  "caption": "Figure 5.1 René Descartes.",
+  "captionBoundary": {
+    "x1": 161.7512969970703,
+    "x2": 270.25128173828125,
+    "y1": 566.5143432617188,
+    "y2": 572.517333984375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.1",
+  "page": 17,
+  "regionBoundary": {
+    "x1": 163.92,
+    "x2": 268.08,
+    "y1": 428.88,
+    "y2": 555.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure5.1-1.png"
+}, {
+  "caption": "Figure 6.8 Diagrams opposite page 467 of Leibniz’s calculus.2",
+  "captionBoundary": {
+    "x1": 95.3551025390625,
+    "x2": 336.64642333984375,
+    "y1": 416.8319091796875,
+    "y2": 422.83489990234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.8",
+  "page": 22,
+  "regionBoundary": {
+    "x1": 92.88,
+    "x2": 339.12,
+    "y1": 72.0,
+    "y2": 397.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure6.8-1.png"
+}, {
+  "caption": "Figure 7.9 July revolution of 18303.",
+  "captionBoundary": {
+    "x1": 147.86819458007812,
+    "x2": 284.131103515625,
+    "y1": 532.5531005859375,
+    "y2": 538.5560913085938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.9",
+  "page": 27,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 378.0,
+    "y1": 331.92,
+    "y2": 519.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure7.9-1.png"
+}, {
+  "caption": "Figure 4.10 The earliest first edition (1630) of Viète’s work on symbolic algebra.",
+  "captionBoundary": {
+    "x1": 58.24039840698242,
+    "x2": 373.75860595703125,
+    "y1": 411.79229736328125,
+    "y2": 417.7952880859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.10",
+  "page": 12,
+  "regionBoundary": {
+    "x1": 108.96,
+    "x2": 323.03999999999996,
+    "y1": 72.0,
+    "y2": 397.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.10-1.png"
+}, {
+  "caption": "Figure 3.9 A page of Fibonacci’s Liber Abaci from the Biblioteca Nazionale di Firenze.",
+  "captionBoundary": {
+    "x1": 54.0,
+    "x2": 343.4342041015625,
+    "y1": 428.8314208984375,
+    "y2": 446.83441162109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.9",
+  "page": 7,
+  "regionBoundary": {
+    "x1": 92.88,
+    "x2": 339.12,
+    "y1": 72.0,
+    "y2": 420.24
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure3.9-1.png"
+}, {
+  "caption": "Figure 1.4 Babylonian Empire.",
+  "captionBoundary": {
+    "x1": 154.4123992919922,
+    "x2": 277.5926818847656,
+    "y1": 563.8771362304688,
+    "y2": 569.880126953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.4",
+  "page": 3,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 360.0,
+    "y1": 331.92,
+    "y2": 549.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure1.4-1.png"
+}, {
+  "caption": "Figure 10.15 Seymour Roger Cray.",
+  "captionBoundary": {
+    "x1": 147.2227020263672,
+    "x2": 284.77874755859375,
+    "y1": 320.6853942871094,
+    "y2": 326.6883850097656
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.15",
+  "page": 35,
+  "regionBoundary": {
+    "x1": 108.0,
+    "x2": 324.0,
+    "y1": 162.96,
+    "y2": 309.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.15-1.png"
+}, {
+  "caption": "Figure 10.16 Joseph Weizenbaum.",
+  "captionBoundary": {
+    "x1": 147.29100036621094,
+    "x2": 284.7080993652344,
+    "y1": 564.6069946289062,
+    "y2": 570.6099853515625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.16",
+  "page": 35,
+  "regionBoundary": {
+    "x1": 140.88,
+    "x2": 291.12,
+    "y1": 336.0,
+    "y2": 553.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.16-1.png"
+}, {
+  "caption": "Figure 5.2 Cartesian graph.",
+  "captionBoundary": {
+    "x1": 160.77569580078125,
+    "x2": 271.2254638671875,
+    "y1": 553.7775268554688,
+    "y2": 559.780517578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.2",
+  "page": 18,
+  "regionBoundary": {
+    "x1": 76.8,
+    "x2": 355.2,
+    "y1": 309.84,
+    "y2": 542.16
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure5.2-1.png"
+}, {
+  "caption": "Figure 4.15 Copernicus and Gallileo.",
+  "captionBoundary": {
+    "x1": 143.25230407714844,
+    "x2": 288.7404479980469,
+    "y1": 254.9974822998047,
+    "y2": 261.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.15",
+  "page": 16,
+  "regionBoundary": {
+    "x1": 73.92,
+    "x2": 358.08,
+    "y1": 78.0,
+    "y2": 247.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.15-1.png"
+}, {
+  "caption": "Figure 10.3 Ada King, Countess of Lovelace.",
+  "captionBoundary": {
+    "x1": 129.23980712890625,
+    "x2": 302.7588806152344,
+    "y1": 536.55322265625,
+    "y2": 542.5562133789062
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.3",
+  "page": 31,
+  "regionBoundary": {
+    "x1": 128.88,
+    "x2": 303.12,
+    "y1": 247.92,
+    "y2": 525.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.3-1.png"
+}, {
+  "caption": "Figure 4.9 François Viète.",
+  "captionBoundary": {
+    "x1": 163.91119384765625,
+    "x2": 268.09210205078125,
+    "y1": 564.55322265625,
+    "y2": 570.5562133789062
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.9",
+  "page": 11,
+  "regionBoundary": {
+    "x1": 135.84,
+    "x2": 296.15999999999997,
+    "y1": 342.0,
+    "y2": 552.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.9-1.png"
+}, {
+  "caption": "Figure 7.4 Leonhard Euler.",
+  "captionBoundary": {
+    "x1": 161.764404296875,
+    "x2": 270.23870849609375,
+    "y1": 358.99749755859375,
+    "y2": 365.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.4",
+  "page": 26,
+  "regionBoundary": {
+    "x1": 108.0,
+    "x2": 324.0,
+    "y1": 78.0,
+    "y2": 349.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure7.4-1.png"
+}, {
+  "caption": "Figure 6.12 A replica of Newton’s reflecting telescope in London’s Science Museum.",
+  "captionBoundary": {
+    "x1": 54.0,
+    "x2": 378.0324401855469,
+    "y1": 279.3763122558594,
+    "y2": 285.3793029785156
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.12",
+  "page": 23,
+  "regionBoundary": {
+    "x1": 139.92,
+    "x2": 292.08,
+    "y1": 72.0,
+    "y2": 264.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure6.12-1.png"
+}, {
+  "caption": "Figure 3.12 Fibonacci at the gallery of the Campo Santo.",
+  "captionBoundary": {
+    "x1": 105.45159912109375,
+    "x2": 326.55364990234375,
+    "y1": 387.0836181640625,
+    "y2": 393.08660888671875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.12",
+  "page": 8,
+  "regionBoundary": {
+    "x1": 126.96,
+    "x2": 305.03999999999996,
+    "y1": 72.0,
+    "y2": 372.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure3.12-1.png"
+}, {
+  "caption": "Figure 3.13 Fibonacci sequence in a tree and nautilus shells.",
+  "captionBoundary": {
+    "x1": 97.2228012084961,
+    "x2": 334.7791442871094,
+    "y1": 564.6069946289062,
+    "y2": 570.6099853515625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.13",
+  "page": 8,
+  "regionBoundary": {
+    "x1": 54.96,
+    "x2": 377.03999999999996,
+    "y1": 422.88,
+    "y2": 553.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure3.13-1.png"
+}, {
+  "caption": "Figure 10.18 Geoffrey Everest Hinton1.",
+  "captionBoundary": {
+    "x1": 138.7740020751953,
+    "x2": 293.2253112792969,
+    "y1": 299.99700927734375,
+    "y2": 306.0
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.18",
+  "page": 36,
+  "regionBoundary": {
+    "x1": 144.0,
+    "x2": 289.2,
+    "y1": 70.8,
+    "y2": 288.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure10.18-1.png"
+}, {
+  "caption": "Figure 8.3 Statue of Carl Friedrich Gauss in Brunswick.",
+  "captionBoundary": {
+    "x1": 107.61389923095703,
+    "x2": 324.3821105957031,
+    "y1": 336.4967956542969,
+    "y2": 342.4997863769531
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.3",
+  "page": 30,
+  "regionBoundary": {
+    "x1": 132.0,
+    "x2": 300.0,
+    "y1": 72.0,
+    "y2": 324.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure8.3-1.png"
+}, {
+  "caption": "Figure 5.3 Blaise Pascal and a commemorative statue (Louvre Collections).",
+  "captionBoundary": {
+    "x1": 69.50869750976562,
+    "x2": 362.49688720703125,
+    "y1": 553.7775268554688,
+    "y2": 559.780517578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.3",
+  "page": 19,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 360.0,
+    "y1": 369.84,
+    "y2": 542.16
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure5.3-1.png"
+}, {
+  "caption": "Figure 2.2 Greek alphabetic numbers.",
+  "captionBoundary": {
+    "x1": 140.53199768066406,
+    "x2": 291.4706726074219,
+    "y1": 190.0345916748047,
+    "y2": 196.03759765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.2",
+  "page": 4,
+  "regionBoundary": {
+    "x1": 60.0,
+    "x2": 373.2,
+    "y1": 72.0,
+    "y2": 183.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure2.2-1.png"
+}, {
+  "caption": "Figure 2.3 Archimedes of Syracuse.",
+  "captionBoundary": {
+    "x1": 145.41439819335938,
+    "x2": 286.5892639160156,
+    "y1": 567.910888671875,
+    "y2": 573.9138793945312
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.3",
+  "page": 4,
+  "regionBoundary": {
+    "x1": 134.88,
+    "x2": 297.12,
+    "y1": 378.0,
+    "y2": 559.1999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure2.3-1.png"
+}, {
+  "caption": "Figure 4.13 John Napier.",
+  "captionBoundary": {
+    "x1": 166.24249267578125,
+    "x2": 265.7586975097656,
+    "y1": 278.99749755859375,
+    "y2": 285.00048828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.13",
+  "page": 15,
+  "regionBoundary": {
+    "x1": 120.0,
+    "x2": 312.0,
+    "y1": 78.96,
+    "y2": 272.15999999999997
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260824053513_jsmith_test_2_d10b1dbe/extract_out/figures/test_2-Figure4.13-1.png"
+}]

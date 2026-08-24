@@ -5,8 +5,8 @@ startup.py
 Host-side entry point for the alt-text pipeline. Runs the checks that only
 make sense on the host -- Colima up, pdffigures2.jar built -- fixing either
 one automatically if needed, then launches the pdffigures2-builder container
-and runs controller.py inside it. Replaces the old "run shell.sh, then
-manually run controller.py from the interactive shell" flow with one command.
+as a persistent daemon running api_server.py (the PDF intake API) and
+worker.py (the job queue processor) side by side.
 
 Usage:
     python3 startup.py
@@ -24,11 +24,14 @@ PDFFIGURES2_SRC = PROJECT_ROOT / "pdffigures2"
 JAR_PATH = PDFFIGURES2_SRC / "pdffigures2.jar"
 BUILD_SCRIPT = PROJECT_ROOT / "docker" / "pdffigures2-build" / "build.sh"
 DOCKER_BUILD_CONTEXT = PROJECT_ROOT / "docker" / "pdffigures2-build"
+ENTRYPOINT_SCRIPT = "docker/pdffigures2-build/entrypoint.sh"  # relative to /work inside the container
 IMAGE_NAME = "pdffigures2-builder"
+CONTAINER_NAME = "alttext-pipeline"
+HOST_PORT = int(os.environ.get("PIPELINE_PORT", "8000"))
 
-# Forwarded into the container so controller.py's os.environ.get(...) picks
-# them up automatically -- neither is ever printed or logged here.
-FORWARDED_ENV_VARS = ("RUNPOD_API_KEY", "HF_TOKEN")
+# Forwarded into the container so controller.py/worker.py's os.environ.get(...)
+# calls pick them up automatically -- none of these are ever printed or logged here.
+FORWARDED_ENV_VARS = ("RUNPOD_API_KEY", "HF_TOKEN", "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID")
 
 
 def ensure_colima_running() -> None:
@@ -68,31 +71,57 @@ def ensure_image_built() -> None:
     subprocess.run(["docker", "build", "-t", IMAGE_NAME, str(DOCKER_BUILD_CONTEXT)], check=True)
 
 
-def run_controller_in_container() -> int:
-    """Runs controller.py inside pdffigures2-builder, the same image/mount
-    layout shell.sh drops you into, but non-interactively and with the host's
-    RunPod/HF credentials forwarded in."""
-    env_args = []
-    for key in FORWARDED_ENV_VARS:
-        value = os.environ.get(key)
-        if value:
-            env_args += ["-e", f"{key}={value}"]
-        else:
-            print(f"==> warning: {key} not set on host -- controller.py will run without it")
+def _existing_container_status() -> str | None:
+    """Returns the container's docker status ('running', 'exited', ...), or
+    None if no container with this name exists at all."""
+    result = subprocess.run(
+        ["docker", "inspect", "-f", "{{.State.Status}}", CONTAINER_NAME],
+        capture_output=True, text=True,
+    )
+    return result.stdout.strip() if result.returncode == 0 else None
 
-    cmd = [
-        "docker", "run", "--rm",
-        "-v", f"{PROJECT_ROOT}:/work",
-        "-w", "/work",
-        "-e", "PYTHONUNBUFFERED=1",  # without a tty, python fully-buffers stdout --
-                                      # nothing would show up until the buffer fills
-        *env_args,
-        "--entrypoint", "python3",
-        IMAGE_NAME,
-        "controller.py",
-    ]
-    print("==> starting container and running controller.py")
-    return subprocess.run(cmd).returncode
+
+def run_pipeline_daemon() -> int:
+    """Runs api_server.py + worker.py as a persistent, restart-on-crash
+    container (see entrypoint.sh) -- replaces the old one-shot
+    `docker run --rm ... controller.py`. Safe to re-run: does nothing if the
+    daemon is already up, replaces it if it exists but isn't running."""
+    status = _existing_container_status()
+    if status == "running":
+        print(f"==> {CONTAINER_NAME} already running")
+    else:
+        if status is not None:
+            print(f"==> found a stopped {CONTAINER_NAME} container ({status}) -- removing it first")
+            subprocess.run(["docker", "rm", "-f", CONTAINER_NAME], check=True)
+
+        env_args = []
+        for key in FORWARDED_ENV_VARS:
+            value = os.environ.get(key)
+            if value:
+                env_args += ["-e", f"{key}={value}"]
+            else:
+                print(f"==> warning: {key} not set on host -- the pipeline will fail its startup env check")
+
+        cmd = [
+            "docker", "run", "-d",
+            "--name", CONTAINER_NAME,
+            "--restart", "unless-stopped",
+            "-v", f"{PROJECT_ROOT}:/work",
+            "-w", "/work",
+            "-p", f"{HOST_PORT}:8000",
+            "-e", "PYTHONUNBUFFERED=1",  # without a tty, python fully-buffers stdout --
+                                          # nothing would show up in `docker logs` until the buffer fills
+            *env_args,
+            "--entrypoint", "bash",
+            IMAGE_NAME,
+            ENTRYPOINT_SCRIPT,
+        ]
+        print("==> starting pipeline daemon (api_server.py + worker.py)")
+        subprocess.run(cmd, check=True)
+
+    print(f"==> intake API: http://localhost:{HOST_PORT}/docs")
+    print(f"==> logs: docker logs -f {CONTAINER_NAME}")
+    return 0
 
 
 def main() -> int:
@@ -104,7 +133,7 @@ def main() -> int:
         print(f"startup.py: {exc}", file=sys.stderr)
         return 1
 
-    return run_controller_in_container()
+    return run_pipeline_daemon()
 
 
 if __name__ == "__main__":

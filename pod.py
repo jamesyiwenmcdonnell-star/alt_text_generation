@@ -31,7 +31,7 @@ def terminate_pod_by_id(pod_id: str, api_key: str) -> None:
 
 
 class Pod:
-    def __init__(self, pod_name, pod_status: podStatus, pod_id=None, port=None):
+    def __init__(self, pod_name, pod_status: podStatus, pod_id=None, port=None, created_at=None):
         if not isinstance(pod_status, podStatus):
             raise TypeError(f"pod_status must be a podStatus, got {type(pod_status)}")
 
@@ -39,6 +39,8 @@ class Pod:
         self.pod_status = pod_status
         self.pod_id = pod_id
         self.port = port
+        self.created_at = created_at  # unix timestamp; set for real in start_pod(),
+                                       # or restored from saved state by the caller
 
     # <----Pod start/stop functions----->
 
@@ -56,6 +58,7 @@ class Pod:
         self.pod_id = pod_data["id"]
         self.port = 8000  # matches RUNPOD_POD_CONFIG's exposed port
         self.pod_status = podStatus.STARTING
+        self.created_at = time.time()
         return pod_data
 
     def stop_pod(self, api_key: str) -> dict:
@@ -70,11 +73,16 @@ class Pod:
 
     def terminate_pod(self, api_key: str) -> None:
         """Permanently deletes the pod via REST API. Unlike stop_pod, this is
-        not reversible -- the pod and its storage are gone."""
+        not reversible -- the pod and its storage are gone. Idempotent: a 404
+        means the pod is already gone (e.g. a stale saved pod_id, or already
+        cleaned up), which is the outcome this method wants anyway -- treat
+        it as success rather than raising, so callers don't have to special-
+        case "already gone" vs. "termination genuinely failed"."""
         url = f"https://rest.runpod.io/v1/pods/{self.pod_id}"
         headers = {"Authorization": f"Bearer {api_key}"}
         response = requests.delete(url, headers=headers, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()  # 204 No Content on success -- no body to parse
+        if response.status_code != 404:
+            response.raise_for_status()  # 204 No Content on success -- no body to parse
         self.pod_status = podStatus.TERMINATED
 
     # <----Pod status check functions----->
