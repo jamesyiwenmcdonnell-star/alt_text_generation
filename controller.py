@@ -4,6 +4,7 @@ import requests
 from pathlib import Path
 from gpu_utils import pick_available_gpu
 from pod import Pod, podStatus, list_pods, terminate_pod_by_id
+from runpod_VL import generate_alt_text
 
 # --- config ---
 RUNPOD_ENDPOINT = "..."      # your pod's exposed URL
@@ -12,7 +13,8 @@ INPUT_DIR = "./PDFTesting"
 JAR_PATH = "./pdffigures2/pdffigures2.jar"
 EXTRACT_OUT_DIR = "./pdffigures2_out"
 RESULTS_PATH = "./alt_text_results.json"   # or .csv — decide below
-RUNPOD_API_KEY = "" # bug fix: was hardcoded — never commit real keys
+POD_STATE_PATH = "./pod_state.txt"
+RUNPOD_API_KEY = ""
 HF_TOKEN = ""
 
 RUNPOD_POD_CONFIG = {
@@ -58,6 +60,48 @@ def start_new_pod(api_key: str) -> Pod:
     return pod
 
 
+def _parse_optional(value: str | None) -> str | None:
+    return None if value in (None, "", "None") else value
+
+
+def save_pod(pod: Pod, path: str = POD_STATE_PATH) -> None:
+    """Persists a pod's identifying fields to a text file, so a later run
+    (e.g. after this process crashed or was interrupted) can recover it --
+    to check on it, stop it, or terminate it -- without needing to know its
+    id ahead of time."""
+    lines = [
+        f"pod_name={pod.pod_name}",
+        f"pod_id={pod.pod_id}",
+        f"port={pod.port}",
+        f"pod_status={pod.pod_status.name}",
+    ]
+    Path(path).write_text("\n".join(lines) + "\n")
+
+
+def load_pod(path: str = POD_STATE_PATH) -> Pod | None:
+    """Reconstructs a Pod from a file written by save_pod(). Returns None if
+    no saved state exists. Note the recovered pod_status reflects whatever it
+    was at save time -- call pod.app_startup_pod_checker(api_key) to refresh it."""
+    state_file = Path(path)
+    if not state_file.exists():
+        return None
+
+    fields: dict[str, str] = {}
+    for line in state_file.read_text().splitlines():
+        if not line or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        fields[key] = value
+
+    port = _parse_optional(fields.get("port"))
+    return Pod(
+        pod_name=fields.get("pod_name"),
+        pod_status=podStatus[fields["pod_status"]],
+        pod_id=_parse_optional(fields.get("pod_id")),
+        port=int(port) if port is not None else None,
+    )
+
+
 def stop_pod(pod: Pod, api_key: str) -> None:
     """Stops a running pod without deleting it -- storage is preserved and it
     can be restarted later. Use this over terminate_pod() when you just want
@@ -92,6 +136,10 @@ def terminate_all_pods(api_key: str) -> None:
         except requests.RequestException as e:
             print(f"  FAILED: {e}")
 
+def generate_text(pod_id, runpod_api_key):
+    generate_alt_text(pod_id, runpod_api_key, image_dir=os.path.join(EXTRACT_OUT_DIR, "figures"))
+    print("INFO: Alt text generated")
+
 
 
 def load_manifest():
@@ -116,15 +164,21 @@ def save_result(row, result):
 
 
 def main():
+    """
     print("INFO: Application will terminate all pods currently running or paused")
     terminate_all_pods(RUNPOD_API_KEY)
     pod = start_new_pod(RUNPOD_API_KEY)
-    print(f"Pod ready: {pod.pod_id} — status {pod.pod_status}")
-    print(f"Stopping pod")
-    stop_pod(pod, RUNPOD_API_KEY)
-    print(f"Terminating pod")
-    terminate_pod(pod, RUNPOD_API_KEY)
+    save_pod(pod) 
+    """                          #Saving pod info into a txt file     
 
+    pod = load_pod()
+    if pod is None:
+        print(f"ERROR: No saved pod found at {POD_STATE_PATH} -- start one first.")
+        return
+
+    generate_text(pod.pod_id, RUNPOD_API_KEY)
+    print("INFO: pod left open, info saved in txt file")
+    
     """
     manifest_rows = load_manifest()
     existing = load_existing_results()

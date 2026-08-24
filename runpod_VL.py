@@ -92,7 +92,10 @@ MODEL_SYSTEM_PROMPT = (
 # Folder scanned when generate_alt_text() is called without an explicit
 # image_dir -- e.g. standalone runs. controller.py should pass its own
 # figures folder explicitly instead of relying on this default.
-IMAGE_DIR = os.path.expanduser("~/Desktop/testImages")
+# Must be computed from __file__, not "~" -- inside the container this runs
+# as root, so "~" expands to /root, not the project's actual mount point.
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+IMAGE_DIR = os.path.join(PROJECT_ROOT, "pdffigures2_out", "figures")
 
 # Where CSVs get written.
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
@@ -309,7 +312,7 @@ def write_csv(model_name, rows):
     return out_path
 
 
-def generate_alt_text(pod_id, image_dir=None, port=DEFAULT_PORT, api_key=DEFAULT_API_KEY, system_prompt=None):
+def generate_alt_text(pod_id, api_key, image_dir=None, port=DEFAULT_PORT, system_prompt=DEFAULT_SYSTEM_PROMPT):
     """Describes every image in image_dir using the model served at pod_id,
     writing one CSV of results. pod_id is whatever RunPod assigned the pod
     for this run (pods are ephemeral, so there's no sensible hardcoded

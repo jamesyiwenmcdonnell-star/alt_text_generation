@@ -1,0 +1,4 @@
+pod_name=internvl3.5-8b-pod
+pod_id=1vrtffuw6reire
+port=8000
+pod_status=READY
