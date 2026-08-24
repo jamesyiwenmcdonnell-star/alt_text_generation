@@ -170,6 +170,18 @@ def list_jobs(editor_id: str | None = None, state=None, limit: int = 50, offset:
     return [_row_to_job(r) for r in rows]
 
 
+def list_jobs_completed_before(state: str, cutoff_iso: str) -> list[Job]:
+    """Jobs in the given state whose completed_at is older than cutoff_iso
+    (a UTC ISO8601 string, same format _now() produces) -- e.g. for finding
+    FAILED jobs whose on-disk files are due for cleanup."""
+    with _connect() as conn:
+        rows = conn.execute(
+            "SELECT * FROM jobs WHERE state = ? AND completed_at IS NOT NULL AND completed_at < ?",
+            (state, cutoff_iso),
+        ).fetchall()
+    return [_row_to_job(r) for r in rows]
+
+
 def count_jobs(editor_id: str | None = None, state=None) -> int:
     """Total matching jobs regardless of limit/offset -- for list_jobs()'s
     pagination metadata, since len(list_jobs(...)) only reflects one page."""

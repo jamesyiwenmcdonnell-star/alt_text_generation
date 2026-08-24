@@ -62,6 +62,7 @@ def main() -> None:
         job = job_store.claim_next_queued_job()
         if job is None:
             job_pipeline.retire_pod(job_pipeline.expired_pod_or_none(api_key), api_key)
+            job_pipeline.cleanup_old_failed_job_files()
             time.sleep(POLL_INTERVAL_S)
             continue
 

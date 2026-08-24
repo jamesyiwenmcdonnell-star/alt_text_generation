@@ -39,6 +39,13 @@ SENT_MESSAGE_IDS_PATH = "./telegram_sent_message_ids.txt"
 
 MAX_BOARD_LINES = 20
 
+# How long a terminal-state job stays visible on the board after it finished
+# (measured from completed_at) -- this only affects what's *displayed*, not
+# the underlying job record (still queryable via the API) or, for COMPLETE
+# jobs, the files (job_pipeline.py only ever deletes FAILED jobs' files).
+FAILED_DISPLAY_WORKING_DAYS = 3   # Mon-Fri only -- weekends don't count
+COMPLETE_DISPLAY_DAYS = 7         # calendar days
+
 STATE_EMOJI = {
     "QUEUED": "🟡",
     "EXTRACTING": "🔵",
@@ -145,13 +152,41 @@ def ensure_message() -> int:
     return message_id
 
 
+def _parse_utc(iso_utc: str) -> datetime:
+    """Parses a job_store-style UTC timestamp ("2026-08-24T15:18:04Z")."""
+    return datetime.strptime(iso_utc, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+
+
 def _sgt_hhmm(iso_utc: str | None) -> str:
-    """Converts a job_store-style UTC timestamp ("2026-08-24T15:18:04Z") to
-    "HH:MM" in Singapore time. Returns "?" if there's no timestamp at all."""
+    """Converts a job_store-style UTC timestamp to "HH:MM" in Singapore
+    time. Returns "?" if there's no timestamp at all."""
     if not iso_utc:
         return "?"
-    dt_utc = datetime.strptime(iso_utc, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-    return dt_utc.astimezone(SGT).strftime("%H:%M")
+    return _parse_utc(iso_utc).astimezone(SGT).strftime("%H:%M")
+
+
+def _business_days_ago(n: int, from_dt: datetime) -> datetime:
+    """from_dt minus n working days (Mon-Fri) -- weekends don't count toward n."""
+    d = from_dt
+    remaining = n
+    while remaining > 0:
+        d -= timedelta(days=1)
+        if d.weekday() < 5:  # Mon=0 .. Fri=4
+            remaining -= 1
+    return d
+
+
+def _expired_from_board(job: job_store.Job, now: datetime) -> bool:
+    """Whether a terminal-state job's display window on the board has
+    elapsed. In-progress jobs (QUEUED/EXTRACTING/...) are never expired."""
+    if not job.completed_at:
+        return False
+    completed = _parse_utc(job.completed_at)
+    if job.state == "FAILED":
+        return completed < _business_days_ago(FAILED_DISPLAY_WORKING_DAYS, now)
+    if job.state == "COMPLETE":
+        return completed < now - timedelta(days=COMPLETE_DISPLAY_DAYS)
+    return False
 
 
 def _format_job_line(job: job_store.Job) -> str:
@@ -174,7 +209,9 @@ def _format_job_line(job: job_store.Job) -> str:
 
 
 def _format_board() -> str:
+    now = datetime.now(timezone.utc)
     jobs = job_store.list_jobs(limit=50)
+    jobs = [j for j in jobs if not _expired_from_board(j, now)]
     jobs.sort(key=lambda j: j.updated_at, reverse=True)  # ISO8601 sorts lexicographically = chronologically
     jobs.sort(key=lambda j: j.state == "FAILED")  # stable: pushes FAILED to the bottom without
                                                    # disturbing the recency order within each group

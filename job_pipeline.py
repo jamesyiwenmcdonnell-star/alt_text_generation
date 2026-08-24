@@ -15,7 +15,10 @@ proactively by the worker's idle-tick sweep -- see retire_expired_pod_if_any().
 """
 
 import logging
+import os
+import shutil
 import time
+from datetime import datetime, timedelta, timezone
 
 import controller
 import job_store
@@ -27,6 +30,25 @@ from runpod_VL import generate_alt_text_for_manifest
 POD_MAX_LIFETIME_S = 4 * 60 * 60  # ~4h, per confirmed low volume (<=10 PDFs/day) --
                                    # reusing one pod across a session's jobs avoids
                                    # repeated multi-minute cold starts for a handful of jobs/day
+
+# A FAILED job's on-disk files (PDF, any partial extraction output) get
+# deleted after this long. The DB row itself is untouched -- it stays
+# queryable via the API and keeps showing on the Telegram board until ITS OWN,
+# longer window elapses (see telegram_status.py's FAILED_DISPLAY_WORKING_DAYS).
+# COMPLETE jobs' files are never deleted, by design -- no equivalent constant.
+FAILED_JOB_FILE_RETENTION_HOURS = 24
+
+
+def cleanup_old_failed_job_files() -> None:
+    """Deletes jobs/<job_id>/ for any FAILED job whose completed_at is older
+    than FAILED_JOB_FILE_RETENTION_HOURS. Safe to call repeatedly -- once a
+    job's directory is gone, later calls just skip it."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(hours=FAILED_JOB_FILE_RETENTION_HOURS))
+    cutoff_iso = cutoff.strftime("%Y-%m-%dT%H:%M:%SZ")
+    for job in job_store.list_jobs_completed_before("FAILED", cutoff_iso):
+        if os.path.isdir(job.job_dir):
+            shutil.rmtree(job.job_dir)
+            logging.info("deleted on-disk files for expired FAILED job %s", job.job_id)
 
 
 def retire_pod(pod: Pod | None, api_key: str) -> None:
