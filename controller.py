@@ -12,8 +12,8 @@ INPUT_DIR = "./PDFTesting"
 JAR_PATH = "./pdffigures2/pdffigures2.jar"
 EXTRACT_OUT_DIR = "./pdffigures2_out"
 RESULTS_PATH = "./alt_text_results.json"   # or .csv — decide below
-RUNPOD_API_KEY = " " # bug fix: was hardcoded — never commit real keys
-HF_TOKEN = " "
+RUNPOD_API_KEY = "" # bug fix: was hardcoded — never commit real keys
+HF_TOKEN = ""
 
 RUNPOD_POD_CONFIG = {
     "name": "internvl3.5-8b-pod",
