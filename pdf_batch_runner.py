@@ -431,7 +431,9 @@ def extract_images(
     validation_report.csv in output_dir. Callable directly (e.g. from
     controller.py) instead of only via the CLI below.
 
-    Returns a dict with pdfs_found, manifest_path, validation_path, and
+    Returns a dict with pdfs_found (total PDFs under input_dir), pdfs_processed
+    (how many actually ran this call -- lower than pdfs_found when skip_done
+    filters out already-done ones), manifest_path, validation_path, and
     figures_dir (the last three are None if no PDFs were found at all).
     """
     logger = logger or logging.getLogger("pdf_batch_runner")
@@ -443,9 +445,10 @@ def extract_images(
         raise FileNotFoundError(f"jar not found: {jar_path} (build it with `sbt assembly`, see SETUP.md)")
 
     pdfs = find_pdfs(input_dir, recursive=recursive)
+    pdfs_found = len(pdfs)
     if not pdfs:
         logger.warning("no PDFs found under %s", input_dir)
-        return {"pdfs_found": 0, "manifest_path": None, "validation_path": None, "figures_dir": None}
+        return {"pdfs_found": 0, "pdfs_processed": 0, "manifest_path": None, "validation_path": None, "figures_dir": None}
     logger.info("found %d PDFs under %s", len(pdfs), input_dir)
 
     layout = make_output_layout(output_dir)
@@ -495,7 +498,8 @@ def extract_images(
     write_validation_report(issues, validation_path, logger)
 
     return {
-        "pdfs_found": len(pdfs),
+        "pdfs_found": pdfs_found,
+        "pdfs_processed": len(pdfs),
         "manifest_path": manifest_path,
         "validation_path": validation_path,
         "figures_dir": layout["figures"],

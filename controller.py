@@ -5,6 +5,9 @@ from pathlib import Path
 from gpu_utils import pick_available_gpu
 from pod import Pod, podStatus, list_pods, terminate_pod_by_id
 from runpod_VL import generate_alt_text
+from pdf_batch_runner import extract_images
+import logging
+
 
 # --- config ---
 RUNPOD_ENDPOINT = "..."      # your pod's exposed URL
@@ -136,10 +139,29 @@ def terminate_all_pods(api_key: str) -> None:
         except requests.RequestException as e:
             print(f"  FAILED: {e}")
 
+def extract_pdf_images(skip_done: bool = True) -> dict:
+    """Runs pdffigures2 extraction over INPUT_DIR, writing manifest.csv,
+    validation_report.csv, and the figures/ folder under EXTRACT_OUT_DIR --
+    wraps pdf_batch_runner.extract_images() with this project's own paths so
+    callers don't need to know them. Raises FileNotFoundError if the jar
+    hasn't been built yet (see SETUP.md)."""
+    print(f"INFO: Extracting figures from PDFs in {INPUT_DIR} ...")
+    result = extract_images(
+        input_dir=INPUT_DIR,
+        jar_path=JAR_PATH,
+        output_dir=EXTRACT_OUT_DIR,
+        skip_done=skip_done,
+    )
+    print(
+        f"INFO: Extraction done: {result['pdfs_found']} PDF(s) found under {INPUT_DIR}, "
+        f"{result['pdfs_processed']} processed this run -> {result['figures_dir']}"
+    )
+    return result
+
+
 def generate_text(pod_id, runpod_api_key):
     generate_alt_text(pod_id, runpod_api_key, image_dir=os.path.join(EXTRACT_OUT_DIR, "figures"))
     print("INFO: Alt text generated")
-
 
 
 def load_manifest():
@@ -169,15 +191,18 @@ def main():
     terminate_all_pods(RUNPOD_API_KEY)
     pod = start_new_pod(RUNPOD_API_KEY)
     save_pod(pod) 
-    """                          #Saving pod info into a txt file     
+    """                           
 
     pod = load_pod()
     if pod is None:
         print(f"ERROR: No saved pod found at {POD_STATE_PATH} -- start one first.")
         return
-
+    extract_pdf_images(skip_done=False)
+    generate_text(pod.pod_id, RUNPOD_API_KEY)
+    """
     generate_text(pod.pod_id, RUNPOD_API_KEY)
     print("INFO: pod left open, info saved in txt file")
+    """
     
     """
     manifest_rows = load_manifest()
