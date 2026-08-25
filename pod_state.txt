@@ -1,5 +1,0 @@
-pod_name=internvl3.5-8b-pod
-pod_id=e5xp3kdy9k5h4s
-port=8000
-pod_status=READY
-created_at=1787625502.6520138

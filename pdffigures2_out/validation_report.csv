@@ -1,2 +1,26 @@
 pdf_name,fig_type,issue,detail
-full_test,Figure,missing_major,"no Figure numbered 7 (or 7.x) found at all (have majors [1, 2, 3, 4, 5, 6, 8, 9])"
+full_test,Figure,unparsed_name,"name='I' isn't a plain numeric ('.'-separated) name, couldn't check its sequence"
+full_test,Figure,missing_major,"no Figure numbered 1 (or 1.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 2 (or 2.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 4 (or 4.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 5 (or 5.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 9 (or 9.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 10 (or 10.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 11 (or 11.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 12 (or 12.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 15 (or 15.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 16 (or 16.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 17 (or 17.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Figure,missing_major,"no Figure numbered 18 (or 18.x) found at all (have majors [3, 6, 7, 8, 13, 14, 19])"
+full_test,Table,missing_major,no Table numbered 1 (or 1.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 2 (or 2.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 3 (or 3.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 4 (or 4.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 5 (or 5.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 6 (or 6.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 7 (or 7.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 8 (or 8.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 9 (or 9.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 10 (or 10.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 11 (or 11.x) found at all (have majors [13])
+full_test,Table,missing_major,no Table numbered 12 (or 12.x) found at all (have majors [13])
