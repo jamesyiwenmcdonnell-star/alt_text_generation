@@ -36,6 +36,23 @@ RUN apt-get update && \
 # `build-essential` to the apt install above.
 RUN pip3 install --no-cache-dir pikepdf requests openai fastapi uvicorn python-multipart
 
+# JAI ImageIO's JPEG2000 plugin -- vanilla PDFBox/pdffigures2 can't decode
+# JPEG2000-encoded images without it ("Cannot read JPEG2000 image: Java
+# Advanced Imaging (JAI) Image I/O Tools are not installed"), which silently
+# drops every figure embedded that way -- can undercount figures by an order
+# of magnitude on scan-heavy PDFs. Oracle's original JAI ImageIO Tools were
+# never on Maven Central (native/licensing reasons); this is the pure-Java
+# community fork that is: https://github.com/jai-imageio/jai-imageio-jpeg2000
+# `-jar` ignores -cp/CLASSPATH entirely, so using these requires invoking
+# pdf_batch_runner.py with --extra-classpath "$JAI_JPEG2000_CLASSPATH" to
+# switch the java invocation from -jar to -cp + main class.
+RUN mkdir -p /opt/jai && \
+    curl -fsSL -o /opt/jai/jai-imageio-core-1.4.0.jar \
+      https://repo1.maven.org/maven2/com/github/jai-imageio/jai-imageio-core/1.4.0/jai-imageio-core-1.4.0.jar && \
+    curl -fsSL -o /opt/jai/jai-imageio-jpeg2000-1.4.0.jar \
+      https://repo1.maven.org/maven2/com/github/jai-imageio/jai-imageio-jpeg2000/1.4.0/jai-imageio-jpeg2000-1.4.0.jar
+ENV JAI_JPEG2000_CLASSPATH=/opt/jai/jai-imageio-core-1.4.0.jar:/opt/jai/jai-imageio-jpeg2000-1.4.0.jar
+
 WORKDIR /build
 
 # Default action: build the assembly jar. Override with e.g. `docker run ... pdffigures2-builder sbt console`

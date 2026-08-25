@@ -35,6 +35,7 @@ import argparse
 import csv
 import json
 import logging
+import os
 import re
 import subprocess
 import sys
@@ -90,6 +91,9 @@ def already_processed(pdf_path: Path, data_dir: Path) -> bool:
 # pdffigures2 invocation (the one part that calls out to the library's CLI)
 # --------------------------------------------------------------------------- #
 
+PDFFIGURES2_MAIN_CLASS = "org.allenai.pdffigures2.FigureExtractorBatchCli"
+
+
 @dataclass
 class ExtractionConfig:
     jar_path: Path
@@ -100,6 +104,15 @@ class ExtractionConfig:
     ignore_errors: bool = True
     java_bin: str = "java"
     extra_jvm_args: list[str] = field(default_factory=list)
+    # Extra jars to put ahead of jar_path on the classpath, e.g. the JAI
+    # ImageIO JPEG2000 plugin -- pdfbox/pdffigures2 silently skips any
+    # JPEG2000-encoded image ("Cannot read JPEG2000 image: Java Advanced
+    # Imaging (JAI) Image I/O Tools are not installed") without it, which on a
+    # scan-heavy PDF can undercount figures by an order of magnitude. `-jar`
+    # ignores -cp/CLASSPATH entirely (it only honors the jar's own manifest
+    # Class-Path), so any extra jars force invoking by main class via -cp
+    # instead of -jar.
+    extra_classpath: list[str] = field(default_factory=list)
 
 
 def run_pdffigures2(
@@ -132,10 +145,16 @@ def run_pdffigures2(
         )
     input_arg = ",".join(str(p) for p in pdfs)
 
+    if config.extra_classpath:
+        classpath = os.pathsep.join([str(config.jar_path), *config.extra_classpath])
+        jar_or_classpath_args = ["-cp", classpath, PDFFIGURES2_MAIN_CLASS]
+    else:
+        jar_or_classpath_args = ["-jar", str(config.jar_path)]
+
     cmd = [
         config.java_bin,
         *config.extra_jvm_args,
-        "-jar", str(config.jar_path),
+        *jar_or_classpath_args,
         input_arg,
         "-i", str(config.dpi),
         "-m", str(layout["figures"]) + "/",
@@ -410,6 +429,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--no-recursive", action="store_true", help="Don't search subfolders")
     parser.add_argument("--skip-done", action="store_true", help="Skip PDFs already extracted")
+    parser.add_argument(
+        "--extra-classpath", default="",
+        help=f"{os.pathsep}-separated jars to put on the classpath ahead of --jar, e.g. "
+             "the JAI ImageIO JPEG2000 plugin jars. Without these, pdffigures2 silently "
+             "skips every JPEG2000-encoded image ('Cannot read JPEG2000 image: Java "
+             "Advanced Imaging (JAI) Image I/O Tools are not installed'), which can "
+             "undercount figures badly on scan-heavy PDFs. Switches the java invocation "
+             f"from `-jar` to `-cp ... {PDFFIGURES2_MAIN_CLASS}` since `-jar` ignores -cp. "
+             "Defaults to $JAI_JPEG2000_CLASSPATH, which the container image sets.",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     return parser.parse_args(argv)
 
@@ -424,6 +453,7 @@ def extract_images(
     batch_size: int = 1,
     recursive: bool = True,
     skip_done: bool = False,
+    extra_classpath: list[str] | None = None,
     logger: logging.Logger | None = None,
 ) -> dict:
     """Runs the full pdffigures2 extraction pipeline: finds PDFs under
@@ -440,6 +470,20 @@ def extract_images(
     input_dir = Path(input_dir)
     jar_path = Path(jar_path)
     output_dir = Path(output_dir)
+
+    # Default to the JAI ImageIO JPEG2000 jars the container image bakes in (see
+    # docker/pdffigures2-build/Dockerfile), so in-process callers like
+    # job_pipeline.py get JPEG2000 decoding without each having to wire the
+    # classpath through. Unset off-container, where it correctly stays a no-op.
+    if extra_classpath is None:
+        extra_classpath = [p for p in os.environ.get("JAI_JPEG2000_CLASSPATH", "").split(os.pathsep) if p]
+        if extra_classpath:
+            logger.debug("using JAI_JPEG2000_CLASSPATH from environment: %s", extra_classpath)
+        else:
+            logger.warning(
+                "JAI_JPEG2000_CLASSPATH not set and no extra_classpath given -- any "
+                "JPEG2000-encoded images will be silently skipped by pdffigures2"
+            )
 
     if not jar_path.exists():
         raise FileNotFoundError(f"jar not found: {jar_path} (build it with `sbt assembly`, see SETUP.md)")
@@ -473,6 +517,7 @@ def extract_images(
             dpi=dpi,
             threads=threads,
             extra_jvm_args=[f"-Xmx{java_heap}"],
+            extra_classpath=extra_classpath or [],
         )
         failed_batches = 0
         for i, chunk in enumerate(chunks, start=1):
@@ -526,6 +571,10 @@ def main(argv: list[str] | None = None) -> int:
             batch_size=args.batch_size,
             recursive=not args.no_recursive,
             skip_done=args.skip_done,
+            # None (not []) when the flag is unset, so extract_images() falls
+            # back to $JAI_JPEG2000_CLASSPATH rather than treating "no flag" as
+            # "explicitly no extra jars"
+            extra_classpath=[p for p in args.extra_classpath.split(os.pathsep) if p] or None,
             logger=logger,
         )
     except FileNotFoundError as exc:

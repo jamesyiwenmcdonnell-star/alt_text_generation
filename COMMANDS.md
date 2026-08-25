@@ -173,6 +173,20 @@ cat pod_state.txt
 cat telegram_message_id.txt
 ```
 
+## Full reset (destructive — irreversible)
+
+`clean.py` permanently deletes **every** job's files and DB record, and clears the Telegram status board (deletes every message the bot has tracked sending). It prints what it's about to delete, warns if any job isn't in a terminal state yet, and requires typing `DELETE ALL` exactly before doing anything — any other input aborts with nothing touched.
+
+Stop the daemon first — running this while `worker.py` is actively mid-job risks deleting a job's files or DB row out from under it:
+
+```bash
+docker stop alttext-pipeline
+```
+
+```bash
+docker exec -it alttext-pipeline python3 clean.py
+```
+
 ## Cleanup
 
 Stop and remove the daemon entirely:

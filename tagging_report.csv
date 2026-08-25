@@ -1,0 +1,2 @@
+pdf_name,is_tagged,marked_flag,struct_figures,struct_tables,struct_figures_missing_content_link,struct_figures_with_alt,pdffigures2_figures,pdffigures2_tables,verdict
+full_test,True,True,23,0,0,1,,,"TAGGED, 23 Figure / 0 Table element(s) found (no pdffigures2 data supplied to compare against)"

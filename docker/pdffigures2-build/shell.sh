@@ -6,6 +6,11 @@
 # inside the container instead of on the Mac. No path translation needed since your
 # whole project directory is what's mounted.
 #
+# For PDFs with JPEG2000-encoded images, add pdf_batch_runner.py's
+# --extra-classpath flag pointing at the image's baked-in JAI ImageIO plugin
+# jars (path is in $JAI_JPEG2000_CLASSPATH once you're inside the shell), e.g.:
+#   python3 pdf_batch_runner.py --extra-classpath "$JAI_JPEG2000_CLASSPATH" --input-dir ./PDFTesting
+#
 # Usage (from your project root, e.g. internVL/):
 #   ./docker/pdffigures2-build/shell.sh
 #

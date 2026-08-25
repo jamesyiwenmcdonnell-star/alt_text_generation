@@ -1,0 +1,92 @@
+01:57:44.377 [ForkJoinPool-2-worker-1] INFO  o.a.p.FigureExtractorBatchCli$ - Processing file full_test.pdf (1 of 1)
+01:57:45.077 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.DocumentLayout$ - Document was two column
+01:57:45.117 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 110
+01:57:45.123 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.124 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.125 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.138 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 57
+01:57:45.139 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.139 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.140 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.140 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 61
+01:57:45.140 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.141 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.141 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.141 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 60
+01:57:45.142 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.142 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.142 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 21
+01:57:45.142 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.143 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.143 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 97
+01:57:45.143 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.144 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.144 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 53
+01:57:45.144 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.145 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.147 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 41
+01:57:45.147 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.147 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.148 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 45
+01:57:45.148 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.148 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.149 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 59
+01:57:45.149 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.149 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.150 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 54
+01:57:45.150 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.150 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.150 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 49
+01:57:45.151 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.151 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.151 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 76
+01:57:45.151 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.152 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.153 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 140
+01:57:45.154 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.154 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.154 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 155
+01:57:45.155 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.155 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.155 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 48
+01:57:45.155 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.155 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.156 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 50
+01:57:45.156 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.156 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.157 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 107
+01:57:45.157 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.157 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.158 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 136
+01:57:45.158 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.158 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+01:57:45.159 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 131
+01:57:45.160 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+01:57:45.187 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.199 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.214 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.216 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.222 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.222 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.253 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.271 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.293 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.309 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.340 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.355 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.364 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.367 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.388 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.400 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.408 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.421 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.455 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.500 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.537 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.547 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.555 [ForkJoinPool-2-worker-1] ERROR o.a.p.contentstream.PDFStreamEngine - Cannot read JPEG2000 image: Java Advanced Imaging (JAI) Image I/O Tools are not installed
+01:57:45.627 [ForkJoinPool-2-worker-1] INFO  o.a.p.FigureExtractorBatchCli$ - Finished full_test.pdf in 1.249 seconds
+01:57:45.628 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Finished processing 1 files
+01:57:45.629 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Took 1.269 seconds
+01:57:45.630 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Stats saved to /work/jobs/20260825015737_james_full_test_0b152280/extract_out/stats/stats_batch001.json
+01:57:45.630 [main] INFO  o.a.p.FigureExtractorBatchCli$ - No errors

@@ -1,0 +1,61 @@
+[{
+  "caption": "Figure 6.3: Traffic Separation Scheme in the SOMS and STRAITREP Sectors 7 – 9.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.9195251464844,
+    "y1": 557.5784301757812,
+    "y2": 578.578369140625
+  },
+  "figType": "Figure",
+  "imageText": ["Source:", "Singapore", "Port", "Information", "Year", "2026.", "93"],
+  "name": "6.3",
+  "page": 110,
+  "regionBoundary": {
+    "x1": 67.92,
+    "x2": 384.0,
+    "y1": 590.88,
+    "y2": 620.64
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260825015737_james_full_test_0b152280/extract_out/figures/full_test-Figure6.3-1.png"
+}, {
+  "caption": "Figure 3.3: Zig-zag pattern showing ships track. Depth soundings by lead-line.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 364.00140380859375,
+    "y1": 522.7098999023438,
+    "y2": 543.7098999023438
+  },
+  "figType": "Figure",
+  "imageText": ["Source:", "Drawing", "Courtesy", "from", "UKHO", "Archives.", "32"],
+  "name": "3.3",
+  "page": 49,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 279.59999999999997,
+    "y1": 556.0799999999999,
+    "y2": 620.4
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260825015737_james_full_test_0b152280/extract_out/figures/full_test-Figure3.3-1.png"
+}, {
+  "caption": "Figure 8.1: Number of reported incidents in SOMS.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 303.2705993652344,
+    "y1": 276.7651062011719,
+    "y2": 283.3651123046875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.1",
+  "page": 131,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 98.88,
+    "y2": 265.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260825015737_james_full_test_0b152280/extract_out/figures/full_test-Figure8.1-1.png"
+}]
