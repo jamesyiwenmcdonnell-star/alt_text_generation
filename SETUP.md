@@ -50,9 +50,9 @@ git clone https://github.com/allenai/pdffigures2.git pdffigures2
 sed -i '' '/sbt-bintray/d' pdffigures2/project/plugins.sbt
 sed -i '' '/bintray/d' pdffigures2/build.sbt
 
-# build the container image (rebuild with this same command any time the
-# Dockerfile changes -- build.sh/shell.sh skip building if an image with
-# this name already exists, so they won't pick up changes automatically)
+# build the container image (optional -- startup.py, build.sh and shell.sh all
+# run this same build themselves, including after a Dockerfile change; Docker's
+# layer cache makes the unchanged case a fast no-op)
 docker build -t pdffigures2-builder ./docker/pdffigures2-build
 
 # build pdffigures2.jar inside the container

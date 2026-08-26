@@ -29,14 +29,13 @@ if [ ! -d "$PROJECT_ROOT" ]; then
 fi
 PROJECT_ROOT="$(cd "$PROJECT_ROOT" && pwd)"
 
-# NOTE: if you already built this image before python3/pikepdf were added to the
-# Dockerfile, this check finds the OLD cached image and won't pick up the change --
-# run `docker build -t pdffigures2-builder ./docker/pdffigures2-build` yourself once
-# after updating the Dockerfile, don't rely on this auto-build skipping stale images.
-if ! docker image inspect "$IMAGE_NAME" >/dev/null 2>&1; then
-  echo "==> building $IMAGE_NAME image (one-time, cached after this)"
-  docker build -t "$IMAGE_NAME" "$SCRIPT_DIR"
-fi
+# Built unconditionally on purpose: an existing image tells you nothing about
+# whether it matches the current Dockerfile, and skipping on "image exists"
+# used to hand you a stale image that only failed much later (e.g. a
+# ModuleNotFoundError for a package added to the Dockerfile's pip3 install
+# line). Docker's layer cache makes the unchanged case a fast no-op.
+echo "==> building $IMAGE_NAME image (no-op if the Dockerfile hasn't changed)"
+docker build -t "$IMAGE_NAME" "$SCRIPT_DIR"
 
 echo "==> mounting $PROJECT_ROOT at /work -- run your usual commands from there"
 docker run --rm -it \

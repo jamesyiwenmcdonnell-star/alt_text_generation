@@ -50,10 +50,16 @@ def ensure_jar_built() -> None:
         print(f"==> {JAR_PATH} already built")
         return
 
-    if not PDFFIGURES2_SRC.is_dir():
+    # Checks for build.sbt, not just the directory: an empty pdffigures2/ passes
+    # an is_dir() check but sends sbt into a bare /build, where it fails with the
+    # unhelpful "Neither build.sbt nor a 'project' directory in the current
+    # directory" instead of telling you the clone is missing. `git clone` into an
+    # existing empty directory works, so there's nothing to remove first.
+    if not (PDFFIGURES2_SRC / "build.sbt").is_file():
         raise RuntimeError(
-            f"{PDFFIGURES2_SRC} not found -- clone it first: "
-            f"git clone https://github.com/allenai/pdffigures2.git {PDFFIGURES2_SRC}"
+            f"{PDFFIGURES2_SRC} is missing or empty (no build.sbt) -- clone it first:\n"
+            f"    git clone https://github.com/allenai/pdffigures2.git {PDFFIGURES2_SRC}\n"
+            f"then apply the bintray build fixes documented in SETUP.md before re-running."
         )
 
     print(f"==> {JAR_PATH} missing -- building it via build.sh (can take several minutes on first run)")
@@ -64,10 +70,16 @@ def ensure_jar_built() -> None:
 
 
 def ensure_image_built() -> None:
-    result = subprocess.run(["docker", "image", "inspect", IMAGE_NAME], capture_output=True, text=True)
-    if result.returncode == 0:
-        return
-    print(f"==> building {IMAGE_NAME} image (one-time, cached after this)")
+    """Always runs `docker build` -- deliberately does NOT skip when the image
+    already exists. An existing image says nothing about whether it matches the
+    current Dockerfile, and the failure mode of using a stale one is delayed and
+    confusing: the container comes up fine and dies later on a
+    ModuleNotFoundError for a package added to the Dockerfile's pip3 install
+    line after the image was first cached (this bit us with both `requests` and
+    `fastapi`). Docker's own layer cache already makes the unchanged case a
+    couple of seconds and a no-op, so there is nothing to gain by guessing
+    freshness ourselves."""
+    print(f"==> building {IMAGE_NAME} image (no-op if the Dockerfile hasn't changed)")
     subprocess.run(["docker", "build", "-t", IMAGE_NAME, str(DOCKER_BUILD_CONTEXT)], check=True)
 
 
