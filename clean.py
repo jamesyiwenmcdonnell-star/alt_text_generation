@@ -45,7 +45,7 @@ def main() -> int:
 
     if active_jobs:
         print(f"WARNING: {len(active_jobs)} job(s) are NOT in a terminal state "
-              f"(QUEUED/EXTRACTING/EXTRACTED/POD_STARTING/GENERATING):")
+              f"({'/'.join(active_states)}):")
         for j in active_jobs:
             print(f"    {j.job_id}  ({j.state})")
         print("If the worker is still running, deleting now can corrupt an in-flight job.")

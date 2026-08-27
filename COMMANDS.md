@@ -60,7 +60,7 @@ open http://localhost:8000/docs
 Submit a PDF:
 
 ```bash
-curl -X POST http://localhost:8000/jobs -F "editor_id=jsmith" -F "file=@PDFTesting/14653.pdf;type=application/pdf"
+curl -X POST http://localhost:8000/jobs -F "editor_id=Nee_phua" -F "file=@PDFTesting/full_test_4.pdf;type=application/pdf"
 ```
 
 Check one job's status:

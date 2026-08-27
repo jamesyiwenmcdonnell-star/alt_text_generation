@@ -5,7 +5,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 MANIFEST_PATH = PROJECT_ROOT / "pdffigures2_out" / "manifest.csv"
-PDF_PATH = PROJECT_ROOT / "PDFTesting" / "full_test.pdf"
+PDF_PATH = PROJECT_ROOT / "PDFTesting" / "full_test_2.pdf"
 
 seen_tags = set()
 all_figures = []   # (page_key, parent_tag, alt_status) — every /Figure, regardless of parent

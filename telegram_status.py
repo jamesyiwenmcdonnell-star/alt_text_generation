@@ -8,6 +8,7 @@ style of talking to REST APIs directly rather than pulling in a dedicated
 SDK (python-telegram-bot). Purely outbound: no polling, no getUpdates.
 """
 
+import html
 import logging
 import os
 import requests
@@ -52,6 +53,7 @@ STATE_EMOJI = {
     "EXTRACTED": "🔵",
     "POD_STARTING": "🔵",
     "GENERATING": "🔵",
+    "EMBEDDING": "🔵",
     "COMPLETE": "✅",
     "FAILED": "❌",
 }
@@ -198,9 +200,13 @@ def _format_job_line(job: job_store.Job) -> str:
     }.get(job.state, ("started", job.started_at or job.created_at))
     when = _sgt_hhmm(ts_value)
 
+    # A COMPLETE job only carries an error_message when a non-fatal step
+    # failed after the alt text was already produced (embedding) -- worth
+    # showing, but flagged as a caveat rather than reading like a failure.
     detail = ""
-    if job.state == "FAILED" and job.error_message:
-        detail = f"  {job.error_message[:60]}"
+    if job.error_message:
+        marker = "" if job.state == "FAILED" else "⚠ "
+        detail = f"  {marker}{job.error_message[:60]}"
 
     return (
         f"{emoji} {job.state:<12} {job.pdf_filename[:24]:<24} "
@@ -222,7 +228,11 @@ def _format_board() -> str:
     if not jobs:
         return f"{header}\n\n(no jobs yet)"
 
-    lines = "\n".join(f"<code>{_format_job_line(j)}</code>" for j in jobs)
+    # Escaped because these lines carry free-form text -- a PDF filename or an
+    # error_message containing "<", ">" or "&" would otherwise be parsed as
+    # (broken) markup and Telegram would reject the entire board with
+    # "can't parse entities", not just mangle the one line.
+    lines = "\n".join(f"<code>{html.escape(_format_job_line(j))}</code>" for j in jobs)
     return f"{header}\n\n{lines}"
 
 

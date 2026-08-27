@@ -158,8 +158,21 @@ def pick_available_gpu(api_key: str) -> str | None:
             continue
 
         stock = get_gpu_stock_status(gpu_id, api_key)
-        if stock and stock["stockStatus"] != "Low":
+        # RunPod reports stockStatus as "High"/"Medium"/"Low" when the GPU can
+        # actually be allocated, and null when it can't. Note `stock` itself is
+        # still a dict in the null case ({"stockStatus": None, ...}), so it's
+        # truthy -- the stockStatus value is what has to be tested, not `stock`.
+        #
+        # Any of the three named levels means allocatable, "Low" included:
+        # rejecting Low doesn't find something better, it just skips a GPU that
+        # would have worked, and when every candidate is Low (routinely the
+        # case) it means nothing is ever picked. Candidates are tried in
+        # gpu_ids_snapshot.txt order, which is the intended preference order --
+        # A40, the main GPU, first.
+        if stock and stock["stockStatus"] in ("High", "Medium", "Low"):
+            print(f"  {gpu_id!r} available (stock: {stock['stockStatus']})")
             return gpu_id
+        print(f"  {gpu_id!r} has no capacity right now — skipping")
 
     if any_invalid:
         check_for_id_drift(api_key)                                     # runs once per call, not once per candidate

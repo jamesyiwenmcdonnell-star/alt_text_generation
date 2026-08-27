@@ -12,16 +12,19 @@ pipeline work happens in worker.py, so a slow/stuck job can never block a
 status request here.
 
 Endpoints:
-    POST /jobs                  -> submit a PDF, returns the new job
-    GET  /jobs/{job_id}         -> one job's current state
-    GET  /jobs                  -> paginated list, filterable by editor_id/state
-    GET  /jobs/{job_id}/results -> alt-text rows, once state == COMPLETE
-    GET  /health                -> liveness check
+    POST /jobs                     -> submit a PDF, returns the new job
+    GET  /jobs/{job_id}            -> one job's current state
+    GET  /jobs                     -> paginated list, filterable by editor_id/state
+    GET  /jobs/{job_id}/results    -> alt-text rows, once state == COMPLETE
+    GET  /jobs/{job_id}/tagged-pdf -> the alt-text-embedded PDF, once state == COMPLETE
+    GET  /health                   -> liveness check
 """
 
 import csv
+import os
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 import job_store
@@ -91,6 +94,9 @@ async def submit_job(
     if not content.startswith(b"%PDF-"):
         raise HTTPException(400, "file content doesn't look like a PDF (missing %PDF- header)")
 
+    # create_job() normalizes the filename (safe_pdf_filename) before storing it --
+    # file.filename is client-supplied and Starlette doesn't sanitize it, so it must
+    # never reach a path join as-is. The JobOut below echoes the stored name.
     job = job_store.create_job(editor_id=editor_id, pdf_filename=file.filename, source_reference=source_reference)
     with open(job.pdf_path, "wb") as f:
         f.write(content)
@@ -123,3 +129,25 @@ def get_job_results(job_id: str) -> list[dict]:
 
     with open(job.results_csv_path, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+@app.get("/jobs/{job_id}/tagged-pdf", response_class=FileResponse)
+def get_tagged_pdf(job_id: str) -> FileResponse:
+    """The source PDF with the generated alt text embedded as real <Figure>
+    structure elements. A job can be COMPLETE without one -- embedding is
+    non-fatal, so if it failed the alt text is still available from
+    /jobs/{job_id}/results -- hence the 404 carrying error_message."""
+    job = job_store.get_job(job_id)
+    if job is None:
+        raise HTTPException(404, f"no job with id {job_id!r}")
+    if job.state != "COMPLETE":
+        raise HTTPException(409, f"job {job_id} is {job.state}, not COMPLETE yet")
+    if not os.path.exists(job.tagged_pdf_path):
+        reason = job.error_message or "no tagged PDF was produced"
+        raise HTTPException(404, f"job {job_id} has no tagged PDF: {reason}")
+
+    return FileResponse(
+        job.tagged_pdf_path,
+        media_type="application/pdf",
+        filename=os.path.basename(job.tagged_pdf_path),
+    )

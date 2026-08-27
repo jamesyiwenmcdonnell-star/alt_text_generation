@@ -13,12 +13,30 @@ class podStatus(Enum):
     UNKNOWN = auto()         # error during the pod status check
 
 
+def _raise_with_body(response: requests.Response) -> None:
+    """requests' raise_for_status() reports only the status line ("500 Server
+    Error ... for url: ..."), discarding the response body -- but RunPod puts
+    the actual reason in there ("no instances available", a rejected field,
+    ...). Without it a failure reaches the Telegram board as a bare 500 with
+    nothing to act on, so the body is appended to the message here."""
+    if response.ok:
+        return
+    detail = (response.text or "").strip()
+    if len(detail) > 500:  # keep the board line and the DB row readable
+        detail = detail[:500] + "..."
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as exc:
+        raise requests.HTTPError(f"{exc} -- {detail}" if detail else str(exc),
+                                 response=response) from None
+
+
 def list_pods(api_key: str) -> list[dict]:
     """Returns every pod on the account via REST API, regardless of status."""
     url = "https://rest.runpod.io/v1/pods"
     headers = {"Authorization": f"Bearer {api_key}"}
     r = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
-    r.raise_for_status()
+    _raise_with_body(r)
     return r.json()
 
 
@@ -27,7 +45,7 @@ def terminate_pod_by_id(pod_id: str, api_key: str) -> None:
     url = f"https://rest.runpod.io/v1/pods/{pod_id}"
     headers = {"Authorization": f"Bearer {api_key}"}
     response = requests.delete(url, headers=headers, timeout=REQUEST_TIMEOUT)
-    response.raise_for_status()  # 204 No Content on success -- no body to parse
+    _raise_with_body(response)  # 204 No Content on success -- no body to parse
 
 
 class Pod:
@@ -52,7 +70,7 @@ class Pod:
             "Content-Type": "application/json",
         }
         response = requests.post(url, headers=headers, json=payload, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
+        _raise_with_body(response)
         pod_data = response.json()
 
         self.pod_id = pod_data["id"]
@@ -67,7 +85,7 @@ class Pod:
         url = f"https://rest.runpod.io/v1/pods/{self.pod_id}/stop"
         headers = {"Authorization": f"Bearer {api_key}"}
         response = requests.post(url, headers=headers, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
+        _raise_with_body(response)
         self.pod_status = podStatus.EXITED
         return response.json()
 
@@ -82,7 +100,7 @@ class Pod:
         headers = {"Authorization": f"Bearer {api_key}"}
         response = requests.delete(url, headers=headers, timeout=REQUEST_TIMEOUT)
         if response.status_code != 404:
-            response.raise_for_status()  # 204 No Content on success -- no body to parse
+            _raise_with_body(response)  # 204 No Content on success -- no body to parse
         self.pod_status = podStatus.TERMINATED
 
     # <----Pod status check functions----->
@@ -91,7 +109,7 @@ class Pod:
         url = f"https://rest.runpod.io/v1/pods/{self.pod_id}"
         headers = {"Authorization": f"Bearer {api_key}"}
         r = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
-        r.raise_for_status()
+        _raise_with_body(r)
         return r.json()
 
     def __is_pod_network_ready(self, api_key):

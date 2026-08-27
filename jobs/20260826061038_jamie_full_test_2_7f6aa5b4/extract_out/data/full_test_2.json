@@ -1,0 +1,441 @@
+[{
+  "caption": "Figure 6.2: Traffic Separation Scheme in the SOMS and STRAITREP Sectors 1 – 9.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.9195251464844,
+    "y1": 296.0575866699219,
+    "y2": 317.0575866699219
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.2",
+  "page": 110,
+  "regionBoundary": {
+    "x1": 90.96,
+    "x2": 361.2,
+    "y1": 93.84,
+    "y2": 281.03999999999996
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure6.2-1.png"
+}, {
+  "caption": "Figure 6.3: Traffic Separation Scheme in the SOMS and STRAITREP Sectors 7 – 9.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.9195251464844,
+    "y1": 557.5784301757812,
+    "y2": 578.578369140625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.3",
+  "page": 110,
+  "regionBoundary": {
+    "x1": 91.92,
+    "x2": 360.0,
+    "y1": 361.91999999999996,
+    "y2": 540.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure6.3-1.png"
+}, {
+  "caption": "Figure 3.8: Common Datum Chart 200 (2026 Edition).",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 326.1065673828125,
+    "y1": 567.1787109375,
+    "y2": 573.576171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.8",
+  "page": 57,
+  "regionBoundary": {
+    "x1": 56.879999999999995,
+    "x2": 355.2,
+    "y1": 345.84,
+    "y2": 555.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.8-1.png"
+}, {
+  "caption": "Figure 3.7: Common Datum Chart 200 (1981 Edition).",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 326.1065673828125,
+    "y1": 321.1987609863281,
+    "y2": 327.59619140625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.7",
+  "page": 57,
+  "regionBoundary": {
+    "x1": 52.8,
+    "x2": 358.08,
+    "y1": 100.8,
+    "y2": 317.03999999999996
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.7-1.png"
+}, {
+  "caption": "Figure 3.11: Onboard the Italian Naval Training Ship “Amerigo Vespucci” that used Dual Fuel ENCs of the SOMS.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 363.96893310546875,
+    "y1": 254.18707275390625,
+    "y2": 274.9845886230469
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.11",
+  "page": 61,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 99.84,
+    "y2": 242.16
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.11-1.png"
+}, {
+  "caption": "Figure 3.10: 2nd Sea-Demonstration onboard Singapore’s Maritime and Port Authority’s Hydrographic vessel, September 2024.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.82110595703125,
+    "y1": 299.0795593261719,
+    "y2": 333.8349914550781
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.10",
+  "page": 60,
+  "regionBoundary": {
+    "x1": 67.92,
+    "x2": 384.0,
+    "y1": 98.88,
+    "y2": 286.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.10-1.png"
+}, {
+  "caption": "Figure 1.1: Strategic maritime chokepoints in global oil trade.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 354.54901123046875,
+    "y1": 327.4831848144531,
+    "y2": 334.08319091796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.1",
+  "page": 21,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 98.88,
+    "y2": 316.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure1.1-1.png"
+}, {
+  "caption": "Figure 5.1: (L to R) Emeritus Professor Robert Beckman, Professor S. Jayakumar, Ambassador Satya Nandan, and Ambassador Tommy Koh. It was taken at the NUS Centre for International Law. Ambassador Nandan had been invited to speak about his experience at the United Nations Conference on the Law of the Sea.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 364.10321044921875,
+    "y1": 389.8785095214844,
+    "y2": 468.478515625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.1",
+  "page": 97,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 165.84,
+    "y2": 378.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure5.1-1.png"
+}, {
+  "caption": "Figure 3.5: Delegates who attended the final meeting of the Joint Hydrographic Survey held in Tokyo in April 1971. Captain Goh Choo Keng (seated fourth from the left) was Singapore’s Head of Delegation.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 363.9810485839844,
+    "y1": 259.2417907714844,
+    "y2": 309.04168701171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.5",
+  "page": 53,
+  "regionBoundary": {
+    "x1": 46.8,
+    "x2": 365.03999999999996,
+    "y1": 100.8,
+    "y2": 250.07999999999998
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.5-1.png"
+}, {
+  "caption": "Figure 2.1: Map of the Straits of Malacca and Singapore, published by Carey in London in 1822, with the pencil line drawn by Ambassador A.R. Falck during the negotiations for the AngloDutch Treaty in London to create Dutch and British spheres of interest. Taken from the Dutch National Archives (Call No.: 4. AANW.1455). Pencil line darkened by CIL.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 364.1729431152344,
+    "y1": 396.0514831542969,
+    "y2": 474.6514892578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.1",
+  "page": 41,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 205.92,
+    "y2": 384.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure2.1-1.png"
+}, {
+  "caption": "Figure 3.1: Depth of water is one of the most immediate concerns.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 363.8106384277344,
+    "y1": 477.1623840332031,
+    "y2": 483.76239013671875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.1",
+  "page": 45,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 298.8,
+    "y2": 474.24
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.1-1.png"
+}, {
+  "caption": "Figure 3.9: 1st Sea-Demonstration onboard Indonesian Navy Hydrographic Survey Ship, August 2024.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 363.8333740234375,
+    "y1": 487.2795715332031,
+    "y2": 508.0769958496094
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.9",
+  "page": 59,
+  "regionBoundary": {
+    "x1": 46.8,
+    "x2": 365.03999999999996,
+    "y1": 264.96,
+    "y2": 475.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.9-1.png"
+}, {
+  "caption": "Figure 3.6: Location Map of Study Areas and Points.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 327.7198791503906,
+    "y1": 327.3599853515625,
+    "y2": 333.9599914550781
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.6",
+  "page": 54,
+  "regionBoundary": {
+    "x1": 67.92,
+    "x2": 384.0,
+    "y1": 99.84,
+    "y2": 319.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.6-1.png"
+}, {
+  "caption": "Figure 3.3: Zig-zag pattern showing ships track. Depth soundings by lead-line.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 364.00140380859375,
+    "y1": 522.7098999023438,
+    "y2": 543.7098999023438
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.3",
+  "page": 49,
+  "regionBoundary": {
+    "x1": 109.92,
+    "x2": 302.15999999999997,
+    "y1": 240.95999999999998,
+    "y2": 511.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.3-1.png"
+}, {
+  "caption": "Figure 4.1: Ambassador Mary Seet-Cheng with then SecretaryGeneral of the International Maritime Organization Lim Kitack (greeting her, back to the camera) at the IMO General Assembly 33 in 2023.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.8355407714844,
+    "y1": 321.585205078125,
+    "y2": 371.38531494140625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.1",
+  "page": 76,
+  "regionBoundary": {
+    "x1": 67.92,
+    "x2": 384.0,
+    "y1": 97.92,
+    "y2": 310.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure4.1-1.png"
+}, {
+  "caption": "Figure 8.3: Monthly reported incidents in SOMS showing the difference in sea robbery incidents following the arrests of perpetrators in July and August 2025.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.80438232421875,
+    "y1": 272.2651062011719,
+    "y2": 307.66510009765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.3",
+  "page": 140,
+  "regionBoundary": {
+    "x1": 67.92,
+    "x2": 384.0,
+    "y1": 93.84,
+    "y2": 260.15999999999997
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure8.3-1.png"
+}, {
+  "caption": "Figure 9.1: Participants at the 16th Co-operative Forum Meeting in Penang, Malaysia (29 to 30 September 2025). (L to R) Capt Abdul Samad Shaik Osman, Deputy Director General of Marine (Operations), Malaysia Marine Department (MMD); Mr Hernadi Tri Cahyanto, Director of Navigation, Directorate General of Sea Transportation, Indonesia; Datuk Haji Dickson Dollah, Director General of Marine, MMD; Mr Ang Wee Keong, Chief Executive, Maritime and Port Authority of Singapore; and Capt Nazri Abu Hassan, Deputy Director General of Marine (Planning), MMD.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 364.0050048828125,
+    "y1": 334.8854064941406,
+    "y2": 456.68548583984375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.1",
+  "page": 155,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 102.96,
+    "y2": 315.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure9.1-1.png"
+}, {
+  "caption": "Figure 3.2: Mao Kun map.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 199.1195068359375,
+    "y1": 479.8824768066406,
+    "y2": 486.48248291015625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.2",
+  "page": 48,
+  "regionBoundary": {
+    "x1": 106.8,
+    "x2": 325.2,
+    "y1": 314.88,
+    "y2": 473.03999999999996
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.2-1.png"
+}, {
+  "caption": "Figure 3.4: The evolution of hydrographic surveying has, in many ways, been a quiet revolution from lead-line sounding to singlebeam echo sounders, and eventually to multi-beam systems, each step improving accuracy and coverage.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 383.9433288574219,
+    "y1": 359.84197998046875,
+    "y2": 409.64190673828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.4",
+  "page": 50,
+  "regionBoundary": {
+    "x1": 74.88,
+    "x2": 377.03999999999996,
+    "y1": 241.92,
+    "y2": 356.15999999999997
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure3.4-1.png"
+}, {
+  "caption": "Figure 6.1: Traffic Separation Scheme in the SOMS (1981).",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 339.7757873535156,
+    "y1": 334.4220886230469,
+    "y2": 341.0220947265625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.1",
+  "page": 107,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 93.84,
+    "y2": 323.03999999999996
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure6.1-1.png"
+}, {
+  "caption": "Figure 8.2: Location of incident in SOMS.",
+  "captionBoundary": {
+    "x1": 68.03150177001953,
+    "x2": 275.4994812011719,
+    "y1": 347.6986083984375,
+    "y2": 354.2986145019531
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.2",
+  "page": 136,
+  "regionBoundary": {
+    "x1": 67.92,
+    "x2": 384.0,
+    "y1": 93.84,
+    "y2": 336.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure8.2-1.png"
+}, {
+  "caption": "Figure 8.1: Number of reported incidents in SOMS.",
+  "captionBoundary": {
+    "x1": 48.18899917602539,
+    "x2": 303.2705993652344,
+    "y1": 276.7651062011719,
+    "y2": 283.3651123046875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.1",
+  "page": 131,
+  "regionBoundary": {
+    "x1": 48.0,
+    "x2": 364.08,
+    "y1": 98.88,
+    "y2": 265.2
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826061038_jamie_full_test_2_7f6aa5b4/extract_out/figures/full_test_2-Figure8.1-1.png"
+}]

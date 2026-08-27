@@ -1,0 +1,681 @@
+[{
+  "caption": "Fig. 5.4. A schematic depiction of some quantities appearing in the point sampling method based upon homogeneous sampling in projective space, as described in the text.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13519287109375,
+    "y1": 226.12478637695312,
+    "y2": 253.5830078125
+  },
+  "figType": "Figure",
+  "imageText": ["Z(2)", "Z(1)", "X"],
+  "name": "5.4",
+  "page": 120,
+  "regionBoundary": {
+    "x1": 111.83999999999999,
+    "x2": 320.4,
+    "y1": 81.84,
+    "y2": 213.84
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.4-1.png"
+}, {
+  "caption": "Fig. 8.8. Generating ribbon knots. Top: SYM algorithm. Bottom: UNSYM algorithm. Source: Figure taken from Ref. [14].",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1358337402344,
+    "y1": 214.99075317382812,
+    "y2": 242.448974609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.8",
+  "page": 202,
+  "regionBoundary": {
+    "x1": 58.8,
+    "x2": 373.2,
+    "y1": 81.84,
+    "y2": 206.16
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.8-1.png"
+}, {
+  "caption": "Fig. 3.3. Evolution of a population of 60 individuals in our toy problem.",
+  "captionBoundary": {
+    "x1": 71.16703796386719,
+    "x2": 361.10394287109375,
+    "y1": 575.042724609375,
+    "y2": 580.583984375
+  },
+  "figType": "Figure",
+  "imageText": ["Generation", "number", "=", "0", "Generation", "number", "=", "20", "x", "121086420−2", "x", "−2", "−2", "y", "0", "2", "4", "6", "8", "10", "12", "−2", "y", "0", "0", "2", "2", "4", "4", "6", "6", "8", "8", "10", "10", "12", "12"],
+  "name": "3.3",
+  "page": 52,
+  "regionBoundary": {
+    "x1": 56.4,
+    "x2": 378.47999999999996,
+    "y1": 426.96,
+    "y2": 562.0799999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure3.3-1.png"
+}, {
+  "caption": "Fig. 1.1. A very simple feed-forward neural network with two input nodes, one hidden layer with three nodes, and one output node.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13543701171875,
+    "y1": 564.083740234375,
+    "y2": 580.583984375
+  },
+  "figType": "Figure",
+  "imageText": ["tanh", "tanh", "tanh"],
+  "name": "1.1",
+  "page": 14,
+  "regionBoundary": {
+    "x1": 150.96,
+    "x2": 281.03999999999996,
+    "y1": 469.91999999999996,
+    "y2": 555.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure1.1-1.png"
+}, {
+  "caption": "Fig. 8.3. Left: Strand labellings for the PD code in (8.1) of the trefoil. Right: Grid diagram for the trefoil.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1323547363281,
+    "y1": 175.78176879882812,
+    "y2": 192.281982421875
+  },
+  "figType": "Figure",
+  "imageText": ["◦", "◦", "◦", "◦", "×", "×", "×", "×", "◦", "×", "6", "5", "4", "3", "2", "1"],
+  "name": "8.3",
+  "page": 189,
+  "regionBoundary": {
+    "x1": 104.39999999999999,
+    "x2": 328.08,
+    "y1": 81.84,
+    "y2": 166.07999999999998
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.3-1.png"
+}, {
+  "caption": "Fig. 3.5. Tree form of the function f (ϕ) = 2 + cos(ϕ/3).",
+  "captionBoundary": {
+    "x1": 103.83602905273438,
+    "x2": 328.431640625,
+    "y1": 235.65777587890625,
+    "y2": 241.19900512695312
+  },
+  "figType": "Figure",
+  "imageText": ["1", "3", "φ", "Times", "2", "Cos", "Plus"],
+  "name": "3.5",
+  "page": 57,
+  "regionBoundary": {
+    "x1": 180.0,
+    "x2": 252.0,
+    "y1": 81.84,
+    "y2": 225.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure3.5-1.png"
+}, {
+  "caption": "Fig. 4.3. Anneal schedule parameters. The thermal contribution is shown as a dotted line, while A and B are the coefficients scaling the classical Ising and transverse field contributions, respectively.",
+  "captionBoundary": {
+    "x1": 54.13401794433594,
+    "x2": 378.1383972167969,
+    "y1": 230.25277709960938,
+    "y2": 257.71099853515625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.3",
+  "page": 78,
+  "regionBoundary": {
+    "x1": 120.0,
+    "x2": 313.2,
+    "y1": 81.84,
+    "y2": 221.04
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure4.3-1.png"
+}, {
+  "caption": "Fig. 8.7. We (a) start with the Stevedore knot, (b) cut it open at two positions (dotted grey lines) and (c) add a band with a twist (grey). (d) This gives a twocomponent link (red and blue). (e) Subsequent simplification moves lead to two unlinked unknots. This proves that the Stevedore knot is ribbon.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1385498046875,
+    "y1": 191.10879516601562,
+    "y2": 229.5260009765625
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)", "(c)", "(d)", "(e)"],
+  "name": "8.7",
+  "page": 201,
+  "regionBoundary": {
+    "x1": 60.96,
+    "x2": 372.0,
+    "y1": 81.84,
+    "y2": 181.44
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.7-1.png"
+}, {
+  "caption": "Fig. 4.1. Colouring a network with no two coloured nodes linked.",
+  "captionBoundary": {
+    "x1": 83.21803283691406,
+    "x2": 349.0531921386719,
+    "y1": 575.042724609375,
+    "y2": 580.583984375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.1",
+  "page": 70,
+  "regionBoundary": {
+    "x1": 131.76,
+    "x2": 301.2,
+    "y1": 493.68,
+    "y2": 564.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure4.1-1.png"
+}, {
+  "caption": "Fig. 5.7. Training the ϕ network on a quintic at a non-symmetric point in moduli space. Training takes slightly longer than on the Fermat quintic (notice the nonvanishing slope in the MA loss), and the results do not generalize as well to the test set. However, qualitatively, the plots are very similar; clearly, learning is taking place also on this manifold.",
+  "captionBoundary": {
+    "x1": 54.13401794433594,
+    "x2": 378.13482666015625,
+    "y1": 398.7187805175781,
+    "y2": 448.095947265625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.7",
+  "page": 137,
+  "regionBoundary": {
+    "x1": 60.0,
+    "x2": 373.2,
+    "y1": 81.84,
+    "y2": 390.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.7-1.png"
+}, {
+  "caption": "Fig. 6.1. Loss function during training. Horizontal axis: number of epochs.",
+  "captionBoundary": {
+    "x1": 65.01603698730469,
+    "x2": 365.01416015625,
+    "y1": 236.15176391601562,
+    "y2": 241.6929931640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.1",
+  "page": 165,
+  "regionBoundary": {
+    "x1": 120.0,
+    "x2": 313.2,
+    "y1": 81.84,
+    "y2": 225.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure6.1-1.png"
+}, {
+  "caption": "Fig. 8.2. Left: Knots can be described as the closure of a braid. Right: The two Markov moves: conjugation (top) and stabilization (bottom).",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1347961425781,
+    "y1": 153.15176391601562,
+    "y2": 169.6519775390625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.2",
+  "page": 188,
+  "regionBoundary": {
+    "x1": 66.0,
+    "x2": 367.2,
+    "y1": 81.84,
+    "y2": 144.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.2-1.png"
+}, {
+  "caption": "Fig. 8.5. The square knot 31#3∗1 is ribbon. It bounds a self-intersecting disk in 3D with two ribbon singularities. In 4D, the disk does not self-intersect (we color-code the fourth dimension into which we can pull the disk to avoid self-intersection in the right figure). Source: Figure taken from Ref. [14].",
+  "captionBoundary": {
+    "x1": 54.13401794433594,
+    "x2": 378.13763427734375,
+    "y1": 537.3667602539062,
+    "y2": 586.7429809570312
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.5",
+  "page": 193,
+  "regionBoundary": {
+    "x1": 70.8,
+    "x2": 361.2,
+    "y1": 458.88,
+    "y2": 528.96
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.5-1.png"
+}, {
+  "caption": "Table 5.1. Different ways to encode the Ricci-flat metric.",
+  "captionBoundary": {
+    "x1": 101.17300415039062,
+    "x2": 328.85614013671875,
+    "y1": 481.4937438964844,
+    "y2": 487.03497314453125
+  },
+  "figType": "Table",
+  "imageText": ["Free", "g", "=", "gNN", "Additive", "g", "=", "gFS", "+", "gNN", "Multiplicative,", "element-wise", "g", "=", "gFS", "+", "gFS", "⊙", "gNN", "Multiplicative,", "matrix", "g", "=", "gFS", "+", "gFS", "·", "gNN", "ϕ-model", "g", "=", "gFS", "+", "∂∂̄ϕ", "Name", "Ansatz"],
+  "name": "5.1",
+  "page": 129,
+  "regionBoundary": {
+    "x1": 99.84,
+    "x2": 332.15999999999997,
+    "y1": 494.88,
+    "y2": 582.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Table5.1-1.png"
+}, {
+  "caption": "Fig. 5.2. A plot of Hodge numbers arising within the Kreuzer–Skarke dataset of Calabi–Yau threefolds (i.e., anti-canonical hypersurfaces in toric varieties [44]). The horizontal axis denotes (h1,1 − h2,1), while the vertical axis is (h1,1 + h2,1).",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1347961425781,
+    "y1": 287.9637756347656,
+    "y2": 315.4229736328125
+  },
+  "figType": "Figure",
+  "imageText": ["−960", "−480", "0", "480", "960", "−960", "−480", "0", "480", "960", "100", "200", "300", "400", "500", "100", "200", "300", "400", "500"],
+  "name": "5.2",
+  "page": 105,
+  "regionBoundary": {
+    "x1": 93.11999999999999,
+    "x2": 339.12,
+    "y1": 84.0,
+    "y2": 276.24
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.2-1.png"
+}, {
+  "caption": "Fig. 2.1. Top left: Overview of the transformer architecture with encoder (left) and decoder (right). Top right: Attention module. Bottom: Example of attention scores in a sentence.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1373291015625,
+    "y1": 475.1357727050781,
+    "y2": 502.5950012207031
+  },
+  "figType": "Figure",
+  "imageText": ["e", "c", "t", ",", "b", "u", "t", "it", "s", "a", "p", "p", "li", "c", "a", "ti", "o", "n", "s", "h", "o", "u", "ld", "b", "e", "ju", "s", "t", "-", "th", "is", "is", "w", "h", "a", "t", "w", "e", "a", "re", "m", "is", "s", "in", "g", ",", "in", "m", "y", "o", "p", "in", "io", "n", ".", "<", "E", "O", "S", ">", "<", "p", "a", "d", ">", "p", "e", "rf", "w", "il", "l", "n", "e", "v", "e", "r", "b", "e", "T", "h", "e", "L", "a", "w", ",", "b", "u", "t", "it", "s", "a", "p", "p", "li", "c", "a", "ti", "o", "n", "s", "h", "o", "u", "ld", "b", "e", "ju", "s", "t", "-", "th", "is", "is", "w", "h", "a", "t", "w", "e", "a", "re", "m", "is", "s", "in", "g", ",", "in", "m", "y", "o", "p", "in", "io", "n", ".", "<", "E", "O", "S", ">", "<", "p", "a", "d", ">", "e", "c", "t", "T", "h", "e", "L", "a", "w", "w", "il", "l", "n", "e", "v", "e", "r", "b", "e", "p", "e", "rf", "Input-Input", "Layer5"],
+  "name": "2.1",
+  "page": 34,
+  "regionBoundary": {
+    "x1": 76.32,
+    "x2": 353.76,
+    "y1": 81.84,
+    "y2": 465.84
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure2.1-1.png"
+}, {
+  "caption": "Fig. 8.4. A knot generated by a random walk in 3D (top left), a knot projection from which the PD code was calculated (top right), and the braid configuration (bottom).",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13580322265625,
+    "y1": 240.00778198242188,
+    "y2": 267.46600341796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.4",
+  "page": 191,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 379.2,
+    "y1": 81.84,
+    "y2": 231.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.4-1.png"
+}, {
+  "caption": "Fig. 5.3. A schematic depiction of some quantities appearing in rejection sampling, as described in the text.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13427734375,
+    "y1": 236.2337646484375,
+    "y2": 252.73300170898438
+  },
+  "figType": "Figure",
+  "imageText": ["Δ|p|", "=", "2", "Oc", "X"],
+  "name": "5.3",
+  "page": 118,
+  "regionBoundary": {
+    "x1": 102.0,
+    "x2": 330.0,
+    "y1": 81.84,
+    "y2": 212.16
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.3-1.png"
+}, {
+  "caption": "Fig. 3.4. Evolution of a population of string models. Source: Figure taken from Ref. [26].",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 264.92449951171875,
+    "y1": 259.04376220703125,
+    "y2": 277.5359802246094
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.4",
+  "page": 54,
+  "regionBoundary": {
+    "x1": 76.8,
+    "x2": 355.2,
+    "y1": 81.84,
+    "y2": 248.16
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure3.4-1.png"
+}, {
+  "caption": "Fig. 3.1. Somewhat artistic depiction of a population being initialized on our toy function in order to find the maximum.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1355285644531,
+    "y1": 566.4197387695312,
+    "y2": 582.9199829101562
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.1",
+  "page": 49,
+  "regionBoundary": {
+    "x1": 90.0,
+    "x2": 343.2,
+    "y1": 354.71999999999997,
+    "y2": 558.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure3.1-1.png"
+}, {
+  "caption": "Fig. 8.1. Equivalence relations on a braid. Left: Operators commute if they operate on different strands, i.e., if |i − j| > 1. Right: Illustration of the relation σiσi+1σi = σi+1σiσi+1. Note how the strand crossing and their final positions stays the same.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1387634277344,
+    "y1": 544.501708984375,
+    "y2": 582.9199829101562
+  },
+  "figType": "Figure",
+  "imageText": ["=", "σ1σ3", "σ2", "σ1", "σ1", "σ1σ2", "σ2", "σ2", "=", "σ1", "σ3", "σ2"],
+  "name": "8.1",
+  "page": 187,
+  "regionBoundary": {
+    "x1": 104.88,
+    "x2": 327.12,
+    "y1": 488.88,
+    "y2": 533.76
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.1-1.png"
+}, {
+  "caption": "Fig. 5.1. An illustration of how a non-trivial metric could change the notion of length in a 2-dimensional space.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13128662109375,
+    "y1": 564.083740234375,
+    "y2": 580.583984375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.1",
+  "page": 98,
+  "regionBoundary": {
+    "x1": 68.88,
+    "x2": 364.08,
+    "y1": 416.88,
+    "y2": 555.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.1-1.png"
+}, {
+  "caption": "Fig. 5.6. A simple experiment using the ϕ network on the Fermat quintic. Training clearly reduces the MA and transition loss and keeps the Kahler loss negligible. The error measures, computed on points not seen during training, also decrease.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13543701171875,
+    "y1": 398.7187805175781,
+    "y2": 437.136962890625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.6",
+  "page": 135,
+  "regionBoundary": {
+    "x1": 60.0,
+    "x2": 373.2,
+    "y1": 81.84,
+    "y2": 390.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.6-1.png"
+}, {
+  "caption": "Table 4.1. List of (4, 3, 3) numbers found using β = 3, 4, 5 and 10, 000 reads per anneal run.",
+  "captionBoundary": {
+    "x1": 117.87702941894531,
+    "x2": 314.3883361816406,
+    "y1": 237.3238525390625,
+    "y2": 253.8240966796875
+  },
+  "figType": "Table",
+  "imageText": ["2673", "3", "6", "6", "7", "2", "4", "16562", "9", "1", "10", "11", "6", "5", "28593", "2", "13", "2", "9", "6", "12", "35378", "13", "4", "9", "11", "12", "1", "43218", "11", "13", "2", "14", "7", "7", "54977", "4", "8", "15", "9", "14", "10", "195122", "21", "5", "2", "9", "13", "20", "324818", "14", "9", "23", "21", "2", "19", "619337", "28", "8", "5", "7", "26", "20", "847602", "1", "25", "26", "29", "19", "10", "1071713", "12", "32", "7", "28", "26", "3", "1178898", "29", "11", "26", "1", "32", "19", "1328498", "29", "9", "28", "23", "32", "3", "(4,", "3,", "3)", "a", "b", "c", "d", "e", "f"],
+  "name": "4.1",
+  "page": 80,
+  "regionBoundary": {
+    "x1": 116.88,
+    "x2": 315.12,
+    "y1": 261.84,
+    "y2": 436.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Table4.1-1.png"
+}, {
+  "caption": "Table 4.2. (3, 8, 8) solutions with β = 5. The reduction needs 320 auxiliary spins. Note that even the smallest (3, 8, 8) number represents a solution in a search space of size 3216 ∼ 1024.",
+  "captionBoundary": {
+    "x1": 55.316009521484375,
+    "x2": 376.9555969238281,
+    "y1": 466.8927917480469,
+    "y2": 494.35198974609375
+  },
+  "figType": "Table",
+  "imageText": ["50139", "1", "3", "6", "10", "12", "20", "23", "30", "2", "5", "9", "13", "17", "19", "25", "27", "73206", "1", "3", "4", "17", "20", "25", "26", "30", "5", "8", "9", "10", "19", "21", "28", "32", "78202", "3", "4", "17", "18", "19", "24", "27", "30", "1", "2", "9", "16", "20", "22", "28", "32", "85418", "2", "3", "9", "16", "18", "23", "31", "32", "6", "10", "14", "15", "24", "26", "27", "30", "(3,", "8,", "8)", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8"],
+  "name": "4.2",
+  "page": 80,
+  "regionBoundary": {
+    "x1": 54.96,
+    "x2": 377.03999999999996,
+    "y1": 499.91999999999996,
+    "y2": 576.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Table4.2-1.png"
+}, {
+  "caption": "Fig. 8.6. The three Reidemiester moves: twist/untwist (Reidemeister) (left), poke/unpoke (middle), and slide (right).",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1361083984375,
+    "y1": 115.3117904663086,
+    "y2": 131.81201171875
+  },
+  "figType": "Figure",
+  "imageText": ["↔", "↔", "↔", "184", "Machine", "Learning", "Tutorials", "for", "Pure", "Mathematics", "and", "Theoretical", "Physics"],
+  "name": "8.6",
+  "page": 194,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 366.0,
+    "y1": 57.36,
+    "y2": 105.11999999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure8.6-1.png"
+}, {
+  "caption": "Fig. 1.2. Schematic illustration of double descent.",
+  "captionBoundary": {
+    "x1": 115.97203063964844,
+    "x2": 316.2987060546875,
+    "y1": 245.936767578125,
+    "y2": 251.47799682617188
+  },
+  "figType": "Figure",
+  "imageText": ["test", "set", "train", "set", "Error", "#", "Parameters", "parameterized", "vastly", "over-", "parameterized", "over-", "parameterized", "under-"],
+  "name": "1.2",
+  "page": 18,
+  "regionBoundary": {
+    "x1": 59.76,
+    "x2": 372.47999999999996,
+    "y1": 83.75999999999999,
+    "y2": 234.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure1.2-1.png"
+}, {
+  "caption": "Fig. 1.3. By learning a function, an NN can be used for regression (left) or classification (right), where the function serves as a decision boundary between classes.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.13543701171875,
+    "y1": 356.1037902832031,
+    "y2": 372.60400390625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.3",
+  "page": 18,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 347.03999999999996,
+    "y1": 273.84,
+    "y2": 345.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure1.3-1.png"
+}, {
+  "caption": "Fig. 3.2. The classical GA is a directed graph with two loops. The initial population of Npop genotypes (on the right) give rise to phenotypes, which are in turn used to evaluate the fitnesses of the Npop individuals in the “environment”, which are then collected as a ranked population of parent genotypes (on the left). The fitness ranking of an individual determines the probability of it being selected to take part in a breeding pair. Npop/2 breeding pairs are formed in this manner, and then crossover and mutation yield an entirely new generation, and the process is repeated.",
+  "captionBoundary": {
+    "x1": 54.134002685546875,
+    "x2": 378.1387939453125,
+    "y1": 498.3307800292969,
+    "y2": 580.583984375
+  },
+  "figType": "Figure",
+  "imageText": ["Ranking", "Genotypes", "E", "n", "v", "i", "r", "o", "n", "m", "e", "n", "t", "Cross-over", "MutationSelection", "Genotypes'", "PhenotypesFitnesses"],
+  "name": "3.2",
+  "page": 50,
+  "regionBoundary": {
+    "x1": 58.8,
+    "x2": 373.2,
+    "y1": 312.71999999999997,
+    "y2": 488.64
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure3.2-1.png"
+}, {
+  "caption": "Fig. 4.2. Representation of f (ti) = (t2 1 + t2 2 − 149)2 as a quadratized Ising model. Nodes, corresponding to spins, can be arranged in a circle and are quadratically coupled by links. Weaker couplings are represented in light grey, gradually getting darker for higher coupling strengths. Linear couplings are coloured from dark blue (large negative terms) to dark red (large positive terms).",
+  "captionBoundary": {
+    "x1": 54.13397216796875,
+    "x2": 378.1348571777344,
+    "y1": 363.03076171875,
+    "y2": 412.407958984375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.2",
+  "page": 75,
+  "regionBoundary": {
+    "x1": 76.8,
+    "x2": 355.2,
+    "y1": 81.84,
+    "y2": 354.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure4.2-1.png"
+}, {
+  "caption": "Fig. 6.2. Loss functions during training.",
+  "captionBoundary": {
+    "x1": 133.68003845214844,
+    "x2": 296.34783935546875,
+    "y1": 592.9757080078125,
+    "y2": 598.5169677734375
+  },
+  "figType": "Figure",
+  "imageText": ["alpha=0.75,", "ax=ax4,", "label=\"test\");", "ax4.set_title(\"Ricci", "measure\")", "sns.scatterplot(x=’sigma_val’,", "y=’ricci_val’,", "data=hist_data,", "alpha=0.75,", "ax=ax3,", "label=\"val\")", "ax3.set_title(\"Transition", "loss\")", "sns.scatterplot(x=’epochs’,", "y=’transition_loss’,", "data=hist_data,", "alpha=0.75,", "ax=ax3,", "label=\"train\")", "sns.scatterplot(x=’epochs’,", "y=’transition_val’,", "data=hist_data,", "alpha=0.75,", "ax=ax2,", "label=\"val\")", "ax2.set_title(\"Kahler", "loss\")", "sns.scatterplot(x=’epochs’,", "y=’kaehler_loss’,", "data=hist_data,", "alpha=0.75,", "ax=ax2,", "label=\"train\")", "sns.scatterplot(x=’epochs’,", "y=’kaehler_val’,", "data=hist_data,"],
+  "name": "6.2",
+  "page": 168,
+  "regionBoundary": {
+    "x1": 50.879999999999995,
+    "x2": 382.08,
+    "y1": 82.8,
+    "y2": 582.0
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure6.2-1.png"
+}, {
+  "caption": "Fig. 5.5. Any ML implementation of CY metric predictions first requires a point sampling routine for the complex structure and Kähler moduli specified by the user. Second, a neural network should be trained on the point sample to satisfy the constraints on the metric, which are encoded as loss functions. Finally, the accuracy should be tested using standard error measures.",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1348876953125,
+    "y1": 499.32476806640625,
+    "y2": 548.7020263671875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.5",
+  "page": 126,
+  "regionBoundary": {
+    "x1": 126.0,
+    "x2": 307.2,
+    "y1": 414.71999999999997,
+    "y2": 490.08
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure5.5-1.png"
+}, {
+  "caption": "Fig. 4.4. A typical set of anneal schedules and h-gain schedule.",
+  "captionBoundary": {
+    "x1": 89.44503784179688,
+    "x2": 342.8237609863281,
+    "y1": 247.48977661132812,
+    "y2": 253.031005859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.4",
+  "page": 79,
+  "regionBoundary": {
+    "x1": 102.0,
+    "x2": 331.2,
+    "y1": 81.84,
+    "y2": 237.12
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure4.4-1.png"
+}, {
+  "caption": "Fig. 4.5. The results after 10 reads are sorted by the value of the corresponding energy, with nine configurations with the lowest energy (top) and one excited configuration (bottom).",
+  "captionBoundary": {
+    "x1": 54.134033203125,
+    "x2": 378.1348876953125,
+    "y1": 571.0577392578125,
+    "y2": 598.5169677734375
+  },
+  "figType": "Figure",
+  "imageText": ["h", "=", "np.array([0,", "0,", "0])", "J", "=", "np.array([[0,", "1,", "1],", "[0,", "0,", "0],", "[0,", "0,", "0]])", "import", "numpy", "as", "np"],
+  "name": "4.5",
+  "page": 83,
+  "regionBoundary": {
+    "x1": 50.879999999999995,
+    "x2": 382.08,
+    "y1": 327.84,
+    "y2": 562.0799999999999
+  },
+  "renderDpi": 300,
+  "renderURL": "/work/jobs/20260826070323_Nee_phua_full_test_4_934e2c18/extract_out/figures/full_test_4-Figure4.5-1.png"
+}]

@@ -1,9 +1,9 @@
 """
 job_pipeline.py
 
-Per-job orchestration: extraction -> shared GPU pod -> alt-text generation.
-Called by worker.py's main loop, one job at a time (matches the confirmed
-sequential, one-PDF-at-a-time processing model).
+Per-job orchestration: extraction -> shared GPU pod -> alt-text generation ->
+embedding. Called by worker.py's main loop, one job at a time (matches the
+confirmed sequential, one-PDF-at-a-time processing model).
 
 Pod lifecycle: at <=10 PDFs/day, cold-starting a fresh pod for every job
 would spend most of its time on the 5-7 minute boot rather than actual work.
@@ -21,13 +21,14 @@ import time
 from datetime import datetime, timedelta, timezone
 
 import controller
+import embed_alt_text
 import job_store
 import telegram_status
 from pod import Pod, podStatus
 from pdf_batch_runner import extract_images
 from runpod_VL import generate_alt_text_for_manifest
 
-POD_MAX_LIFETIME_S = 4 * 60 * 60  # ~4h, per confirmed low volume (<=10 PDFs/day) --
+POD_MAX_LIFETIME_S = 60 * 60  # ~1h, per confirmed low volume (<=10 PDFs/day) --
                                    # reusing one pod across a session's jobs avoids
                                    # repeated multi-minute cold starts for a handful of jobs/day
 
@@ -95,6 +96,41 @@ def ensure_pod_ready(api_key: str) -> Pod:
     return pod
 
 
+# embed_alt_text.embed() reports each manifest row's outcome as a status
+# string; these are the prefixes that mean "this figure ended up as a real
+# <Figure> structure element" (the rest -- no-match, scan-failed,
+# page-out-of-range -- mean it didn't). Same classification print_report()
+# uses for its coverage summary.
+_EMBED_OK_PREFIXES = ("tagged", "shared", "existing")
+
+
+def embed_alt_text_into_pdf(job: job_store.Job) -> str:
+    """Splices this job's generated alt text into a tagged copy of its source
+    PDF at job.tagged_pdf_path, and returns a short coverage summary.
+
+    embed_alt_text.embed() signals its own failure paths -- no /StructTreeRoot
+    to splice into, no manifest rows for this pdf_name, an empty /K -- by
+    raising SystemExit, which is correct for a standalone CLI but is a
+    BaseException, so process_job()'s `except Exception` would not stop it.
+    Left alone it would unwind all the way out through worker.py's polling
+    loop and kill the daemon. Converting it here rather than in
+    embed_alt_text.py keeps that script's CLI behaviour intact.
+    """
+    try:
+        report = embed_alt_text.embed(
+            pdf_path=job.pdf_path,
+            manifest_path=job.manifest_path,
+            alt_paths=[job.results_csv_path],
+            out_path=job.tagged_pdf_path,
+            pdf_name=job.pdf_stem,
+        )
+    except SystemExit as exc:
+        raise RuntimeError(str(exc) or "embed_alt_text aborted") from exc
+
+    tagged = sum(1 for e in report if e["status"].startswith(_EMBED_OK_PREFIXES))
+    return f"{tagged}/{len(report)} figure(s) tagged"
+
+
 def process_job(job: job_store.Job, api_key: str) -> None:
     """Runs one job through the full pipeline. job is assumed to already be
     in EXTRACTING state (job_store.claim_next_queued_job() sets that
@@ -119,7 +155,32 @@ def process_job(job: job_store.Job, api_key: str) -> None:
             output_csv=job.results_csv_path,
         )
 
-        job_store.update_job_state(job.job_id, "COMPLETE")
+        job_store.update_job_state(job.job_id, "EMBEDDING")
+        telegram_status.refresh()
+        embed_warning = None
+        try:
+            summary = embed_alt_text_into_pdf(job)
+            logging.info("job %s: embedded alt text (%s) -> %s",
+                         job.job_id, summary, job.tagged_pdf_path)
+        except (Exception, SystemExit) as exc:
+            # Deliberately non-fatal. The alt text itself is already generated
+            # and written to job.results_csv_path, so a PDF that can't be
+            # tagged -- most often one with no /StructTreeRoot for
+            # embed_alt_text to splice into -- shouldn't throw that away. The
+            # job still COMPLETEs and the reason rides along in error_message,
+            # which is why a COMPLETE job can carry one (see job_store.py).
+            #
+            # SystemExit is named explicitly (it's a BaseException, so the
+            # bare `Exception` above would miss it) as defence in depth:
+            # embed_alt_text_into_pdf already converts the SystemExits that
+            # embed() raises, but one escaping here would unwind worker.py's
+            # polling loop and take the whole daemon down over one bad PDF.
+            # KeyboardInterrupt is deliberately NOT caught -- Ctrl-C/SIGINT
+            # should still stop the worker promptly.
+            embed_warning = f"alt text generated, but embedding failed: {exc}"
+            logging.exception("job %s: embedding failed", job.job_id)
+
+        job_store.update_job_state(job.job_id, "COMPLETE", error=embed_warning)
     except Exception as exc:
         job_store.update_job_state(job.job_id, "FAILED", error=str(exc))
         logging.exception("job %s failed", job.job_id)

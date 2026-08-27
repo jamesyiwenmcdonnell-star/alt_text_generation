@@ -12,6 +12,7 @@ layout the Job dataclass's properties below encode:
     jobs/<job_id>/pdf/<pdf_filename>
     jobs/<job_id>/extract_out/{figures,data,stats,logs}/  manifest.csv  validation_report.csv
     jobs/<job_id>/alt_text_results.csv
+    jobs/<job_id>/<pdf_stem>_tagged.pdf
 """
 
 from __future__ import annotations
@@ -27,9 +28,16 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(PROJECT_ROOT, "jobs.db")
 JOBS_ROOT = os.path.join(PROJECT_ROOT, "jobs")
 
-VALID_STATES = ("QUEUED", "EXTRACTING", "EXTRACTED", "POD_STARTING", "GENERATING", "COMPLETE", "FAILED")
-IN_PROGRESS_STATES = ("EXTRACTING", "EXTRACTED", "POD_STARTING", "GENERATING")
+VALID_STATES = ("QUEUED", "EXTRACTING", "EXTRACTED", "POD_STARTING", "GENERATING",
+                "EMBEDDING", "COMPLETE", "FAILED")
+IN_PROGRESS_STATES = ("EXTRACTING", "EXTRACTED", "POD_STARTING", "GENERATING", "EMBEDDING")
 TERMINAL_STATES = ("COMPLETE", "FAILED")
+
+# A COMPLETE job normally has error_message NULL. It's non-NULL only when a
+# non-fatal step failed after the alt text itself was already produced --
+# currently just embedding (see job_pipeline.process_job) -- so callers should
+# read error_message on a COMPLETE job as "delivered, with a caveat", not as
+# a failure.
 
 
 @dataclass
@@ -53,7 +61,7 @@ class Job:
 
     @property
     def pdf_path(self) -> str:
-        return os.path.join(self.pdf_dir, self.pdf_filename)
+        return _join_within(self.pdf_dir, self.pdf_filename)
 
     @property
     def extract_dir(self) -> str:
@@ -75,6 +83,22 @@ class Job:
     def results_csv_path(self) -> str:
         return os.path.join(self.job_dir, "alt_text_results.csv")
 
+    @property
+    def pdf_stem(self) -> str:
+        """The value this PDF's rows carry in the manifest's pdf_name column.
+        pdf_batch_runner.build_manifest() derives that from pdffigures2's
+        per-doc JSON filename, which is itself the PDF's stem -- so the same
+        expression is what joins manifest rows, alt-text rows and this job's
+        PDF back together."""
+        return os.path.splitext(self.pdf_filename)[0]
+
+    @property
+    def tagged_pdf_path(self) -> str:
+        """Where embedding writes the accessible copy. Deliberately in job_dir
+        itself rather than pdf_dir, so it can never collide with the source PDF
+        -- embed_alt_text.embed() refuses to write over its own input."""
+        return os.path.join(self.job_dir, f"{self.pdf_stem}_tagged.pdf")
+
 
 def _now() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -83,6 +107,34 @@ def _now() -> str:
 def _sanitize(value: str) -> str:
     cleaned = "".join(c if c.isalnum() or c in "-_" else "_" for c in value)
     return cleaned or "job"
+
+
+def safe_pdf_filename(pdf_filename: str) -> str:
+    """Reduces a client-supplied upload filename to a bare, path-safe basename.
+
+    Uploads reach create_job() straight from the wire (api_server.submit_job),
+    and Starlette passes the browser-supplied filename through verbatim -- so it
+    may be absolute, use backslash separators, or contain '..'. Since the stored
+    pdf_filename is what every downstream path is built from, it's normalized
+    once here rather than defended against at each use. Idempotent, and always
+    returns a name ending in .pdf (create_job's only caller already rejects
+    anything else)."""
+    base = os.path.basename(pdf_filename.replace("\\", "/"))
+    return _sanitize(os.path.splitext(base)[0]) + ".pdf"
+
+
+def _join_within(base: str, *parts: str) -> str:
+    """os.path.join(), but refuses to return a path that escapes base.
+
+    A backstop under safe_pdf_filename(): rows written before it existed (or by
+    hand) could still hold a traversing pdf_filename, and callers open() these
+    paths for writing. Fails loudly rather than silently writing outside the
+    job directory."""
+    path = os.path.join(base, *parts)
+    base_abs, path_abs = os.path.abspath(base), os.path.abspath(path)
+    if base_abs != path_abs and os.path.commonpath([base_abs, path_abs]) != base_abs:
+        raise ValueError(f"path {path!r} escapes {base!r}")
+    return path
 
 
 @contextmanager
@@ -125,8 +177,14 @@ def _row_to_job(row: sqlite3.Row) -> Job:
 
 def create_job(editor_id: str, pdf_filename: str, source_reference: str | None = None) -> Job:
     """Creates a new QUEUED job: DB row + its jobs/<job_id>/pdf/ directory.
-    The caller still needs to write the uploaded PDF bytes to job.pdf_path."""
-    stem = _sanitize(os.path.splitext(pdf_filename)[0])
+    The caller still needs to write the uploaded PDF bytes to job.pdf_path.
+
+    pdf_filename is normalized by safe_pdf_filename() before it's stored, so
+    job.pdf_filename is always a plain basename. The stored name is the one that
+    lands on disk, which keeps it in step with the pdf_name the extraction step
+    later reports for the same file."""
+    pdf_filename = safe_pdf_filename(pdf_filename)
+    stem = os.path.splitext(pdf_filename)[0]
     editor_safe = _sanitize(editor_id)
     job_id = f"{time.strftime('%Y%m%d%H%M%S', time.gmtime())}_{editor_safe}_{stem}_{uuid.uuid4().hex[:8]}"
     job_dir = os.path.join(JOBS_ROOT, job_id)
