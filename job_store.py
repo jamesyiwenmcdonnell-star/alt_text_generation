@@ -30,6 +30,13 @@ JOBS_ROOT = os.path.join(PROJECT_ROOT, "jobs")
 
 VALID_STATES = ("QUEUED", "EXTRACTING", "EXTRACTED", "POD_STARTING", "GENERATING",
                 "EMBEDDING", "COMPLETE", "FAILED")
+
+# The literal prefix job_pipeline writes into embed_note when coverage falls
+# below its EMBED_MIN_COVERAGE threshold. Defined here (the module everyone
+# already imports) because two consumers key on it: telegram_status shows the
+# ⚠ caveat for notes starting with it, and api_server renames the tagged-PDF
+# download for them. A drifted copy of this string would silently disable both.
+LOW_CONFIDENCE_PREFIX = "LOW EMBED CONFIDENCE"
 IN_PROGRESS_STATES = ("EXTRACTING", "EXTRACTED", "POD_STARTING", "GENERATING", "EMBEDDING")
 TERMINAL_STATES = ("COMPLETE", "FAILED")
 

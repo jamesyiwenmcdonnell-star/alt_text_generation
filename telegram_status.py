@@ -237,7 +237,7 @@ def _format_job_line(job: job_store.Job) -> str:
     if job.error_message:
         marker = "" if job.state == "FAILED" else "⚠ "
         detail = f"  {marker}{job.error_message[:60]}"
-    elif job.embed_note and job.embed_note.startswith("LOW EMBED CONFIDENCE"):
+    elif job.embed_note and job.embed_note.startswith(job_store.LOW_CONFIDENCE_PREFIX):
         detail = f"  ⚠ {job.embed_note[:60]}"
 
     return (

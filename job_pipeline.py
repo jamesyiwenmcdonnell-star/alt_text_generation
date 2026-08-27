@@ -110,12 +110,13 @@ EMBED_MIN_COVERAGE = 0.90
 def _coverage_note(tagged: int, total: int, coverage: float,
                    verb: str, ok_prefix: str) -> tuple[str, str, bool]:
     """Single source of the embed-confidence note for both the precheck and
-    the post-embed check, so the threshold comparison and the literal
-    "LOW EMBED CONFIDENCE" prefix telegram_status keys on can't drift apart.
-    Returns (text, note, low)."""
+    the post-embed check, so the threshold comparison and the
+    job_store.LOW_CONFIDENCE_PREFIX marker that telegram_status and
+    api_server key on can't drift apart. Returns (text, note, low)."""
     text = f"{tagged}/{total} figures {verb} ({coverage:.0%})"
     low = coverage < EMBED_MIN_COVERAGE
-    note = f"LOW EMBED CONFIDENCE: only {text}" if low else f"{ok_prefix}: {text}"
+    note = (f"{job_store.LOW_CONFIDENCE_PREFIX}: only {text}" if low
+            else f"{ok_prefix}: {text}")
     return text, note, low
 
 
@@ -132,7 +133,7 @@ def precheck_embedding(job: job_store.Job) -> None:
     try:
         pre = embed_alt_text.preflight(job.pdf_path, job.manifest_path, job.pdf_stem)
         if not pre["ok"]:
-            note = f"LOW EMBED CONFIDENCE: cannot embed -- {pre['reason']}"
+            note = f"{job_store.LOW_CONFIDENCE_PREFIX}: cannot embed -- {pre['reason']}"
             coverage = 0.0
         else:
             coverage = pre["coverage"]

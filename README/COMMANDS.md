@@ -1,6 +1,6 @@
 # Command reference
 
-Quick reference for operating the alt-text pipeline. For first-time host setup (Colima, pdffigures2 checkout, jar build), see [SETUP.md](SETUP.md) — everything below assumes that's already done once.
+Quick reference for operating the alt-text pipeline. For first-time host setup (Colima, pdffigures2 checkout, jar build), see [SETUP.md](SETUP.md) — everything below assumes that's already done once. For how the embedding stage decides what it can tag and how it reports incomplete coverage, see [EMBEDDING.md](EMBEDDING.md).
 
 ## One-time setup
 
@@ -157,6 +157,26 @@ For manually running `pdf_batch_runner.py`/`diagnose_tagging.py` or poking aroun
 
 ```bash
 ./docker/pdffigures2-build/shell.sh
+```
+
+## Checking embedding coverage
+
+Predict how much of a PDF can be tagged, without writing anything and without needing alt text — the same check the pipeline runs automatically before generation (see [EMBEDDING.md](EMBEDDING.md)). Useful for vetting a new document, or a new publisher's documents, before committing GPU time:
+
+```bash
+docker run --rm -v "$(pwd):/work" -w /work --entrypoint python3 pdffigures2-builder embed_alt_text.py --pdf PDFTesting/<file>.pdf --manifest pdffigures2_out/manifest.csv --fallback-caption --dry-run
+```
+
+Inspect the coverage recorded on jobs that already ran:
+
+```bash
+docker exec alttext-pipeline python3 -c "import job_store; [print(f'{j.pdf_filename}: precheck={j.embed_precheck_coverage} actual={j.embed_coverage} {j.embed_note}') for j in job_store.list_jobs(limit=50)]"
+```
+
+Verify a tagged PDF's alt text on the command line (no Acrobat needed):
+
+```bash
+docker run --rm -v "$(pwd):/work" -w /work --entrypoint python3 pdffigures2-builder alt_text_validation.py --pdf jobs/<job_id>/<stem>_tagged.pdf --alt-preview 5
 ```
 
 ## Local filesystem checks (on the host, no Docker needed)

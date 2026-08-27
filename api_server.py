@@ -155,8 +155,20 @@ def get_tagged_pdf(job_id: str) -> FileResponse:
         reason = job.error_message or "no tagged PDF was produced"
         raise HTTPException(404, f"job {job_id} has no tagged PDF: {reason}")
 
+    # If the post-embed coverage check flagged this job, say so in the download
+    # filename itself -- a consumer that only checks state == COMPLETE and
+    # never reads embed_note/embed_coverage must still be unable to mistake a
+    # partially tagged file for a complete one. Gated on embed_coverage being
+    # set (not just the note) because the pre-generation precheck also writes a
+    # LOW note but leaves embed_coverage NULL -- only the real, measured
+    # post-embed verdict should rename the file. The on-disk name is untouched.
+    filename = os.path.basename(job.tagged_pdf_path)
+    if (job.embed_coverage is not None and job.embed_note
+            and job.embed_note.startswith(job_store.LOW_CONFIDENCE_PREFIX)):
+        filename = f"PARTIALLY TAGGED PDF - {filename}"
+
     return FileResponse(
         job.tagged_pdf_path,
         media_type="application/pdf",
-        filename=os.path.basename(job.tagged_pdf_path),
+        filename=filename,
     )

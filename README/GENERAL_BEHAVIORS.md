@@ -3,7 +3,9 @@
 Reference doc for how the alt-text pipeline actually behaves in production —
 written for stakeholders who need to understand what the system does and
 what guardrails exist, not how to operate it day-to-day (see
-[COMMANDS.md](COMMANDS.md)) or set it up (see [SETUP.md](SETUP.md)).
+[COMMANDS.md](COMMANDS.md)) or set it up (see [SETUP.md](SETUP.md)). The
+embedding stage has its own deep reference in [EMBEDDING.md](EMBEDDING.md),
+including how it measures and reports incomplete tagging.
 
 ## What it does
 
@@ -119,7 +121,9 @@ anything is written to disk or queued.
 ## Known gaps
 
 - Alt-text re-embedding is not guaranteed for every PDF — coverage depends
-  on how the source PDF is structured internally (see embedding behavior
-  above).
+  on how the source PDF is structured internally. Both a predicted and a
+  measured coverage figure are recorded per job, and an under-tagged PDF is
+  flagged rather than served as if complete — see
+  [EMBEDDING.md](EMBEDDING.md).
 - No retry logic — a `FAILED` job requires manual resubmission.
 - No priority/expedite mechanism — strictly first-in-first-out.
