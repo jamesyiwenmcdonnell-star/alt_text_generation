@@ -1,0 +1,72 @@
+03:35:12.921 [ForkJoinPool-2-worker-1] INFO  o.a.p.FigureExtractorBatchCli$ - Processing file q0584_9781807290023.pdf (1 of 1)
+03:35:13.879 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.DocumentLayout$ - Document was not two column
+03:35:13.943 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Applied filter Abbreviated Fig Only, 34 remaining
+03:35:13.944 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 120
+03:35:13.952 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:13.969 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 202
+03:35:13.970 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:13.971 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 52
+03:35:13.972 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 5 graphic areas, 5 after cleaning
+03:35:13.974 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 14
+03:35:13.977 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 11 graphic areas, 11 after cleaning
+03:35:13.978 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 189
+03:35:13.979 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:13.980 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 57
+03:35:13.981 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:13.982 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 78
+03:35:13.982 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:13.983 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 201
+03:35:14.018 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 6 graphic areas, 6 after cleaning
+03:35:14.019 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 70
+03:35:14.020 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.021 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 137
+03:35:14.021 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.022 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 165
+03:35:14.022 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.022 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 188
+03:35:14.023 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.023 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 193
+03:35:14.024 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.025 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 129
+03:35:14.026 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 4 graphic areas, 4 after cleaning
+03:35:14.026 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 105
+03:35:14.027 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.028 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 34
+03:35:14.085 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 6 graphic areas, 6 after cleaning
+03:35:14.086 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 191
+03:35:14.088 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.088 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 118
+03:35:14.093 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.096 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 54
+03:35:14.097 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.097 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 49
+03:35:14.098 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.098 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 187
+03:35:14.099 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 4 graphic areas, 4 after cleaning
+03:35:14.100 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 98
+03:35:14.101 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.101 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 135
+03:35:14.101 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.102 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 80
+03:35:14.102 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 6 graphic areas, 6 after cleaning
+03:35:14.103 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 194
+03:35:14.104 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 7 graphic areas, 7 after cleaning
+03:35:14.105 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 18
+03:35:14.112 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 3 graphic areas, 3 after cleaning
+03:35:14.113 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 50
+03:35:14.115 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.116 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 75
+03:35:14.116 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:35:14.117 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 168
+03:35:14.117 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.117 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 126
+03:35:14.118 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.119 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 79
+03:35:14.122 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:35:14.122 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 83
+03:35:14.127 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 75 graphic areas, 75 after cleaning
+03:35:15.652 [ForkJoinPool-2-worker-1] INFO  o.a.p.FigureExtractorBatchCli$ - Finished q0584_9781807290023.pdf in 2.729 seconds
+03:35:15.653 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Finished processing 1 files
+03:35:15.653 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Took 2.748 seconds
+03:35:15.654 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Stats saved to pdffigures2_out_newtests/stats/stats_batch008.json
+03:35:15.654 [main] INFO  o.a.p.FigureExtractorBatchCli$ - No errors

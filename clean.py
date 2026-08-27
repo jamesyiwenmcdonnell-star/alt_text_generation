@@ -2,10 +2,12 @@
 clean.py
 
 DESTRUCTIVE, IRREVERSIBLE: permanently deletes every jobs/<job_id>/ directory,
-resets jobs.db to empty, and clears the Telegram status board (deletes every
-message this bot has tracked sending, via telegram_status.startup_cleanup()).
-For a full reset -- e.g. wiping history that's no longer needed, or starting
-over during development.
+resets jobs.db to empty, and resets the Telegram status board to a clean
+starting state (deleting any other tracked alert messages along the way, via
+telegram_status.startup_cleanup()) -- the board message itself is edited in
+place, not deleted, so a still-running worker keeps updating the same message
+instead of posting a new one. For a full reset -- e.g. wiping history that's
+no longer needed, or starting over during development.
 
 Requires typing an exact confirmation phrase; nothing is deleted otherwise.
 
@@ -38,9 +40,9 @@ def main() -> int:
     active_jobs = job_store.list_jobs(state=active_states, limit=1000)
     total_jobs = job_store.count_jobs()
 
-    print("This will permanently delete:")
-    print(f"  - {total_jobs} job record(s) and their files under jobs/")
-    print("  - the Telegram status board and every message this bot has tracked sending")
+    print("This will permanently:")
+    print(f"  - delete {total_jobs} job record(s) and their files under jobs/")
+    print("  - reset the Telegram status board and delete any other tracked alert messages")
     print()
 
     if active_jobs:
@@ -70,7 +72,7 @@ def main() -> int:
 
     # -- telegram --
     telegram_status.startup_cleanup()
-    print("Cleared the Telegram status board.")
+    print("Reset the Telegram status board.")
 
     print("Clean complete.")
     return 0

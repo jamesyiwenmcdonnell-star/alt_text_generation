@@ -80,6 +80,7 @@ import argparse
 import csv
 import sys
 from collections import defaultdict
+from functools import partial
 from pathlib import Path
 
 import pikepdf
@@ -93,6 +94,19 @@ MIN_OVERLAP = 0.30
 # For the BT..ET fallback we want the opposite -- lots of small text blocks on
 # the page, so require the block to sit almost entirely inside the region.
 MIN_CONTAINMENT = 0.70
+
+# XObject `Do` candidates are scored by IoU, not intersection/min(area): a form
+# XObject can cover the whole page, and under a min-area score it would match
+# any region inside it with a perfect 1.000 -- wrapping it would turn the whole
+# page into one <Figure>. IoU makes an oversized candidate score *worse* the
+# bigger it is. Observed true matches sit at 0.99+, so 0.50 is generous.
+XOBJ_MIN_IOU = 0.50
+
+# Belt-and-braces on top of the IoU score: a form whose drawn bbox area is more
+# than this multiple of the figure region's area is declined outright by
+# classify_do_target(). Tuned on a handful of documents from one publisher --
+# this is the parameter most likely to need adjustment on new corpora.
+XOBJ_MAX_SIZE_RATIO = 1.5
 
 MC_FIGURE_TAGS = ("/EmbeddedDocument",)
 
@@ -226,6 +240,113 @@ def _xobject_points(page, name, ctm):
             apply_mat(ctm, 0, 1), apply_mat(ctm, 1, 1)]
 
 
+# --------------------------------------------------------------------------
+# XObject safety classification
+# --------------------------------------------------------------------------
+
+def _form_content_stats(xo, depth=0, seen=None):
+    """
+    Scan a form XObject's content stream (and nested forms, bounded depth) for
+    the features that make wrapping its `Do` unsafe. Returns a dict, or None if
+    any content stream in the subtree can't be parsed -- unparseable content
+    means we can't vouch for what we'd be wrapping.
+    """
+    if seen is None:
+        seen = set()
+    key = getattr(xo, "objgen", None)
+    if key is not None and key != (0, 0):  # (0,0) = direct object, not a usable identity
+        if key in seen:
+            return {"mcid": False, "struct_parent": False}
+        seen.add(key)
+
+    try:
+        ops = list(pikepdf.parse_content_stream(xo))
+    except Exception:
+        return None
+
+    stats = {"mcid": False, "struct_parent": False}
+    for o in ops:
+        op = str(o.operator)
+        a = list(o.operands)
+        if op == "BDC" and len(a) > 1 and isinstance(a[1], pikepdf.Dictionary):
+            # A bare tag (LaTeX leaves e.g. `/Document BDC` with no /MCID) is
+            # harmless -- no /MCID means no reference into any parent tree, so
+            # nothing we add can collide with it. Only /MCID-bearing marked
+            # content ties the form to existing structure.
+            if "/MCID" in a[1]:
+                stats["mcid"] = True
+        elif op == "Do" and a and depth < 3:
+            try:
+                nested = xo.Resources.XObject[a[0]]
+            except Exception:
+                # can't see what this Do draws, so we can't vouch for the form
+                # -- same contract as an unparseable content stream
+                return None
+            if "/StructParent" in nested:
+                stats["struct_parent"] = True
+            if str(nested.get("/Subtype", "")) == "/Form":
+                sub = _form_content_stats(nested, depth + 1, seen)
+                if sub is None:
+                    return None
+                stats["mcid"] = stats["mcid"] or sub["mcid"]
+                stats["struct_parent"] = stats["struct_parent"] or sub["struct_parent"]
+    return stats
+
+
+def classify_do_target(page, name, region, bbox):
+    """
+    Decide whether wrapping this `Do` operator in /Figure BDC..EMC is safe.
+    Returns (verdict, kind, reason) with verdict "wrap" or "fallback"; a
+    fallback verdict means the figure stays with whatever the text /
+    /EmbeddedDocument passes could do (usually nothing -- that's the point:
+    better untagged and reported than wrongly tagged and silent).
+
+    The asymmetry between image and form matters: an /Image is a leaf -- there
+    is nothing inside it to conflict with, so it's safe to wrap almost
+    unconditionally. A /Form is a container that can hold text, nested forms,
+    its own marked content and its own /StructParent, each of which can make
+    the wrap wrong. "wrap" is a *safety* judgement (the splice won't damage the
+    document's structure), not a correctness one (that the alt text describes
+    the right artwork) -- correctness rides on the IoU score in match_units().
+    """
+    try:
+        xo = page.Resources.XObject[name]
+    except Exception:
+        return "fallback", "unresolved", "couldn't resolve the XObject resource"
+
+    subtype = str(xo.get("/Subtype", ""))
+    if subtype not in ("/Image", "/Form"):
+        return "fallback", subtype or "unknown", "not an image or form XObject"
+
+    if "/StructParent" in xo or "/StructParents" in xo:
+        return "fallback", subtype[1:].lower(), \
+            "XObject already participates in the structure tree (/StructParent)"
+
+    # Over-capture guard: a candidate much larger than the figure region would
+    # make one alt text speak for content that isn't the figure.
+    if bbox is not None and bbox_area(bbox) > XOBJ_MAX_SIZE_RATIO * max(1e-6, bbox_area(region)):
+        return "fallback", subtype[1:].lower(), \
+            f"drawn bbox is >{XOBJ_MAX_SIZE_RATIO:g}x the figure region -- would over-capture"
+
+    if subtype == "/Image":
+        return "wrap", "image", "leaf image XObject"
+
+    if "/BBox" not in xo:
+        # without /BBox, _xobject_points() fell back to the unit square, so the
+        # geometry that produced the match score was meaningless for a form
+        return "fallback", "form", "form has no /BBox -- geometry untrustworthy"
+
+    stats = _form_content_stats(xo)
+    if stats is None:
+        return "fallback", "form", "couldn't parse the form's content stream"
+    if stats["struct_parent"]:
+        return "fallback", "form", "a nested XObject carries /StructParent"
+    if stats["mcid"]:
+        return "fallback", "form", "form has its own /MCID marked content -- would collide with the parent tree"
+
+    return "wrap", "form", "self-contained form XObject"
+
+
 def union_bbox(boxes):
     boxes = [b for b in boxes if b]
     if not boxes:
@@ -299,10 +420,13 @@ def page_units(page):
     `units` is the list of wrappable candidates, each a dict with:
         start, end   -- operator index range, inclusive, balanced
         bbox         -- device-space bbox of everything inside
-        kind         -- "mc" (an /EmbeddedDocument block) or "text" (BT..ET)
+        kind         -- "mc" (an /EmbeddedDocument block), "text" (BT..ET), or
+                        "xobj" (a single XObject `Do`; also carries "name")
 
     "mc" units are preferred; "text" units are only ever used as a fallback for
-    figures that no mc unit covers (LaTeX-typeset tables, mainly).
+    figures that no mc unit covers (LaTeX-typeset tables, mainly); "xobj" units
+    are the last resort, for documents with no /EmbeddedDocument blocks at all
+    -- and only after classify_do_target() rules the wrap safe.
     """
     _ops, scanned = scan_page(page)
     blocks = marked_content_blocks(scanned)
@@ -325,6 +449,24 @@ def page_units(page):
         units.append({
             "start": s, "end": e, "kind": "text",
             "bbox": union_bbox(bb for (i, _o, _a, bb) in scanned if s <= i <= e),
+        })
+
+    # Bare `Do` operators. Wrapping one is the safest splice available -- a
+    # single operator, so /Figure BDC + Do + EMC is balanced by construction.
+    # Skip any Do inside an /EmbeddedDocument unit (the mc unit already covers
+    # it). A Do inside some *other* MCID-bearing block is NOT skipped: these
+    # documents commonly wrap a whole page in one /Part <</MCID 0>> block, and
+    # nesting a /Figure sequence inside it is exactly what the BT..ET text
+    # path has always done (verified readable in Acrobat) -- excluding Do ops
+    # on that ground would leave such pages permanently untaggable.
+    for i, op, a, bb in scanned:
+        if op != "Do" or not a or bb is None:
+            continue
+        if any(u["kind"] == "mc" and u["start"] < i < u["end"] for u in units):
+            continue
+        units.append({
+            "start": i, "end": i, "kind": "xobj",
+            "bbox": bb, "name": a[0],
         })
 
     max_mcid = -1
@@ -374,14 +516,16 @@ def existing_figure_boxes(page, scanned, blocks, parent_entries):
 # matching manifest regions to units
 # --------------------------------------------------------------------------
 
-def match_units(figures, units):
+def match_units(figures, units, classifier=None):
     """
     figures: list of dicts with a "region" key (device-space bbox).
     Returns {figure_index: (start, end, kind, score)} for whatever matched.
 
     Pass 1 takes the best /EmbeddedDocument block per figure. Pass 2 sweeps up
     anything left over using contiguous runs of BT..ET blocks contained in the
-    region.
+    region. Pass 3 tries bare XObject `Do` operators for figures still
+    unmatched, gated by IoU and the `classifier` callback (see
+    classify_do_target) -- without a classifier, pass 3 is skipped entirely.
     """
     matches = {}
     claimed = {}  # unit index -> figure key it was claimed for
@@ -451,6 +595,42 @@ def match_units(figures, units):
         for ui, _u in inside:
             claimed[ui] = fig["key"]
         matches[fi] = (start, end, "text", 1.0)
+
+    # pass 3: bare XObject `Do` fallback, IoU-scored (see XOBJ_MIN_IOU for why
+    # not intersection/min-area) and safety-gated by the classifier. Candidates
+    # are tried best-first so a declined (e.g. oversized) form doesn't shadow a
+    # slightly worse but safe one.
+    if classifier is not None:
+        xobj_units = [(i, u) for i, u in enumerate(units) if u["kind"] == "xobj"]
+        scored_x = []
+        for fi, fig in enumerate(figures):
+            if fi in matches:
+                continue
+            reg = fig["region"]
+            for ui, u in xobj_units:
+                bb = u["bbox"]
+                if bb is None:
+                    continue
+                inter = bbox_intersection_area(reg, bb)
+                union = bbox_area(reg) + bbox_area(bb) - inter
+                iou = inter / union if union > 1e-6 else 0.0
+                if iou >= XOBJ_MIN_IOU:
+                    scored_x.append((iou, fi, ui))
+        # global best-first (same shape as pass 1), so a unit two figures both
+        # clear the IoU gate for goes to the better-scoring figure, not just
+        # the one with the lower manifest index
+        for iou, fi, ui in sorted(scored_x, key=lambda t: -t[0]):
+            if fi in matches:
+                continue
+            key = figures[fi]["key"]
+            if ui in claimed and claimed[ui] != key:
+                continue
+            u = units[ui]
+            verdict, _kind, _reason = classifier(u["name"], figures[fi]["region"], u["bbox"])
+            if verdict != "wrap":
+                continue
+            claimed[ui] = key
+            matches[fi] = (u["start"], u["end"], "xobj", iou)
 
     return matches
 
@@ -628,8 +808,13 @@ def load_alt_text(paths):
 
 
 def embed(pdf_path, manifest_path, alt_paths, out_path, pdf_name,
-          fallback_caption=False):
-    if Path(out_path).resolve() == Path(pdf_path).resolve():
+          fallback_caption=False, dry_run=False):
+    """dry_run=True runs the exact same matching/decision logic but never
+    writes anything -- no content-stream rewrite, no save. The in-memory pdf
+    object is still mutated (structure elements, /Alt on adopted figures) and
+    then simply discarded, which keeps the dry run on the same code path as a
+    real embed so its predicted report can't drift from reality."""
+    if not dry_run and Path(out_path).resolve() == Path(pdf_path).resolve():
         raise SystemExit("refusing to overwrite the input PDF -- pick a different --output")
 
     rows = load_manifest(manifest_path, pdf_name)
@@ -732,10 +917,14 @@ def embed(pdf_path, manifest_path, alt_paths, out_path, pdf_name,
             continue
         figures = pending
 
-        matches = match_units(figures, units)
-        if not matches:
-            for fig in figures:
+        matches = match_units(figures, units,
+                              classifier=partial(classify_do_target, page))
+        # every pending figure gets a report row -- unmatched ones included,
+        # so coverage denominators stay equal to the manifest row count
+        for fi, fig in enumerate(figures):
+            if fi not in matches:
                 report.append({"row": fig["row"], "status": "no-match", "mcid": None})
+        if not matches:
             continue
 
         sp_key = page.get("/StructParents")
@@ -794,9 +983,13 @@ def embed(pdf_path, manifest_path, alt_paths, out_path, pdf_name,
                 "mcid": mcid,
             })
 
-        if insertions:
+        if insertions and not dry_run:
             ops = list(pikepdf.parse_content_stream(page))
             rewrite_page(pdf, page, ops, insertions)
+
+    if dry_run:
+        print(f"\ndry run: {n_elems} <Figure> element(s) would be created -- nothing written")
+        return report
 
     write_parent_tree(pdf, struct_root, parent_entries)
     struct_root.ParentTreeNextKey = next_key
@@ -813,27 +1006,69 @@ def embed(pdf_path, manifest_path, alt_paths, out_path, pdf_name,
     return report
 
 
-def print_report(report, total_rows):
+# Status prefixes that mean "this manifest row ended up as (or inside) a real
+# <Figure> structure element". Shared with job_pipeline.py's coverage check.
+OK_STATUS_PREFIXES = ("tagged", "shared", "existing")
+
+
+def summarize_report(report):
+    """Reduce a per-row report from embed() to the numbers callers act on."""
     counts = defaultdict(int)
     for e in report:
         counts[e["status"]] += 1
+    total = len(report)
+    tagged = sum(v for k, v in counts.items() if k.startswith(OK_STATUS_PREFIXES))
+    with_alt = sum(v for k, v in counts.items()
+                   if k.startswith(OK_STATUS_PREFIXES) and not k.endswith("noalt"))
+    return {
+        "total": total,
+        "tagged": tagged,
+        "with_alt": with_alt,
+        "coverage": tagged / total if total else 0.0,
+        "counts": dict(counts),
+        "missed": [e for e in report if not e["status"].startswith(OK_STATUS_PREFIXES)],
+    }
+
+
+def preflight(pdf_path, manifest_path, pdf_name):
+    """
+    Predict embedding coverage for a PDF *before* any alt text exists, without
+    writing anything. Runs the real matching logic (embed() in dry_run mode)
+    so the prediction can't diverge from what embedding will actually do.
+
+    Never raises: structural show-stoppers (no /StructTreeRoot, no manifest
+    rows, unreadable PDF) come back as ok=False with the reason, so the
+    pipeline can record "not confident enough to embed" instead of crashing.
+
+    Returns {"ok": bool, "coverage": float, "tagged": int, "total": int,
+             "reason": str | None}.
+    """
+    try:
+        report = embed(pdf_path, manifest_path, alt_paths=[], out_path=None,
+                       pdf_name=pdf_name, dry_run=True)
+    except (Exception, SystemExit) as exc:
+        return {"ok": False, "coverage": 0.0, "tagged": 0, "total": 0,
+                "reason": str(exc) or exc.__class__.__name__}
+    s = summarize_report(report)
+    return {"ok": True, "coverage": s["coverage"], "tagged": s["tagged"],
+            "total": s["total"], "reason": None}
+
+
+def print_report(report):
+    s = summarize_report(report)
 
     print("\n--- per-row outcome ---")
-    for status in sorted(counts):
-        print(f"  {status:24s} {counts[status]:4d}")
+    for status in sorted(s["counts"]):
+        print(f"  {status:24s} {s['counts'][status]:4d}")
 
-    ok = ("tagged", "shared", "existing")
-    tagged = sum(v for k, v in counts.items() if k.startswith(ok))
-    with_alt = sum(v for k, v in counts.items()
-                   if k.startswith(ok) and not k.endswith("noalt"))
-    print(f"\n  manifest rows:           {total_rows}")
-    print(f"  rows given a <Figure>:   {tagged}  ({100.0 * tagged / max(1, total_rows):.1f}%)")
-    print(f"  rows with non-empty Alt: {with_alt}  ({100.0 * with_alt / max(1, total_rows):.1f}%)")
+    total = max(1, s["total"])
+    print(f"\n  manifest rows:           {s['total']}")
+    print(f"  rows given a <Figure>:   {s['tagged']}  ({100.0 * s['tagged'] / total:.1f}%)")
+    print(f"  rows with non-empty Alt: {s['with_alt']}  ({100.0 * s['with_alt'] / total:.1f}%)")
 
-    missed = [e for e in report if not e["status"].startswith(ok)]
-    if missed:
+    if s["missed"]:
         print("\n  not tagged:")
-        for e in missed:
+        for e in s["missed"]:
             r = e["row"]
             print(f"    page {int(r['page']) + 1:4d}  {r['fig_type']} {r['figure_name']}  ({e['status']})")
 
@@ -845,18 +1080,23 @@ def main(argv=None):
     ap.add_argument("--manifest", required=True, type=Path)
     ap.add_argument("--alt-csv", type=Path, action="append", default=[],
                     help="alt_text_results.csv (repeatable)")
-    ap.add_argument("--output", required=True, type=Path)
+    ap.add_argument("--output", type=Path, default=None,
+                    help="where to write the tagged PDF (required unless --dry-run)")
     ap.add_argument("--pdf-name", default=None,
                     help="manifest pdf_name to filter on (default: --pdf stem)")
     ap.add_argument("--fallback-caption", action="store_true",
                     help="use the manifest caption as /Alt when no generated alt text exists")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="run the full matching and report coverage, but write nothing")
     args = ap.parse_args(argv)
 
+    if not args.dry_run and args.output is None:
+        ap.error("--output is required unless --dry-run is given")
+
     pdf_name = args.pdf_name or args.pdf.stem
-    rows = load_manifest(args.manifest, pdf_name)
     report = embed(args.pdf, args.manifest, args.alt_csv, args.output, pdf_name,
-                   fallback_caption=args.fallback_caption)
-    print_report(report, len(rows))
+                   fallback_caption=args.fallback_caption, dry_run=args.dry_run)
+    print_report(report)
     return 0
 
 

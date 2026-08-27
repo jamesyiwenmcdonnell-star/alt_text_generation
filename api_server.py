@@ -49,6 +49,13 @@ class JobOut(BaseModel):
     updated_at: str
     started_at: str | None
     completed_at: str | None
+    # Embedding confidence: predicted coverage from the pre-generation dry run,
+    # actual coverage after embedding (both 0..1, null until their stage has
+    # run), and a human-readable note -- prefixed "LOW EMBED CONFIDENCE" when
+    # the tagged PDF should not be trusted as complete.
+    embed_precheck_coverage: float | None
+    embed_coverage: float | None
+    embed_note: str | None
 
     @classmethod
     def from_job(cls, job: job_store.Job) -> "JobOut":
@@ -57,6 +64,8 @@ class JobOut(BaseModel):
             source_reference=job.source_reference, state=job.state, error_message=job.error_message,
             created_at=job.created_at, updated_at=job.updated_at,
             started_at=job.started_at, completed_at=job.completed_at,
+            embed_precheck_coverage=job.embed_precheck_coverage,
+            embed_coverage=job.embed_coverage, embed_note=job.embed_note,
         )
 
 

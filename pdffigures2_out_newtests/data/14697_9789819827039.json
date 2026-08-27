@@ -1,0 +1,1801 @@
+[{
+  "caption": "Figure 4.12. Stress distribution along the z-axis in the half-space subjected to a uniform circularly distributed force p.",
+  "captionBoundary": {
+    "x1": 61.31010437011719,
+    "x2": 421.30224609375,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.12",
+  "page": 170,
+  "regionBoundary": {
+    "x1": 75.6,
+    "x2": 407.52,
+    "y1": 383.76,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.12-1.png"
+}, {
+  "caption": "Figure 8.3. Distribution of stress σij along y over the half-space at various depth levels.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.2174072265625,
+    "y1": 332.32281494140625,
+    "y2": 337.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.3",
+  "page": 308,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 421.2,
+    "y1": 75.6,
+    "y2": 318.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.3-1.png"
+}, {
+  "caption": "Figure 7.7. Schematic view of a 2D wedge with an angle α, subjected to a uniformly distributed pressure p on the right vertical edge.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.25634765625,
+    "y1": 620.8027954101562,
+    "y2": 636.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.7",
+  "page": 288,
+  "regionBoundary": {
+    "x1": 153.35999999999999,
+    "x2": 329.03999999999996,
+    "y1": 365.76,
+    "y2": 607.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.7-1.png"
+}, {
+  "caption": "Figure 2.3. Cylindrical coordinates with the radial axis r, polar angle θ, and vertical axis z.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.34332275390625,
+    "y1": 268.36279296875,
+    "y2": 283.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.3",
+  "page": 46,
+  "regionBoundary": {
+    "x1": 147.6,
+    "x2": 335.52,
+    "y1": 75.6,
+    "y2": 254.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure2.3-1.png"
+}, {
+  "caption": "Figure 8.4. Distribution of displacement components ur and uθ along y over the half-space for various depths.",
+  "captionBoundary": {
+    "x1": 61.30964660644531,
+    "x2": 421.44775390625,
+    "y1": 623.2028198242188,
+    "y2": 638.606201171875
+  },
+  "figType": "Figure",
+  "imageText": ["plt.savefig('imagesSMp/dispInHalfSpace_xy.png',dpi=500,bbox_inches='tight')", "#plt.show()", "#", "uncomment", "this", "to", "display", "the", "plots", "gr.plot_fij(fig_s,", "y_data,", "f_data,", "labels,", "'$y$',", "'$u_{i}$',", "fij)", "f_data", "=", "[ux,", "uy]", "#", "perform", "coordinate", "transformation:", "ux", "=", "func1(ri,ti)*np.cos(ti)", "-", "func2(ri,ti)*np.sin(ti)", "uy", "=", "func1(ri,ti)*np.sin(ti)", "+", "func2(ri,ti)*np.cos(ti)", "#", "fs", "values", "y_data", "=", "np.linspace(-2*x_[-1],", "2*x_[-1],", "400)", "#", "compute", "r", "along", "y-axis", "#", "compute", "along", "y-axis", "ri", "=", "np.sqrt(y_data**2", "+", "x_[k]**2)", "ti", "=", "np.arctan(y_data/x_[k])", "labels=[r'$u_{x}$,", "depth='+f'{dp_[k]:.1f}',", "r'$u_{y}$,", "depth='+f'{dp_[k]:.1f}']", "func1=sp.lambdify((r,", "),", "ur.subs({P:1,E:1,", "ν:.3,d0:d0_}),'numpy')", "func2=sp.lambdify((r,", "),", "v", ".subs({P:1,E:1,", "ν:.3,d0:d0_}),'numpy')", "#", "y-axis", "in", "plot", "for", "k", "in", "range(nf):", "fij=f_ij[k]", "#plt.ion()", "#", "uncomment", "this", "to", "display", "the", "plots", "plt.ioff()", "#", "settings", "for", "plots#plt.rcParams.update({'font.size':", "5})", "fig_s", "=", "plt.figure()#figsize=(4,2.5))"],
+  "name": "8.4",
+  "page": 316,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 421.2,
+    "y1": 77.03999999999999,
+    "y2": 609.84
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.4-1.png"
+}, {
+  "caption": "Figure 2.1. Polar coordinate system defined in relation to the Cartesian coordinate system.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.2286376953125,
+    "y1": 596.9227905273438,
+    "y2": 612.326171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.1",
+  "page": 29,
+  "regionBoundary": {
+    "x1": 145.44,
+    "x2": 336.24,
+    "y1": 448.56,
+    "y2": 583.92
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure2.1-1.png"
+}, {
+  "caption": "Figure 5.11. A plate with a small circular hole of radius a at its center, subjected to general stresses (tractions) on all edges.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.31024169921875,
+    "y1": 620.3228149414062,
+    "y2": 635.7261962890625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.11",
+  "page": 216,
+  "regionBoundary": {
+    "x1": 120.96,
+    "x2": 362.15999999999997,
+    "y1": 378.0,
+    "y2": 606.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.11-1.png"
+}, {
+  "caption": "Figure 4.17. A schematic drawing of the interfacial pressure on the contact area of an ellipsoid on another solid. Image modified from Wikimedia Commons by MHz, as, public domain.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.36248779296875,
+    "y1": 281.32281494140625,
+    "y2": 307.7664794921875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.17",
+  "page": 179,
+  "regionBoundary": {
+    "x1": 155.51999999999998,
+    "x2": 327.59999999999997,
+    "y1": 75.6,
+    "y2": 267.84
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.17-1.png"
+}, {
+  "caption": "Figure 5.9. A plate with a small circular hole of radius a at its center, subjected to uniform shear stress τ along all edges.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.3084716796875,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.9",
+  "page": 211,
+  "regionBoundary": {
+    "x1": 114.47999999999999,
+    "x2": 368.64,
+    "y1": 357.84,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.9-1.png"
+}, {
+  "caption": "Figure 6.3. Contour of the radial displacement ur in a plate with a circular hole.",
+  "captionBoundary": {
+    "x1": 72.35099792480469,
+    "x2": 410.32415771484375,
+    "y1": 619.8427734375,
+    "y2": 625.2860107421875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.3",
+  "page": 238,
+  "regionBoundary": {
+    "x1": 76.32,
+    "x2": 406.08,
+    "y1": 394.56,
+    "y2": 603.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.3-1.png"
+}, {
+  "caption": "Figure 10.1. A thin, partially circular arch of uniform thickness loaded by pressure on its top surface.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.267333984375,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.1",
+  "page": 348,
+  "regionBoundary": {
+    "x1": 114.47999999999999,
+    "x2": 368.64,
+    "y1": 450.0,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.1-1.png"
+}, {
+  "caption": "Figure 10.8. Distribution of the three stress components along the radial direction on vertical, middle, and end (45◦) cross-sections of the arch.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.2635498046875,
+    "y1": 308.32281494140625,
+    "y2": 323.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.8",
+  "page": 397,
+  "regionBoundary": {
+    "x1": 72.72,
+    "x2": 410.4,
+    "y1": 75.6,
+    "y2": 294.47999999999996
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.8-1.png"
+}, {
+  "caption": "Figure 10.7. Distribution of the three stress components along the arch.",
+  "captionBoundary": {
+    "x1": 89.87100219726562,
+    "x2": 392.79827880859375,
+    "y1": 312.40277099609375,
+    "y2": 316.885986328125
+  },
+  "figType": "Figure",
+  "imageText": ["#plt.show()", "'imagesSMp/Arch_pSr',ioff=True)", "#", "Use", "ioff=False", "to", "display", "the", "plot", "plt.ion()", "gr.plot_fs(x_data,", "y_data,", "labels,", "'$r$',", "'stresses',", "\\", "func4(x_data[3]),", "func5(x_data[4]),", "func6(x_data[5]),", "func8(x_data[6]),", "func9(x_data[7])]", "r_data", "=", "np.linspace(1,", "2,", "40)", "#", "r", "values", "for", "the", "plot", "x_data", "=", "[r_data,", "r_data,", "r_data,", "r_data,", "r_data,", "r_data,r_data,r_data]", "y_data", "=", "[func1(x_data[0]),", "func2(x_data[1]),", "func3(x_data[2]),", "labels=[r'$", "_{rr},", "=0$',", "r'$", "_{rr},", "=\\pi/8$',", "r'$", "_{rr},", "=\\pi/4$',\\", "r'$", "_{", "},", "=0$',", "r'$", "_{", "},", "=\\pi/8$',", "r'$", "_{", "},", "=\\pi/4$',\\", "r'$", "_{r", "},", "=\\pi/8$',r'$", "_{r", "},", "=\\pi/4$']", "func1", "=", "sp.lambdify(r,", "rr_sp.subs({", ":", "0.}),'numpy')", "func2", "=", "sp.lambdify(r,", "rr_sp.subs({", ":", "np.pi/8.}),'numpy')", "func3", "=", "sp.lambdify(r,", "rr_sp.subs({", ":", "np.pi/4.}),'numpy')", "func4", "=", "sp.lambdify(r,", "_sp.subs({", ":", "0.}),'numpy')", "func5", "=", "sp.lambdify(r,", "_sp.subs({", ":", "np.pi/8.}),'numpy')", "func6", "=", "sp.lambdify(r,", "_sp.subs({", ":", "np.pi/4.}),'numpy')", "func8", "=", "sp.lambdify(r,", "r", "_sp.subs({", ":", "np.pi/8.}),'numpy')", "func9", "=", "sp.lambdify(r,", "r", "_sp.subs({", ":", "np.pi/4.}),'numpy')", "#", "Convert", "SymPy", "expressions", "to", "Python", "functions:", "rr_sp,", "_sp,", "r", "_sp", "=", "v_rt", "#", "v_rt", "is", "from", "the", "displacements"],
+  "name": "10.7",
+  "page": 396,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 421.2,
+    "y1": 334.08,
+    "y2": 630.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.7-1.png"
+}, {
+  "caption": "Figure 4.1. A thin solid disk of uniform thickness. It rotates at a constant angular velocity along with a stiff solid shaft of small radius.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.1837158203125,
+    "y1": 620.8027954101562,
+    "y2": 636.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.1",
+  "page": 133,
+  "regionBoundary": {
+    "x1": 131.76,
+    "x2": 351.36,
+    "y1": 391.68,
+    "y2": 607.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.1-1.png"
+}, {
+  "caption": "Figure 6.11. Contour plot of the normal stress σθθ in the semicircular beam subjected to a pair of horizontal shear forces at its two ends.",
+  "captionBoundary": {
+    "x1": 61.31024169921875,
+    "x2": 421.275390625,
+    "y1": 290.32281494140625,
+    "y2": 305.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.11",
+  "page": 265,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 276.48
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.11-1.png"
+}, {
+  "caption": "Figure 5.6. Contour of the radial normal stress σrr in a plate with a circular hole.",
+  "captionBoundary": {
+    "x1": 69.83100128173828,
+    "x2": 412.84417724609375,
+    "y1": 299.08282470703125,
+    "y2": 304.5260009765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.6",
+  "page": 206,
+  "regionBoundary": {
+    "x1": 76.32,
+    "x2": 406.08,
+    "y1": 75.6,
+    "y2": 282.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.6-1.png"
+}, {
+  "caption": "Figure 7.8. Schematic view of (a) a 2D half-space subjected to a uniformly distributed pressure p on the right surface; (b) a 2D quarter-space subjected to a uniformly distributed pressure p on the top surface.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.38653564453125,
+    "y1": 562.0027465820312,
+    "y2": 588.446533203125
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "7.8",
+  "page": 292,
+  "regionBoundary": {
+    "x1": 62.64,
+    "x2": 419.03999999999996,
+    "y1": 412.56,
+    "y2": 547.1999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.8-1.png"
+}, {
+  "caption": "Figure 2.4. Spherical coordinates with radial axis r, polar angle θ, and azimuthal angle ϕ. Image from en.wikipedia by Ag2gaeh under the CC BY-SA 4.0 license.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.3548583984375,
+    "y1": 480.642822265625,
+    "y2": 496.16632080078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.4",
+  "page": 60,
+  "regionBoundary": {
+    "x1": 115.92,
+    "x2": 367.2,
+    "y1": 223.92,
+    "y2": 466.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure2.4-1.png"
+}, {
+  "caption": "Figure 7.1. Schematic of a 2D wedge with an angle α, subjected to a vertical force P applied at an angle β.",
+  "captionBoundary": {
+    "x1": 61.31095886230469,
+    "x2": 420.10955810546875,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": ["/2α", "/2α", "z", "AA", "σrr", "rdθ", "dθ", "β", "0", "θ", "r", "x", "y", "P"],
+  "name": "7.1",
+  "page": 270,
+  "regionBoundary": {
+    "x1": 119.52,
+    "x2": 363.59999999999997,
+    "y1": 365.03999999999996,
+    "y2": 593.28
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.1-1.png"
+}, {
+  "caption": "Figure 3.3. A thin disk of uniform thickness. It rotates with an angular velocity and constant angular acceleration, resulting in body forces throughout the disk.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.371826171875,
+    "y1": 265.602783203125,
+    "y2": 281.1263122558594
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.3",
+  "page": 85,
+  "regionBoundary": {
+    "x1": 149.76,
+    "x2": 332.64,
+    "y1": 77.03999999999999,
+    "y2": 252.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.3-1.png"
+}, {
+  "caption": "Figure 5.3. A plate with a small circular hole of radius a in the middle, subjected to uniform tensile stress σ on the left and right edges and uniform compressive stress σ on the top and bottom edges.",
+  "captionBoundary": {
+    "x1": 61.31007385253906,
+    "x2": 421.33795166015625,
+    "y1": 319.36279296875,
+    "y2": 345.8064880371094
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.3",
+  "page": 201,
+  "regionBoundary": {
+    "x1": 120.96,
+    "x2": 362.15999999999997,
+    "y1": 75.6,
+    "y2": 305.28
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.3-1.png"
+}, {
+  "caption": "Figure 5.12. Contour of the hoop stress σθθ in a plate with a circular hole subjected to general loading.",
+  "captionBoundary": {
+    "x1": 61.31092834472656,
+    "x2": 421.389892578125,
+    "y1": 286.36279296875,
+    "y2": 301.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.12",
+  "page": 220,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 77.03999999999999,
+    "y2": 272.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.12-1.png"
+}, {
+  "caption": "Figure 8.1. Schematic view of a 2D half-space subjected to a vertical force P .",
+  "captionBoundary": {
+    "x1": 78.83099365234375,
+    "x2": 403.94366455078125,
+    "y1": 289.36279296875,
+    "y2": 293.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.1",
+  "page": 302,
+  "regionBoundary": {
+    "x1": 108.72,
+    "x2": 374.4,
+    "y1": 77.03999999999999,
+    "y2": 272.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.1-1.png"
+}, {
+  "caption": "Figure 6.7. Distribution of the three stress components in the vertical, horizontal, and 45◦ radial directions.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.36224365234375,
+    "y1": 299.32281494140625,
+    "y2": 314.7261657714844
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.7",
+  "page": 260,
+  "regionBoundary": {
+    "x1": 76.32,
+    "x2": 406.08,
+    "y1": 77.03999999999999,
+    "y2": 285.84
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.7-1.png"
+}, {
+  "caption": "Figure 4.7. Distribution of stress σrr with different r values along the z-direction in the half-space subjected to a unit vertical point force at r = 0, z = 0 on the top surface.",
+  "captionBoundary": {
+    "x1": 61.30982971191406,
+    "x2": 421.42645263671875,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.7",
+  "page": 160,
+  "regionBoundary": {
+    "x1": 90.72,
+    "x2": 392.4,
+    "y1": 407.52,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.7-1.png"
+}, {
+  "caption": "Figure 10.6. Distribution of the two displacement components ur and uθ along the radial direction.",
+  "captionBoundary": {
+    "x1": 61.30967712402344,
+    "x2": 421.4478759765625,
+    "y1": 610.602783203125,
+    "y2": 626.0061645507812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.6",
+  "page": 392,
+  "regionBoundary": {
+    "x1": 80.64,
+    "x2": 401.03999999999996,
+    "y1": 388.8,
+    "y2": 596.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.6-1.png"
+}, {
+  "caption": "Figure 7.10. Distribution of stress components along θ over wedges. The load is set as p = 1.",
+  "captionBoundary": {
+    "x1": 61.31011962890625,
+    "x2": 421.33172607421875,
+    "y1": 320.32281494140625,
+    "y2": 335.7261657714844
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.10",
+  "page": 297,
+  "regionBoundary": {
+    "x1": 72.72,
+    "x2": 410.4,
+    "y1": 77.03999999999999,
+    "y2": 306.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.10-1.png"
+}, {
+  "caption": "Figure 5.2. Two subproblems for the problem of a plate with a small circular hole.",
+  "captionBoundary": {
+    "x1": 68.63099670410156,
+    "x2": 414.01849365234375,
+    "y1": 231.40281677246094,
+    "y2": 235.88601684570312
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.2",
+  "page": 192,
+  "regionBoundary": {
+    "x1": 96.47999999999999,
+    "x2": 386.64,
+    "y1": 77.03999999999999,
+    "y2": 214.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.2-1.png"
+}, {
+  "caption": "Figure 4.10. Top view of a circularly distributed force p on a half-space, showing the coordinate system for elliptic integration to compute the subsidence at point M inside the loading circle on the surface.",
+  "captionBoundary": {
+    "x1": 61.31095886230469,
+    "x2": 421.44110107421875,
+    "y1": 273.7628173828125,
+    "y2": 300.20648193359375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.10",
+  "page": 165,
+  "regionBoundary": {
+    "x1": 153.35999999999999,
+    "x2": 329.03999999999996,
+    "y1": 75.6,
+    "y2": 260.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.10-1.png"
+}, {
+  "caption": "Figure 9.1. A wedge with angle α subjected to a vertical point force P at its tip.",
+  "captionBoundary": {
+    "x1": 72.23100280761719,
+    "x2": 410.54400634765625,
+    "y1": 317.32281494140625,
+    "y2": 321.8059997558594
+  },
+  "figType": "Figure",
+  "imageText": ["A", "/2α", "/2α", "z", "A", "σrr", "rdθ", "dθ", "0", "θ", "r", "x", "y", "P"],
+  "name": "9.1",
+  "page": 324,
+  "regionBoundary": {
+    "x1": 125.28,
+    "x2": 357.12,
+    "y1": 81.36,
+    "y2": 299.52
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure9.1-1.png"
+}, {
+  "caption": "Figure 6.1. A plate with a small circular hole of radius a at the center. It is subjected to a uniform stress σ at the left and right edges. The resulting displacement components at points in the four quadrants are shown. Red arrows indicate the displacement components in the radial direction, ur, and blue arrows indicate the displacement components in the circumferential direction, uθ.",
+  "captionBoundary": {
+    "x1": 61.31071472167969,
+    "x2": 421.45159912109375,
+    "y1": 575.9227905273438,
+    "y2": 625.406005859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.1",
+  "page": 224,
+  "regionBoundary": {
+    "x1": 114.47999999999999,
+    "x2": 368.64,
+    "y1": 360.0,
+    "y2": 562.3199999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.1-1.png"
+}, {
+  "caption": "Figure 8.5. Distribution of displacement components ux and uy along y over the halfspace for various depths.",
+  "captionBoundary": {
+    "x1": 61.30995178222656,
+    "x2": 421.2562255859375,
+    "y1": 329.32281494140625,
+    "y2": 344.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.5",
+  "page": 317,
+  "regionBoundary": {
+    "x1": 63.36,
+    "x2": 419.03999999999996,
+    "y1": 75.6,
+    "y2": 315.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.5-1.png"
+}, {
+  "caption": "Figure 10.13. Contour plot of the shear stress σrθ in the arch subjected to uniform pressure on its top surface.",
+  "captionBoundary": {
+    "x1": 61.31056213378906,
+    "x2": 421.30517578125,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.13",
+  "page": 403,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 422.64,
+    "y1": 362.88,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.13-1.png"
+}, {
+  "caption": "Figure 4.2. Stress distribution in a spinning thin disk of uniform thickness.",
+  "captionBoundary": {
+    "x1": 84.11099243164062,
+    "x2": 398.56085205078125,
+    "y1": 631.7227783203125,
+    "y2": 636.2059936523438
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.2",
+  "page": 141,
+  "regionBoundary": {
+    "x1": 83.52,
+    "x2": 399.59999999999997,
+    "y1": 408.96,
+    "y2": 615.6
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.2-1.png"
+}, {
+  "caption": "Figure 3.6. A thin semicircular curved beam of uniform thickness subjected to a pair of horizontal shear forces acting on the cross-sections at its two ends.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.326171875,
+    "y1": 626.8027954101562,
+    "y2": 642.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.6",
+  "page": 109,
+  "regionBoundary": {
+    "x1": 150.48,
+    "x2": 332.64,
+    "y1": 488.15999999999997,
+    "y2": 613.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.6-1.png"
+}, {
+  "caption": "Figure 3.7. A thin, semicircular curved beam of uniform thickness loaded by a pair of vertical forces acting on the cross-sections at its two ends.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.25994873046875,
+    "y1": 226.36277770996094,
+    "y2": 241.76614379882812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.7",
+  "page": 124,
+  "regionBoundary": {
+    "x1": 150.48,
+    "x2": 332.64,
+    "y1": 75.6,
+    "y2": 212.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.7-1.png"
+}, {
+  "caption": "Figure 3.5. A thin partial circular curved beam of uniform thickness loaded by a uniform pure moment M on its cross-section.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.325439453125,
+    "y1": 620.8027954101562,
+    "y2": 636.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.5",
+  "page": 96,
+  "regionBoundary": {
+    "x1": 145.44,
+    "x2": 336.24,
+    "y1": 478.79999999999995,
+    "y2": 607.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.5-1.png"
+}, {
+  "caption": "Figure 6.2. Distribution of the two displacement components ur and uθ in the vertical, horizontal, and 45◦ directions.",
+  "captionBoundary": {
+    "x1": 61.31022644042969,
+    "x2": 421.2205810546875,
+    "y1": 294.40277099609375,
+    "y2": 309.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.2",
+  "page": 237,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 280.8
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.2-1.png"
+}, {
+  "caption": "Figure 6.12. Contour plot of the shear stress σrθ in the semicircular beam subjected to a pair of horizontal shear forces at its two ends.",
+  "captionBoundary": {
+    "x1": 61.31072998046875,
+    "x2": 421.36468505859375,
+    "y1": 290.32281494140625,
+    "y2": 305.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.12",
+  "page": 266,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 77.03999999999999,
+    "y2": 276.48
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.12-1.png"
+}, {
+  "caption": "Figure 5.5. Contour of the hoop stress σθθ in a plate with a circular hole.",
+  "captionBoundary": {
+    "x1": 87.11099243164062,
+    "x2": 395.56494140625,
+    "y1": 295.9627685546875,
+    "y2": 301.5260009765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.5",
+  "page": 205,
+  "regionBoundary": {
+    "x1": 76.32,
+    "x2": 406.08,
+    "y1": 75.6,
+    "y2": 279.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.5-1.png"
+}, {
+  "caption": "Figure 2.2. Relations between the displacements in Cartesian and polar coordinate systems at θ = 0 and θ = π/2.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.2313232421875,
+    "y1": 289.8427734375,
+    "y2": 305.24615478515625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.2",
+  "page": 32,
+  "regionBoundary": {
+    "x1": 90.0,
+    "x2": 393.12,
+    "y1": 75.6,
+    "y2": 276.48
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure2.2-1.png"
+}, {
+  "caption": "Figure 6.10. Contour plot of the normal stress σrr in the semicircular beam subjected to a pair of horizontal shear forces at its two ends.",
+  "captionBoundary": {
+    "x1": 61.31024169921875,
+    "x2": 421.275390625,
+    "y1": 295.36279296875,
+    "y2": 310.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.10",
+  "page": 264,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 281.52
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.10-1.png"
+}, {
+  "caption": "Figure 4.8. Distribution of stress σθθ for different r values along the z-direction in the half-space subjected to a unit vertical point force at r = 0, z = 0 on the top surface.",
+  "captionBoundary": {
+    "x1": 61.30998229980469,
+    "x2": 421.42572021484375,
+    "y1": 611.8027954101562,
+    "y2": 627.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.8",
+  "page": 161,
+  "regionBoundary": {
+    "x1": 92.88,
+    "x2": 390.24,
+    "y1": 411.84,
+    "y2": 598.3199999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.8-1.png"
+}, {
+  "caption": "Figure 7.3. Distribution of stress σrr along the arc of r = 1 over wedges with various α values. The load is set as P = 1.",
+  "captionBoundary": {
+    "x1": 61.31028747558594,
+    "x2": 421.32830810546875,
+    "y1": 315.5228271484375,
+    "y2": 330.9261779785156
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.3",
+  "page": 279,
+  "regionBoundary": {
+    "x1": 75.6,
+    "x2": 407.52,
+    "y1": 75.6,
+    "y2": 301.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.3-1.png"
+}, {
+  "caption": "Figure 4.3. Displacement and shear stress distributions in a thin disk of uniform thickness spinning with a shaft under constant angular acceleration.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.38360595703125,
+    "y1": 281.44281005859375,
+    "y2": 296.96630859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.3",
+  "page": 149,
+  "regionBoundary": {
+    "x1": 88.56,
+    "x2": 393.12,
+    "y1": 75.6,
+    "y2": 267.84
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.3-1.png"
+}, {
+  "caption": "Figure 10.12. Contour plot of the normal stress σrr in the arch subjected to uniform pressure on its top surface.",
+  "captionBoundary": {
+    "x1": 61.310821533203125,
+    "x2": 421.305419921875,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.12",
+  "page": 402,
+  "regionBoundary": {
+    "x1": 72.72,
+    "x2": 410.4,
+    "y1": 375.12,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.12-1.png"
+}, {
+  "caption": "Figure 7.4. Distribution of stress σrr along θ over a quarter-space (α = π/2) with various r values. The load is set as P = 1.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.26287841796875,
+    "y1": 330.40277099609375,
+    "y2": 345.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.4",
+  "page": 281,
+  "regionBoundary": {
+    "x1": 63.36,
+    "x2": 419.03999999999996,
+    "y1": 77.03999999999999,
+    "y2": 316.8
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.4-1.png"
+}, {
+  "caption": "Figure 10.5. Distribution of the two displacement components ur and uθ along the arch.",
+  "captionBoundary": {
+    "x1": 61.30967712402344,
+    "x2": 421.4478759765625,
+    "y1": 598.602783203125,
+    "y2": 614.0061645507812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.5",
+  "page": 391,
+  "regionBoundary": {
+    "x1": 62.64,
+    "x2": 420.47999999999996,
+    "y1": 352.08,
+    "y2": 584.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.5-1.png"
+}, {
+  "caption": "Figure 10.4. Intersection point (red dot) of the function tan(θB) and the linear function −k30θB in the domain 0 < θB < π.",
+  "captionBoundary": {
+    "x1": 61.31047058105469,
+    "x2": 421.26116943359375,
+    "y1": 281.32281494140625,
+    "y2": 297.8059997558594
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.4",
+  "page": 382,
+  "regionBoundary": {
+    "x1": 80.64,
+    "x2": 401.03999999999996,
+    "y1": 75.6,
+    "y2": 267.84
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.4-1.png"
+}, {
+  "caption": "Figure 4.18. A hollow ball subjected to pressures on the inner and outer surfaces.",
+  "captionBoundary": {
+    "x1": 70.31099700927734,
+    "x2": 412.222412109375,
+    "y1": 269.08282470703125,
+    "y2": 273.5660095214844
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.18",
+  "page": 181,
+  "regionBoundary": {
+    "x1": 152.64,
+    "x2": 330.47999999999996,
+    "y1": 75.6,
+    "y2": 252.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.18-1.png"
+}, {
+  "caption": "Figure 3.4. A thin disk of uniform thickness. It rotates with an angular velocity and constant angular acceleration, resulting in body forces throughout the disk.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.371826171875,
+    "y1": 257.32281494140625,
+    "y2": 272.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.4",
+  "page": 86,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 422.64,
+    "y1": 77.03999999999999,
+    "y2": 243.35999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.4-1.png"
+}, {
+  "caption": "Figure 4.6. Distribution of the stress components along the z-direction in the half-space subjected to a unit vertical point force at r = 0, z = 0 on the top surface.",
+  "captionBoundary": {
+    "x1": 61.31011962890625,
+    "x2": 421.17041015625,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.6",
+  "page": 159,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 398.88,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.6-1.png"
+}, {
+  "caption": "Figure 10.15. Left: An arch subjected to pure bending. Right: A free body diagram of the arch covering θB ≤ θ ≤ 0, where θB is taken arbitrarily and not necessarily at the left end of the arch.",
+  "captionBoundary": {
+    "x1": 61.31071472167969,
+    "x2": 421.23834228515625,
+    "y1": 599.5628051757812,
+    "y2": 626.0061645507812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.15",
+  "page": 406,
+  "regionBoundary": {
+    "x1": 98.64,
+    "x2": 384.47999999999996,
+    "y1": 493.91999999999996,
+    "y2": 585.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.15-1.png"
+}, {
+  "caption": "Figure 4.14. Cross-sectional view of two elastic balls pressed into contact. Ball-1 is at the bottom and ball-2 is on top.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.29669189453125,
+    "y1": 250.36280822753906,
+    "y2": 265.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.14",
+  "page": 172,
+  "regionBoundary": {
+    "x1": 156.96,
+    "x2": 326.15999999999997,
+    "y1": 75.6,
+    "y2": 236.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.14-1.png"
+}, {
+  "caption": "Figure 10.2. A free body diagram of the arch covering 0 ≤ θ ≤ θB, with θB taken arbitrarily and not necessarily at the left end of the arch.",
+  "captionBoundary": {
+    "x1": 61.30964660644531,
+    "x2": 421.3814697265625,
+    "y1": 620.8027954101562,
+    "y2": 636.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.2",
+  "page": 362,
+  "regionBoundary": {
+    "x1": 131.76,
+    "x2": 351.36,
+    "y1": 439.2,
+    "y2": 607.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.2-1.png"
+}, {
+  "caption": "Figure 8.6. Distributed load on the surface of a half-space. The observation point is to the left of point A.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.34246826171875,
+    "y1": 626.8027954101562,
+    "y2": 642.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.6",
+  "page": 318,
+  "regionBoundary": {
+    "x1": 108.72,
+    "x2": 373.68,
+    "y1": 489.59999999999997,
+    "y2": 613.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.6-1.png"
+}, {
+  "caption": "Figure 5.8. A plate with a small circular hole of radius a at its center, subjected to biaxial tension at its edges.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.3084716796875,
+    "y1": 327.642822265625,
+    "y2": 343.0461730957031
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.8",
+  "page": 208,
+  "regionBoundary": {
+    "x1": 114.47999999999999,
+    "x2": 368.64,
+    "y1": 75.6,
+    "y2": 313.92
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.8-1.png"
+}, {
+  "caption": "Figure 6.5. A thin, semicircular curved beam of uniform thickness loaded by a pair of horizontal shear forces acting on the cross-sections at its two ends.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.25994873046875,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.5",
+  "page": 240,
+  "regionBoundary": {
+    "x1": 150.48,
+    "x2": 332.64,
+    "y1": 470.15999999999997,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.5-1.png"
+}, {
+  "caption": "Figure 10.9. Contour plot of the radial displacement ur in the arch subjected to uniform pressure on its top surface.",
+  "captionBoundary": {
+    "x1": 61.310516357421875,
+    "x2": 421.3060302734375,
+    "y1": 572.9227905273438,
+    "y2": 588.4462890625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.9",
+  "page": 399,
+  "regionBoundary": {
+    "x1": 62.64,
+    "x2": 420.47999999999996,
+    "y1": 329.76,
+    "y2": 559.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.9-1.png"
+}, {
+  "caption": "Figure 7.11. Contour plot of the von Mises stress in the quarter-space subjected to a unit pressure on the top surface.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.35601806640625,
+    "y1": 317.92279052734375,
+    "y2": 333.4463195800781
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.11",
+  "page": 299,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 422.64,
+    "y1": 75.6,
+    "y2": 304.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.11-1.png"
+}, {
+  "caption": "Figure 3.1. A disk subjected to pressure on the inner and outer surfaces.",
+  "captionBoundary": {
+    "x1": 88.55099487304688,
+    "x2": 393.865234375,
+    "y1": 280.36279296875,
+    "y2": 284.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.1",
+  "page": 80,
+  "regionBoundary": {
+    "x1": 144.72,
+    "x2": 338.4,
+    "y1": 75.6,
+    "y2": 263.52
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.1-1.png"
+}, {
+  "caption": "Figure 4.11. Stress state at an observation point on the z-axis in the half-space subjected to a uniform circularly distributed force p.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.20806884765625,
+    "y1": 350.32281494140625,
+    "y2": 365.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.11",
+  "page": 167,
+  "regionBoundary": {
+    "x1": 144.0,
+    "x2": 339.12,
+    "y1": 75.6,
+    "y2": 336.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.11-1.png"
+}, {
+  "caption": "Figure 4.9. Top view of a circularly distributed force p on a half-space, showing the coordinate setup for elliptic integration to compute the subsidence at point M outside the loading circle on the surface.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.441162109375,
+    "y1": 597.8827514648438,
+    "y2": 624.3265380859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.9",
+  "page": 162,
+  "regionBoundary": {
+    "x1": 108.72,
+    "x2": 374.4,
+    "y1": 430.56,
+    "y2": 584.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.9-1.png"
+}, {
+  "caption": "Figure 7.5. Schematic view of a 2D wedge with an angle α, subjected to a concentrated moment M at its tip.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.24822998046875,
+    "y1": 289.0028076171875,
+    "y2": 304.4061584472656
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.5",
+  "page": 282,
+  "regionBoundary": {
+    "x1": 137.51999999999998,
+    "x2": 344.15999999999997,
+    "y1": 75.6,
+    "y2": 275.76
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.5-1.png"
+}, {
+  "caption": "Figure 4.4. Three-dimensional half-space subjected to a vertical point force on its surface in the z-direction.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.34356689453125,
+    "y1": 610.602783203125,
+    "y2": 626.0061645507812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.4",
+  "page": 150,
+  "regionBoundary": {
+    "x1": 131.76,
+    "x2": 351.36,
+    "y1": 401.03999999999996,
+    "y2": 596.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.4-1.png"
+}, {
+  "caption": "Figure 10.16. A thin, semicircular arch of uniform thickness loaded by a pair of forces acting on the cross-sections at its two ends. Left: horizontal forces; Right: vertical forces.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.20794677734375,
+    "y1": 567.4027709960938,
+    "y2": 582.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.16",
+  "page": 409,
+  "regionBoundary": {
+    "x1": 97.92,
+    "x2": 384.47999999999996,
+    "y1": 453.59999999999997,
+    "y2": 553.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.16-1.png"
+}, {
+  "caption": "Figure 6.9. Contour plot of the tangential displacement uθ in the semicircular beam subjected to a pair of horizontal shear forces at its two ends.",
+  "captionBoundary": {
+    "x1": 61.30998229980469,
+    "x2": 421.29931640625,
+    "y1": 284.32281494140625,
+    "y2": 299.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.9",
+  "page": 263,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 270.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.9-1.png"
+}, {
+  "caption": "Figure 4.15. Schematic of the interfacial pressure on the contact area of two balls. Image modified based on Wikimedia Commons by MHz, in the public domain.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.32366943359375,
+    "y1": 287.32281494140625,
+    "y2": 302.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.15",
+  "page": 175,
+  "regionBoundary": {
+    "x1": 168.48,
+    "x2": 314.64,
+    "y1": 75.6,
+    "y2": 273.59999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.15-1.png"
+}, {
+  "caption": "Figure 5.4. Distribution of the normal stresses σrr and σθθ along both vertical and horizontal sections.",
+  "captionBoundary": {
+    "x1": 61.31044006347656,
+    "x2": 421.36248779296875,
+    "y1": 289.36279296875,
+    "y2": 304.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.4",
+  "page": 203,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 275.76
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.4-1.png"
+}, {
+  "caption": "Figure 10.3. Monotonic behavior of special functions from the arch problem. These functions consist of monomials and logarithmic bases.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.3199462890625,
+    "y1": 303.40277099609375,
+    "y2": 318.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.3",
+  "page": 368,
+  "regionBoundary": {
+    "x1": 72.72,
+    "x2": 410.4,
+    "y1": 75.6,
+    "y2": 289.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.3-1.png"
+}, {
+  "caption": "Figure 8.7. Distributed load on the surface of a half-space. The observation point is located to the right of point A.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.33349609375,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": ["gr.printM(vs_A,", "'Deflection", "at", "O", "(in", "reference", "to", "that", "at", "x=d_0)", "by", "q:')", "#", "Integration", "(when", "O", "is", "at", "the", "right", "side", "of", "A):", "vs_A", "=", "integrate(vs,(r,", "-a,", "-a+l)).expand().factor(E)"],
+  "name": "8.7",
+  "page": 319,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 421.2,
+    "y1": 398.88,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.7-1.png"
+}, {
+  "caption": "Figure 8.2. Integration of the stress σrr along a cylindrical surface of radius r in a 2D half-space, balanced by the vertical force P .",
+  "captionBoundary": {
+    "x1": 61.31007385253906,
+    "x2": 421.26617431640625,
+    "y1": 620.8027954101562,
+    "y2": 636.2061767578125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.2",
+  "page": 304,
+  "regionBoundary": {
+    "x1": 108.72,
+    "x2": 374.4,
+    "y1": 414.71999999999997,
+    "y2": 607.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure8.2-1.png"
+}, {
+  "caption": "Figure 6.6. Distribution of the two displacement components ur and uθ along the vertical, horizontal, and 45◦ radial directions.",
+  "captionBoundary": {
+    "x1": 61.31040954589844,
+    "x2": 421.4486083984375,
+    "y1": 554.9227905273438,
+    "y2": 570.326171875
+  },
+  "figType": "Figure",
+  "imageText": ["r_data", "=", "np.linspace(1,", "2,", "400)", "#", "r", "values", "for", "the", "plot", "x_data", "=", "[r_data,", "r_data,", "r_data,", "r_data,", "r_data", "]", "y_data", "=", "[func1(x_data[0]),", "func2(x_data[1]),", "func3(x_data[0]),", "func4(x_data[1]),", "func5(x_data[2])", "]", "#", "plt.ion()", "#", "gr.plot_fs(x_data,", "y_data,", "labels,", "'$r$',", "'displacements',", "\\", "#", "'imagesSMp/CurveBeamU',ioff=False)", "#", "#", "Use", "ioff=False", "to", "display", "the", "plot", "#", "plt.show()", "r'$u_{", "},", "=\\pi/4$',", "r'$u_{", "},", "=\\pi/2$'", "]", "func1", "=", "sp.lambdify(r,", "ur_sp.subs({", ":", "0.}),'numpy')", "func2", "=", "sp.lambdify(r,", "ur_sp.subs({", ":np.pi/4.}),'numpy')", "func3", "=", "sp.lambdify(r,", "ur_sp.subs({", ":np.pi/2.}),'numpy')", "func4", "=", "sp.lambdify(r,", "u", "_sp.subs({", ":np.pi/4.}),'numpy')", "func5", "=", "sp.lambdify(r,", "u", "_sp.subs({", ":np.pi/2.}),'numpy')", "labels=[r'$u_{r},", "=0$',r'$u_{r},", "=\\pi/4$',", "r'$u_{r},", "=\\pi/2$',", "#", "Convert", "SymPy", "expressions", "to", "numpy", "functions:", "dic_data", "=", "{E:1,", ":0.3,", "a:1,", "b:2,", "P:1}", "Cab_val", "=", "((b**2/a**2-1)+(1+b**2/a**2)*(log(a)-log(b))).subs(dic_data)", "ur_sp", "=", "ur.subs(Cab,", "Cab_val).subs(dic_data)", "u", "_sp", "=", "u", ".subs(Cab,", "Cab_val).subs(dic_data)"],
+  "name": "6.6",
+  "page": 258,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 421.2,
+    "y1": 77.03999999999999,
+    "y2": 541.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.6-1.png"
+}, {
+  "caption": "Figure 4.5. Distribution of displacements along the z-direction in the half-space subjected to a unit vertical point force at r = 0, z = 0 on the top surface.",
+  "captionBoundary": {
+    "x1": 61.31010437011719,
+    "x2": 421.1712646484375,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.5",
+  "page": 158,
+  "regionBoundary": {
+    "x1": 90.0,
+    "x2": 393.12,
+    "y1": 401.03999999999996,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.5-1.png"
+}, {
+  "caption": "Figure 10.11. Contour plot of the normal stress σθθ in the arch subjected to uniform pressure on its top surface.",
+  "captionBoundary": {
+    "x1": 61.31068420410156,
+    "x2": 421.3052978515625,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.11",
+  "page": 401,
+  "regionBoundary": {
+    "x1": 72.72,
+    "x2": 410.4,
+    "y1": 378.0,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.11-1.png"
+}, {
+  "caption": "Figure 4.13. Stresses in the contact area of an elastic solid subjected to a force with both normal and tangential components. These stresses are visualized using photoelasticity. Image from Wikimedia Commons by Reibungsphysik, in the public domain.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.24462890625,
+    "y1": 597.8827514648438,
+    "y2": 624.3265380859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.13",
+  "page": 171,
+  "regionBoundary": {
+    "x1": 108.72,
+    "x2": 374.4,
+    "y1": 390.96,
+    "y2": 584.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.13-1.png"
+}, {
+  "caption": "Figure 5.7. Contour of the shear stress σrθ in a plate with a circular hole.",
+  "captionBoundary": {
+    "x1": 86.39100646972656,
+    "x2": 396.1649169921875,
+    "y1": 287.32281494140625,
+    "y2": 292.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.7",
+  "page": 207,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 77.03999999999999,
+    "y2": 270.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.7-1.png"
+}, {
+  "caption": "Figure 5.10. A plate with a small circular hole of radius a at its center, subjected to uniform stress at all edges, equivalent to equal tension and compression in the far field.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.31024169921875,
+    "y1": 312.40277099609375,
+    "y2": 327.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.10",
+  "page": 214,
+  "regionBoundary": {
+    "x1": 120.96,
+    "x2": 362.15999999999997,
+    "y1": 75.6,
+    "y2": 298.8
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.10-1.png"
+}, {
+  "caption": "Figure 7.6. Distribution of stress components along θ over wedges along the arc of r = 1. The load is set as M = 1.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.3424072265625,
+    "y1": 610.602783203125,
+    "y2": 626.0061645507812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.6",
+  "page": 287,
+  "regionBoundary": {
+    "x1": 63.36,
+    "x2": 419.03999999999996,
+    "y1": 360.0,
+    "y2": 596.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.6-1.png"
+}, {
+  "caption": "Figure 7.12. (a) A wedge subjected to uniformly distributed shear force. (b) A quarterspace subjected to a point force.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.380126953125,
+    "y1": 253.36280822753906,
+    "y2": 268.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "7.12",
+  "page": 300,
+  "regionBoundary": {
+    "x1": 83.52,
+    "x2": 397.44,
+    "y1": 77.03999999999999,
+    "y2": 238.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.12-1.png"
+}, {
+  "caption": "Figure 6.8. Contour plot of the radial displacement ur in the semicircular beam subjected to a pair of horizontal shear forces at its two ends.",
+  "captionBoundary": {
+    "x1": 61.310302734375,
+    "x2": 421.29962158203125,
+    "y1": 290.32281494140625,
+    "y2": 305.8463134765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.8",
+  "page": 262,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 276.48
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.8-1.png"
+}, {
+  "caption": "Figure 10.14. Distribution of the internal moment and forces along the arch.",
+  "captionBoundary": {
+    "x1": 80.27099609375,
+    "x2": 402.3717041015625,
+    "y1": 291.04278564453125,
+    "y2": 295.5260009765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.14",
+  "page": 405,
+  "regionBoundary": {
+    "x1": 86.39999999999999,
+    "x2": 396.0,
+    "y1": 77.03999999999999,
+    "y2": 274.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.14-1.png"
+}, {
+  "caption": "Figure 5.1. A plate with a small circular hole of radius a in the middle, subjected to a uniform stress σ at the left and right edges.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.33880615234375,
+    "y1": 276.40277099609375,
+    "y2": 291.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.1",
+  "page": 190,
+  "regionBoundary": {
+    "x1": 120.96,
+    "x2": 362.15999999999997,
+    "y1": 75.6,
+    "y2": 262.8
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure5.1-1.png"
+}, {
+  "caption": "Figure 6.4. Contour of the tangential displacement component uθ in a plate with a circular hole.",
+  "captionBoundary": {
+    "x1": 61.31022644042969,
+    "x2": 421.3524169921875,
+    "y1": 610.602783203125,
+    "y2": 626.0061645507812
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.4",
+  "page": 239,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 398.88,
+    "y2": 596.88
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure6.4-1.png"
+}, {
+  "caption": "Figure 7.9. Contour plot of the shear stress in the half-space subjected to a unit pressure on the right side of the top surface.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.330810546875,
+    "y1": 596.9227905273438,
+    "y2": 612.326171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.9",
+  "page": 294,
+  "regionBoundary": {
+    "x1": 66.96,
+    "x2": 416.15999999999997,
+    "y1": 362.88,
+    "y2": 583.92
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.9-1.png"
+}, {
+  "caption": "Figure 10.10. Contour plot of the tangential displacement uθ in the arch subjected to uniform pressure on its top surface.",
+  "captionBoundary": {
+    "x1": 61.31056213378906,
+    "x2": 421.336669921875,
+    "y1": 608.8027954101562,
+    "y2": 624.3262939453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.10",
+  "page": 400,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 411.12,
+    "y1": 375.12,
+    "y2": 595.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure10.10-1.png"
+}, {
+  "caption": "Figure 4.16. (a) An elastic ball on an elastic half-space. (b) An elastic ball on an elastic spherical bearing.",
+  "captionBoundary": {
+    "x1": 61.31098937988281,
+    "x2": 421.17376708984375,
+    "y1": 247.12278747558594,
+    "y2": 262.64630126953125
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "4.16",
+  "page": 178,
+  "regionBoundary": {
+    "x1": 73.44,
+    "x2": 408.24,
+    "y1": 77.03999999999999,
+    "y2": 232.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure4.16-1.png"
+}, {
+  "caption": "Figure 7.2. Schematic view of a 2D wedge with large angles of α, subjected to a vertical force P at an angle β. (a) α = π, where the formulas developed in this chapter are still applicable; (b) α > π, where the formulas are not applicable.",
+  "captionBoundary": {
+    "x1": 61.31011962890625,
+    "x2": 421.33074951171875,
+    "y1": 244.36277770996094,
+    "y2": 270.80645751953125
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "7.2",
+  "page": 277,
+  "regionBoundary": {
+    "x1": 66.96,
+    "x2": 416.15999999999997,
+    "y1": 75.6,
+    "y2": 229.67999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure7.2-1.png"
+}, {
+  "caption": "Figure 9.2. A wedge with angle α subjected to a horizontal point force P at its tip.",
+  "captionBoundary": {
+    "x1": 66.95099639892578,
+    "x2": 415.70452880859375,
+    "y1": 316.36279296875,
+    "y2": 320.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": ["A", "/2α", "/2α", "z", "A", "rr", "rdθ", "β", "σ", "dθ", "0", "θ", "r", "x", "Py"],
+  "name": "9.2",
+  "page": 337,
+  "regionBoundary": {
+    "x1": 126.0,
+    "x2": 356.4,
+    "y1": 80.64,
+    "y2": 295.92
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure9.2-1.png"
+}, {
+  "caption": "Figure 3.2. Stress distributions in a thin disk with an inner radius of 1 and an outer radius of 5, subject to a unit pressure.",
+  "captionBoundary": {
+    "x1": 61.310997009277344,
+    "x2": 421.3326416015625,
+    "y1": 289.36279296875,
+    "y2": 304.76617431640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.2",
+  "page": 83,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 398.15999999999997,
+    "y1": 75.6,
+    "y2": 275.76
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14697_9789819827039-Figure3.2-1.png"
+}]

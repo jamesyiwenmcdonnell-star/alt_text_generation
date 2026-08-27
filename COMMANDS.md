@@ -175,7 +175,7 @@ cat telegram_message_id.txt
 
 ## Full reset (destructive — irreversible)
 
-`clean.py` permanently deletes **every** job's files and DB record, and clears the Telegram status board (deletes every message the bot has tracked sending). It prints what it's about to delete, warns if any job isn't in a terminal state yet, and requires typing `DELETE ALL` exactly before doing anything — any other input aborts with nothing touched.
+`clean.py` permanently deletes **every** job's files and DB record, and resets the Telegram status board to a clean starting state (the board message is edited in place, not deleted, so a still-running worker keeps updating it instead of posting a new one; any other tracked alert messages are deleted). It prints what it's about to do, warns if any job isn't in a terminal state yet, and requires typing `DELETE ALL` exactly before doing anything — any other input aborts with nothing touched.
 
 Stop the daemon first — running this while `worker.py` is actively mid-job risks deleting a job's files or DB row out from under it:
 

@@ -1,0 +1,321 @@
+[{
+  "caption": "Fig. 12. Conveyor belt for sorting dry waste. Source: Authors’ own creation.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 218.36117553710938,
+    "y1": 412.9968566894531,
+    "y2": 432.0863342285156
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12",
+  "page": 408,
+  "regionBoundary": {
+    "x1": 93.6,
+    "x2": 338.4,
+    "y1": 72.0,
+    "y2": 397.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure12-1.png"
+}, {
+  "caption": "Fig. 12. Comprehensive blueprint of smart village with smart integrated transport infrastructure.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.0982360839844,
+    "y1": 576.9168701171875,
+    "y2": 594.085693359375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12",
+  "page": 472,
+  "regionBoundary": {
+    "x1": 58.32,
+    "x2": 374.4,
+    "y1": 354.96,
+    "y2": 563.04
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure12-1.png"
+}, {
+  "caption": "Fig. 11. Comprehensive ITNDP blueprint.",
+  "captionBoundary": {
+    "x1": 137.99099731445312,
+    "x2": 294.2960510253906,
+    "y1": 332.59686279296875,
+    "y2": 337.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "11",
+  "page": 472,
+  "regionBoundary": {
+    "x1": 58.32,
+    "x2": 373.68,
+    "y1": 75.6,
+    "y2": 316.08
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure11-1.png"
+}, {
+  "caption": "Fig. 15. Mean values of recyclables from trials using belt conveyor.",
+  "captionBoundary": {
+    "x1": 92.99099731445312,
+    "x2": 339.1896667480469,
+    "y1": 225.796875,
+    "y2": 230.96600341796875
+  },
+  "figType": "Figure",
+  "imageText": ["PET", "bottle", "Glass", "bottle", "Plastic", "Carton", "Iron/Tin", "Copper/Brass", "Aluminium", "Polythene", "Paper", "Multilayered", "Polythene", "Chart", "Title", "PET", "bottle", "Glass", "bottle", "Plastic", "Carton", "Iron/Tin", "Copper/Brass", "Aluminium", "Polythene", "Paper", "Multilayered", "Polythene", "0.11", "0.67", "0.38", "0.13", "0.04", "0.06", "1.52", "0.99", "1.97", "0.62"],
+  "name": "15",
+  "page": 411,
+  "regionBoundary": {
+    "x1": 62.64,
+    "x2": 369.36,
+    "y1": 73.44,
+    "y2": 208.79999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure15-1.png"
+}, {
+  "caption": "Table 3. Type of recyclables, mean values, and the equivalent percentage.",
+  "captionBoundary": {
+    "x1": 81.71125793457031,
+    "x2": 350.32122802734375,
+    "y1": 259.39666748046875,
+    "y2": 264.5657958984375
+  },
+  "figType": "Table",
+  "imageText": ["1", "Pet", "bottle", "0.61", "9.43", "2", "Glass", "1.97", "30.43", "3", "Plastic", "0.99", "15.3", "4", "Carton", "1.45", "22.4", "5", "Iron/Tin", "0.20", "3.1", "6", "Copper/Brass", "0.04", "0.62", "7", "Aluminium", "0.06", "0.93", "8", "Polythene", "0.38", "5.9", "9", "Paper", "0.67", "10.35", "10", "Multilayered", "polythene", "0.10", "1.54", "Equivalent", "Percentage", "Sl.", "No.", "Type", "of", "Recyclable", "Mean", "Values", "from", "50", "Households/Day", "(kg)"],
+  "name": "3",
+  "page": 411,
+  "regionBoundary": {
+    "x1": 79.92,
+    "x2": 352.08,
+    "y1": 272.88,
+    "y2": 441.35999999999996
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Table3-1.png"
+}, {
+  "caption": "Fig. 11. Pre-sorting of dry waste. Source: Authors’ own creation.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 177.67156982421875,
+    "y1": 280.9968566894531,
+    "y2": 300.0863342285156
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "11",
+  "page": 407,
+  "regionBoundary": {
+    "x1": 59.76,
+    "x2": 372.24,
+    "y1": 72.0,
+    "y2": 265.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure11-1.png"
+}, {
+  "caption": "Fig. 9. Proposal distribution in terms of different categories.",
+  "captionBoundary": {
+    "x1": 106.19100952148438,
+    "x2": 325.99957275390625,
+    "y1": 306.0768737792969,
+    "y2": 311.2460021972656
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9",
+  "page": 471,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 379.44,
+    "y1": 74.88,
+    "y2": 290.15999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure9-1.png"
+}, {
+  "caption": "Fig. 10. Map of proposal for BT renewal, widening, and maintenance of phase 2 in ITNDP.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.3323059082031,
+    "y1": 562.9968872070312,
+    "y2": 568.166015625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10",
+  "page": 471,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 378.0,
+    "y1": 327.59999999999997,
+    "y2": 549.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure10-1.png"
+}, {
+  "caption": "Table 4. Revenue generated from recyclables per household per month.",
+  "captionBoundary": {
+    "x1": 85.55079650878906,
+    "x2": 346.6184997558594,
+    "y1": 79.037109375,
+    "y2": 84.20623779296875
+  },
+  "figType": "Table",
+  "imageText": ["Total", "revenue", "per", "month", "per", "household", "from", "different", "recyclables", "90.82", "polythene", "1.54", "0.12", "For", "RDF", "–", "1", "Plastic", "15.30", "1.33", "15.00", "19.95", "2", "Carton", "22.40", "1.95", "10.00", "19.50", "3", "Pet", "bottle", "9.43", "0.82", "20.00", "16.40", "4", "Glass", "30.43", "2.65", "3.50", "9.27", "5", "Copper/Brass", "0.62", "0.05", "175.00", "8.75", "6", "Aluminium", "0.93", "0.08", "90.00", "7.20", "7", "Paper", "10.35", "0.90", "5.00", "4.50", "8", "Steel/Tin", "3.10", "0.27", "10.00", "2.70", "9", "Polythene", "5.90", "0.51", "5.00", "2.55", "10", "Multilayered", "household", "(Rs)", "Revenue", "per", "month/", "Recyclable", "Weight", "(kg)/", "household", "Rate", "per", "kg", "(Rs)", "%", "By", "Weight", "of", "Each", "Sl.", "No.", "Item"],
+  "name": "4",
+  "page": 412,
+  "regionBoundary": {
+    "x1": 60.48,
+    "x2": 371.52,
+    "y1": 92.88,
+    "y2": 308.15999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Table4-1.png"
+}, {
+  "caption": "Table 3. Basic principles of rainfall-resistant vernacular constructions.",
+  "captionBoundary": {
+    "x1": 87.47100830078125,
+    "x2": 344.74798583984375,
+    "y1": 415.7568664550781,
+    "y2": 420.9259948730469
+  },
+  "figType": "Table",
+  "imageText": ["The", "use", "of", "naturally", "water-resistant", "materials", "like", "clay", "tiles,", "thatch,", "or", "treated", "wood", "enhances", "durability", "against", "prolonged", "exposure", "to", "rain.", "Weather-resistant", "materials", "Integrated", "gutters,", "drains,", "and", "stilts", "help", "channel", "water", "away", "from", "the", "structure,", "maintaining", "a", "dry", "interior", "and", "stable", "foundation.", "Steep-sloped", "roofs", "Structures", "like", "Chala", "roof", "houses", "feature", "steep,", "sloped", "roofs", "to", "enable", "efﬁcient", "rainwater", "runoff,", "preventing", "water", "accumulation", "and", "roof", "damage.", "Extended", "eaves", "and", "overhangs", "Extended", "eaves", "protect", "walls", "and", "foundations", "from", "rainwater,", "ensuring", "durability", "and", "minimising", "moisture", "ingress.", "Rainwater", "drainage", "systems"],
+  "name": "3",
+  "page": 335,
+  "regionBoundary": {
+    "x1": 57.599999999999994,
+    "x2": 375.12,
+    "y1": 428.4,
+    "y2": 574.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Table3-1.png"
+}, {
+  "caption": "Fig. 9. Rotary drum composter.",
+  "captionBoundary": {
+    "x1": 157.43099975585938,
+    "x2": 274.7331237792969,
+    "y1": 296.59686279296875,
+    "y2": 301.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9",
+  "page": 406,
+  "regionBoundary": {
+    "x1": 76.32,
+    "x2": 355.68,
+    "y1": 72.0,
+    "y2": 280.08
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure9-1.png"
+}, {
+  "caption": "Fig. 10. Rotary sieve.",
+  "captionBoundary": {
+    "x1": 175.19100952148438,
+    "x2": 257.11248779296875,
+    "y1": 566.7168579101562,
+    "y2": 571.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10",
+  "page": 406,
+  "regionBoundary": {
+    "x1": 59.76,
+    "x2": 372.24,
+    "y1": 315.36,
+    "y2": 550.0799999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure10-1.png"
+}, {
+  "caption": "Fig. 13. Segregated dry waste for recycling.",
+  "captionBoundary": {
+    "x1": 135.3509979248047,
+    "x2": 296.8260498046875,
+    "y1": 271.036865234375,
+    "y2": 276.20599365234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13",
+  "page": 409,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 379.44,
+    "y1": 70.56,
+    "y2": 255.6
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure13-1.png"
+}, {
+  "caption": "Table 4. Basic principles of flood-resistant vernacular constructions.",
+  "captionBoundary": {
+    "x1": 91.07051086425781,
+    "x2": 341.0530090332031,
+    "y1": 73.03680419921875,
+    "y2": 78.2059326171875
+  },
+  "figType": "Table",
+  "imageText": ["Secure", "foundations", "Structures", "are", "anchored", "securely", "to", "prevent", "displacement", "by", "water", "currents,", "often", "using", "deep-set", "piles", "or", "stone", "bases.", "Durable", "materials", "like", "treated", "bamboo,", "treated", "wood,", "or", "compacted", "earth", "are", "used", "to", "withstand", "prolonged", "exposure", "to", "water.", "Flood-resilient", "materials", "Elevated", "designs", "ensure", "ventilation", "beneath", "the", "structure,", "reducing", "moisture", "retention", "and", "mitigating", "rot", "or", "mould", "development.", "Elevated", "structures", "Houses", "like", "Chang", "houses", "in", "ﬂood-prone", "areas", "are", "built", "on", "stilts", "or", "raised", "platforms,", "keeping", "living", "spaces", "above", "ﬂood", "levels.", "Ventilation", "in", "foundations"],
+  "name": "4",
+  "page": 336,
+  "regionBoundary": {
+    "x1": 57.599999999999994,
+    "x2": 375.12,
+    "y1": 86.39999999999999,
+    "y2": 231.12
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Table4-1.png"
+}, {
+  "caption": "Table 5. Basic principles of cyclone-resistant vernacular constructions.",
+  "captionBoundary": {
+    "x1": 86.51100158691406,
+    "x2": 345.7217712402344,
+    "y1": 262.6368713378906,
+    "y2": 267.8059997558594
+  },
+  "figType": "Table",
+  "imageText": ["Aerodynamic", "shapes", "Structures", "like", "Chutillu", "houses", "with", "circular", "or", "semi-circular", "shapes", "reduce", "wind", "resistance", "and", "minimise", "structural", "damage", "during", "cyclones.", "Strong", "roof", "anchorage", "Roofs", "are", "securely", "tied", "to", "the", "walls", "using", "natural", "or", "mechanical", "fasteners,", "preventing", "uplift", "during", "strong", "winds.", "Lightweight", "construction", "Lightweight", "materials", "reduce", "the", "risk", "of", "collapse,", "ensuring", "safety", "during", "high", "wind", "conditions.", "Reduced", "openings", "Minimal", "and", "strategically", "placed", "openings", "prevent", "wind", "pressure", "buildup", "inside", "the", "structure,", "reducing", "the", "risk", "of", "collapse.", "Compact", "and", "Low-height", "design", "Low-height", "structures", "with", "compact", "forms", "provide", "better", "stability", "and", "resistance", "to", "high", "winds."],
+  "name": "5",
+  "page": 336,
+  "regionBoundary": {
+    "x1": 57.599999999999994,
+    "x2": 375.12,
+    "y1": 275.76,
+    "y2": 445.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Table5-1.png"
+}, {
+  "caption": "Fig. 14. Percentage of different types of waste using the segregation bin system.",
+  "captionBoundary": {
+    "x1": 70.31100463867188,
+    "x2": 361.8507080078125,
+    "y1": 264.3168640136719,
+    "y2": 269.4859924316406
+  },
+  "figType": "Figure",
+  "imageText": ["Contaminated", "10%", "12%", "Non", "biodegradable", "Biodegradable", "78%"],
+  "name": "14",
+  "page": 410,
+  "regionBoundary": {
+    "x1": 83.52,
+    "x2": 349.2,
+    "y1": 104.39999999999999,
+    "y2": 248.39999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14573_9789819822904-Figure14-1.png"
+}]

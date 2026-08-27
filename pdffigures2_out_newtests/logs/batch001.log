@@ -1,0 +1,44 @@
+03:34:28.944 [ForkJoinPool-2-worker-1] INFO  o.a.p.FigureExtractorBatchCli$ - Processing file 14573_9789819822904.pdf (1 of 1)
+03:34:31.260 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.DocumentLayout$ - Document was not two column
+03:34:31.329 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Applied filter Figure Following Text, 116 remaining
+03:34:31.330 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Applied filter Left Aligned, 108 remaining
+03:34:31.331 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Filtered for paragraph starts, 102 remaining
+03:34:31.332 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,3), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,2), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Table,2), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,7), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Table,1), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,6), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,8), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,1), dropping
+03:34:31.333 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,5), dropping
+03:34:31.334 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.CaptionDetector$ - Unable to disambiguate caption candidates for (Figure,4), dropping
+03:34:31.334 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 408
+03:34:31.342 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:34:31.358 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 472
+03:34:31.360 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:34:31.361 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 411
+03:34:31.363 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 7 graphic areas, 7 after cleaning
+03:34:31.365 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 265
+03:34:31.366 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 0 graphic areas, 0 after cleaning
+03:34:31.368 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 407
+03:34:31.369 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 1 graphic areas, 1 after cleaning
+03:34:31.370 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 471
+03:34:31.370 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:34:31.371 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 412
+03:34:31.372 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 4 graphic areas, 4 after cleaning
+03:34:31.374 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 335
+03:34:31.374 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:34:31.376 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 406
+03:34:31.377 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 2 graphic areas, 2 after cleaning
+03:34:31.377 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 409
+03:34:31.378 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 4 graphic areas, 4 after cleaning
+03:34:31.379 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 336
+03:34:31.379 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 4 graphic areas, 4 after cleaning
+03:34:31.380 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.FigureExtractor - On page 410
+03:34:31.381 [ForkJoinPool-2-worker-1] DEBUG o.a.pdffigures2.GraphicsExtractor$ - Found 4 graphic areas, 4 after cleaning
+03:34:32.280 [ForkJoinPool-2-worker-1] INFO  o.a.p.FigureExtractorBatchCli$ - Finished 14573_9789819822904.pdf in 3.334 seconds
+03:34:32.282 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Finished processing 1 files
+03:34:32.282 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Took 3.358 seconds
+03:34:32.283 [main] INFO  o.a.p.FigureExtractorBatchCli$ - Stats saved to pdffigures2_out_newtests/stats/stats_batch001.json
+03:34:32.283 [main] INFO  o.a.p.FigureExtractorBatchCli$ - No errors

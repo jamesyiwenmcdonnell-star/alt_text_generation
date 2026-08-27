@@ -1,4 +1,0 @@
-pdf_name,figure_name,fig_type,page,caption,image_path,x1,y1,x2,y2
-full_test,6.3,Figure,110,Figure 6.3: Traffic Separation Scheme in the SOMS and STRAITREP Sectors 7 – 9.,/work/jobs/20260824072818_james_full_test_32bdda24/extract_out/figures/full_test-Figure6.3-1.png,67.92,590.88,384.0,620.64
-full_test,3.3,Figure,49,Figure 3.3: Zig-zag pattern showing ships track. Depth soundings by lead-line.,/work/jobs/20260824072818_james_full_test_32bdda24/extract_out/figures/full_test-Figure3.3-1.png,48.0,556.0799999999999,279.59999999999997,620.4
-full_test,8.1,Figure,131,Figure 8.1: Number of reported incidents in SOMS.,/work/jobs/20260824072818_james_full_test_32bdda24/extract_out/figures/full_test-Figure8.1-1.png,48.0,98.88,364.08,265.2

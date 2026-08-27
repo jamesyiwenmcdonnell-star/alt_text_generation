@@ -1,0 +1,1521 @@
+[{
+  "caption": "Fig. 6.1",
+  "captionBoundary": {
+    "x1": 126.35099792480469,
+    "x2": 154.46311950683594,
+    "y1": 179.94091796875,
+    "y2": 183.92596435546875
+  },
+  "figType": "Figure",
+  "imageText": ["in", "one", "of", "k", "colours,", "such", "that", "any", "three", "connected", "squares", "(as", "shown", "in", "Figs.", "6.1–6.4)", "have", "three", "diﬀerent", "colours.", "Find", "the", "minimal", "value", "of", "k.", "2", "To", "colour", "a", "grid", "of", "7×", "7", "squares", "in", "k", "colours,", "each", "square", "is", "coloured", "The", "21st", "Chinese", "Mathematical", "Olympiad", "Cooperation", "Summer", "Camp", "83"],
+  "name": "6.1",
+  "page": 101,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 378.71999999999997,
+    "y1": 48.96,
+    "y2": 176.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure6.1-1.png"
+}, {
+  "caption": "Fig. 6.5 Fig. 6.6",
+  "captionBoundary": {
+    "x1": 126.35099792480469,
+    "x2": 289.943115234375,
+    "y1": 471.66094970703125,
+    "y2": 475.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.5",
+  "page": 101,
+  "regionBoundary": {
+    "x1": 100.8,
+    "x2": 348.47999999999996,
+    "y1": 340.56,
+    "y2": 455.03999999999996
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure6.5-1.png"
+}, {
+  "caption": "Fig. 5.6",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.6",
+  "page": 88,
+  "regionBoundary": {
+    "x1": 158.4,
+    "x2": 273.59999999999997,
+    "y1": 450.71999999999997,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.6-1.png"
+}, {
+  "caption": "Fig. 7.7",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 318.42095947265625,
+    "y2": 322.406005859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.7",
+  "page": 115,
+  "regionBoundary": {
+    "x1": 93.6,
+    "x2": 338.4,
+    "y1": 144.0,
+    "y2": 302.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure7.7-1.png"
+}, {
+  "caption": "Fig. 1.4",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.4",
+  "page": 24,
+  "regionBoundary": {
+    "x1": 151.92,
+    "x2": 280.08,
+    "y1": 446.4,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.4-1.png"
+}, {
+  "caption": "Fig. 1.11",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86343383789062,
+    "y1": 217.8609619140625,
+    "y2": 221.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.11",
+  "page": 37,
+  "regionBoundary": {
+    "x1": 156.96,
+    "x2": 276.48,
+    "y1": 74.88,
+    "y2": 201.6
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.11-1.png"
+}, {
+  "caption": "Fig. 8.2",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 425.3409423828125,
+    "y2": 429.32598876953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.2",
+  "page": 125,
+  "regionBoundary": {
+    "x1": 155.51999999999998,
+    "x2": 276.48,
+    "y1": 263.52,
+    "y2": 409.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure8.2-1.png"
+}, {
+  "caption": "Fig. 8.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 236.82095336914062,
+    "y2": 240.80599975585938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.1",
+  "page": 125,
+  "regionBoundary": {
+    "x1": 169.92,
+    "x2": 262.08,
+    "y1": 74.88,
+    "y2": 220.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure8.1-1.png"
+}, {
+  "caption": "Fig. 3.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 319.02093505859375,
+    "y2": 323.0059814453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.1",
+  "page": 57,
+  "regionBoundary": {
+    "x1": 175.68,
+    "x2": 256.32,
+    "y1": 221.76,
+    "y2": 303.12
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.1-1.png"
+}, {
+  "caption": "Fig. 3.2",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 440.220947265625,
+    "y2": 444.20599365234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.2",
+  "page": 57,
+  "regionBoundary": {
+    "x1": 175.68,
+    "x2": 257.03999999999996,
+    "y1": 342.71999999999997,
+    "y2": 424.08
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.2-1.png"
+}, {
+  "caption": "Fig. 11.1",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 347.880859375,
+    "y2": 351.86590576171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "11.1",
+  "page": 216,
+  "regionBoundary": {
+    "x1": 124.56,
+    "x2": 307.44,
+    "y1": 162.0,
+    "y2": 331.2
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure11.1-1.png"
+}, {
+  "caption": "Fig. 13.1",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 234.78094482421875,
+    "y2": 238.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.1",
+  "page": 238,
+  "regionBoundary": {
+    "x1": 119.52,
+    "x2": 313.2,
+    "y1": 75.6,
+    "y2": 205.2
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.1-1.png"
+}, {
+  "caption": "Fig. 5.5",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 217.8609619140625,
+    "y2": 221.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.5",
+  "page": 84,
+  "regionBoundary": {
+    "x1": 147.6,
+    "x2": 285.12,
+    "y1": 74.88,
+    "y2": 201.6
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.5-1.png"
+}, {
+  "caption": "Fig. 5.7",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 376.98095703125,
+    "y2": 380.96600341796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.7",
+  "page": 89,
+  "regionBoundary": {
+    "x1": 154.79999999999998,
+    "x2": 278.64,
+    "y1": 250.56,
+    "y2": 360.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.7-1.png"
+}, {
+  "caption": "Fig. 13.4",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 231.78094482421875,
+    "y2": 235.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.4",
+  "page": 243,
+  "regionBoundary": {
+    "x1": 162.0,
+    "x2": 271.44,
+    "y1": 75.6,
+    "y2": 202.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.4-1.png"
+}, {
+  "caption": "Fig. 13.5",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 416.7009582519531,
+    "y2": 420.6860046386719
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.5",
+  "page": 243,
+  "regionBoundary": {
+    "x1": 162.0,
+    "x2": 271.44,
+    "y1": 259.92,
+    "y2": 387.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.5-1.png"
+}, {
+  "caption": "Fig. 4.4",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 242.5809326171875,
+    "y2": 246.56597900390625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.4",
+  "page": 74,
+  "regionBoundary": {
+    "x1": 165.6,
+    "x2": 266.4,
+    "y1": 75.6,
+    "y2": 226.07999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure4.4-1.png"
+}, {
+  "caption": "Fig. 10.10",
+  "captionBoundary": {
+    "x1": 194.49600219726562,
+    "x2": 231.01177978515625,
+    "y1": 570.6009521484375,
+    "y2": 574.5859985351562
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.10",
+  "page": 206,
+  "regionBoundary": {
+    "x1": 150.48,
+    "x2": 282.24,
+    "y1": 422.64,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.10-1.png"
+}, {
+  "caption": "Fig. 3.6",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 449.5809326171875,
+    "y2": 453.56597900390625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.6",
+  "page": 60,
+  "regionBoundary": {
+    "x1": 160.56,
+    "x2": 272.15999999999997,
+    "y1": 279.36,
+    "y2": 433.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.6-1.png"
+}, {
+  "caption": "Fig. 3.5",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 178.8609619140625,
+    "y2": 182.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.5",
+  "page": 60,
+  "regionBoundary": {
+    "x1": 165.6,
+    "x2": 267.12,
+    "y1": 75.6,
+    "y2": 162.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.5-1.png"
+}, {
+  "caption": "Fig. 7.8",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.8",
+  "page": 117,
+  "regionBoundary": {
+    "x1": 146.88,
+    "x2": 285.12,
+    "y1": 432.71999999999997,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure7.8-1.png"
+}, {
+  "caption": "Fig. 6.7 Fig. 6.8",
+  "captionBoundary": {
+    "x1": 126.35099792480469,
+    "x2": 289.943115234375,
+    "y1": 197.94091796875,
+    "y2": 201.92596435546875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.7",
+  "page": 102,
+  "regionBoundary": {
+    "x1": 100.8,
+    "x2": 361.44,
+    "y1": 74.88,
+    "y2": 181.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure6.7-1.png"
+}, {
+  "caption": "Fig. 4.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 577.3809204101562,
+    "y2": 581.365966796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.1",
+  "page": 70,
+  "regionBoundary": {
+    "x1": 167.76,
+    "x2": 265.68,
+    "y1": 489.59999999999997,
+    "y2": 561.6
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure4.1-1.png"
+}, {
+  "caption": "Fig. 10.5",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 219.8408203125,
+    "y2": 223.82586669921875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.5",
+  "page": 192,
+  "regionBoundary": {
+    "x1": 163.44,
+    "x2": 268.56,
+    "y1": 74.88,
+    "y2": 203.04
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.5-1.png"
+}, {
+  "caption": "Fig. 12.2",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 236.82095336914062,
+    "y2": 240.80599975585938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12.2",
+  "page": 229,
+  "regionBoundary": {
+    "x1": 159.84,
+    "x2": 273.59999999999997,
+    "y1": 75.6,
+    "y2": 220.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure12.2-1.png"
+}, {
+  "caption": "Fig. 10.6",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 312.7208557128906,
+    "y2": 316.7059020996094
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.6",
+  "page": 197,
+  "regionBoundary": {
+    "x1": 158.4,
+    "x2": 274.32,
+    "y1": 195.84,
+    "y2": 296.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.6-1.png"
+}, {
+  "caption": "Fig. 10.7",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 533.5208129882812,
+    "y2": 537.505859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.7",
+  "page": 197,
+  "regionBoundary": {
+    "x1": 176.4,
+    "x2": 256.32,
+    "y1": 447.84,
+    "y2": 517.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.7-1.png"
+}, {
+  "caption": "Fig. 3.7 Fig. 3.8",
+  "captionBoundary": {
+    "x1": 126.35099792480469,
+    "x2": 289.943115234375,
+    "y1": 191.8209228515625,
+    "y2": 195.80596923828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.7",
+  "page": 65,
+  "regionBoundary": {
+    "x1": 100.8,
+    "x2": 337.68,
+    "y1": 75.6,
+    "y2": 175.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.7-1.png"
+}, {
+  "caption": "Fig. 9.4",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 442.02093505859375,
+    "y2": 446.0059814453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.4",
+  "page": 141,
+  "regionBoundary": {
+    "x1": 142.56,
+    "x2": 289.44,
+    "y1": 391.68,
+    "y2": 425.52
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.4-1.png"
+}, {
+  "caption": "Fig. 9.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 370.02093505859375,
+    "y2": 374.0059814453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.3",
+  "page": 141,
+  "regionBoundary": {
+    "x1": 170.64,
+    "x2": 261.36,
+    "y1": 262.8,
+    "y2": 354.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.3-1.png"
+}, {
+  "caption": "Fig. 8.4",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 196.8609619140625,
+    "y2": 200.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.4",
+  "page": 129,
+  "regionBoundary": {
+    "x1": 160.56,
+    "x2": 271.44,
+    "y1": 75.6,
+    "y2": 180.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure8.4-1.png"
+}, {
+  "caption": "Fig. 9.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 390.1809387207031,
+    "y2": 394.1659851074219
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.1",
+  "page": 134,
+  "regionBoundary": {
+    "x1": 113.75999999999999,
+    "x2": 318.24,
+    "y1": 191.51999999999998,
+    "y2": 374.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.1-1.png"
+}, {
+  "caption": "Fig. 4.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 377.3409423828125,
+    "y2": 381.32598876953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.3",
+  "page": 73,
+  "regionBoundary": {
+    "x1": 171.35999999999999,
+    "x2": 260.64,
+    "y1": 260.64,
+    "y2": 361.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure4.3-1.png"
+}, {
+  "caption": "Fig. 8.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 484.6209411621094,
+    "y2": 488.6059875488281
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.3",
+  "page": 128,
+  "regionBoundary": {
+    "x1": 171.35999999999999,
+    "x2": 261.36,
+    "y1": 380.88,
+    "y2": 468.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure8.3-1.png"
+}, {
+  "caption": "Fig. 13.6",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 231.78094482421875,
+    "y2": 235.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.6",
+  "page": 244,
+  "regionBoundary": {
+    "x1": 162.0,
+    "x2": 271.44,
+    "y1": 75.6,
+    "y2": 202.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.6-1.png"
+}, {
+  "caption": "Fig. 10.9",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 428.1608581542969,
+    "y2": 432.1459045410156
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.9",
+  "page": 205,
+  "regionBoundary": {
+    "x1": 119.52,
+    "x2": 312.47999999999996,
+    "y1": 284.4,
+    "y2": 412.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.9-1.png"
+}, {
+  "caption": "Fig. 10.2",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 281.7608337402344,
+    "y2": 285.7458801269531
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.2",
+  "page": 166,
+  "regionBoundary": {
+    "x1": 144.72,
+    "x2": 288.0,
+    "y1": 74.88,
+    "y2": 252.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.2-1.png"
+}, {
+  "caption": "Fig. 10.3",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 570.6009521484375,
+    "y2": 574.5859985351562
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.3",
+  "page": 166,
+  "regionBoundary": {
+    "x1": 144.72,
+    "x2": 288.0,
+    "y1": 363.59999999999997,
+    "y2": 541.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.3-1.png"
+}, {
+  "caption": "Fig. 1.8",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.8",
+  "page": 34,
+  "regionBoundary": {
+    "x1": 171.35999999999999,
+    "x2": 260.64,
+    "y1": 486.71999999999997,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.8-1.png"
+}, {
+  "caption": "Fig. 1.7",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 464.3409423828125,
+    "y2": 468.32598876953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.7",
+  "page": 34,
+  "regionBoundary": {
+    "x1": 171.35999999999999,
+    "x2": 260.64,
+    "y1": 380.88,
+    "y2": 448.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.7-1.png"
+}, {
+  "caption": "Fig. 9.9",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 412.5009460449219,
+    "y2": 416.4859924316406
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.9",
+  "page": 148,
+  "regionBoundary": {
+    "x1": 151.92,
+    "x2": 280.08,
+    "y1": 276.48,
+    "y2": 396.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.9-1.png"
+}, {
+  "caption": "Fig. 9.8",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 254.220947265625,
+    "y2": 258.20599365234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.8",
+  "page": 148,
+  "regionBoundary": {
+    "x1": 164.88,
+    "x2": 267.12,
+    "y1": 135.35999999999999,
+    "y2": 238.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.8-1.png"
+}, {
+  "caption": "Fig. 1.2",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.2",
+  "page": 22,
+  "regionBoundary": {
+    "x1": 171.35999999999999,
+    "x2": 260.64,
+    "y1": 486.71999999999997,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.2-1.png"
+}, {
+  "caption": "Fig. 1.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 341.8209533691406,
+    "y2": 345.8059997558594
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.1",
+  "page": 22,
+  "regionBoundary": {
+    "x1": 171.35999999999999,
+    "x2": 260.64,
+    "y1": 257.76,
+    "y2": 325.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.1-1.png"
+}, {
+  "caption": "Fig. 3.4",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 323.7009582519531,
+    "y2": 327.6860046386719
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.4",
+  "page": 59,
+  "regionBoundary": {
+    "x1": 160.56,
+    "x2": 272.15999999999997,
+    "y1": 191.51999999999998,
+    "y2": 307.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.4-1.png"
+}, {
+  "caption": "Fig. 1.6",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 188.8209228515625,
+    "y2": 192.80596923828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.6",
+  "page": 27,
+  "regionBoundary": {
+    "x1": 139.68,
+    "x2": 292.32,
+    "y1": 74.88,
+    "y2": 172.07999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.6-1.png"
+}, {
+  "caption": "Fig. 4.2",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 248.220947265625,
+    "y2": 252.20599365234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.2",
+  "page": 71,
+  "regionBoundary": {
+    "x1": 164.88,
+    "x2": 267.12,
+    "y1": 122.39999999999999,
+    "y2": 232.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure4.2-1.png"
+}, {
+  "caption": "Fig. 9.5",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 390.54095458984375,
+    "y2": 394.5260009765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.5",
+  "page": 144,
+  "regionBoundary": {
+    "x1": 162.72,
+    "x2": 270.0,
+    "y1": 278.64,
+    "y2": 374.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.5-1.png"
+}, {
+  "caption": "Fig. 2.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 217.8609619140625,
+    "y2": 221.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "2.1",
+  "page": 49,
+  "regionBoundary": {
+    "x1": 165.6,
+    "x2": 266.4,
+    "y1": 74.88,
+    "y2": 201.6
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure2.1-1.png"
+}, {
+  "caption": "Fig. 5.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 422.220947265625,
+    "y2": 426.20599365234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.3",
+  "page": 81,
+  "regionBoundary": {
+    "x1": 167.76,
+    "x2": 265.68,
+    "y1": 311.76,
+    "y2": 406.08
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.3-1.png"
+}, {
+  "caption": "Fig. 4.6",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 182.8209228515625,
+    "y2": 186.80596923828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.6",
+  "page": 76,
+  "regionBoundary": {
+    "x1": 170.64,
+    "x2": 261.36,
+    "y1": 75.6,
+    "y2": 166.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure4.6-1.png"
+}, {
+  "caption": "Fig. 13.7 Fig. 13.8",
+  "captionBoundary": {
+    "x1": 124.31100463867188,
+    "x2": 292.10662841796875,
+    "y1": 218.8209228515625,
+    "y2": 222.80596923828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.7",
+  "page": 245,
+  "regionBoundary": {
+    "x1": 100.8,
+    "x2": 346.32,
+    "y1": 75.6,
+    "y2": 202.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.7-1.png"
+}, {
+  "caption": "Fig. 10.8",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 570.6009521484375,
+    "y2": 574.5859985351562
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.8",
+  "page": 198,
+  "regionBoundary": {
+    "x1": 123.83999999999999,
+    "x2": 309.59999999999997,
+    "y1": 392.4,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.8-1.png"
+}, {
+  "caption": "Fig. 13.2",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 282.90093994140625,
+    "y2": 286.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.2",
+  "page": 241,
+  "regionBoundary": {
+    "x1": 126.0,
+    "x2": 306.0,
+    "y1": 75.6,
+    "y2": 266.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.2-1.png"
+}, {
+  "caption": "Fig. 5.2",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 226.8609619140625,
+    "y2": 230.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.2",
+  "page": 80,
+  "regionBoundary": {
+    "x1": 142.56,
+    "x2": 289.44,
+    "y1": 74.88,
+    "y2": 210.23999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.2-1.png"
+}, {
+  "caption": "Fig. 1.9",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 137.8209228515625,
+    "y2": 141.80596923828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.9",
+  "page": 35,
+  "regionBoundary": {
+    "x1": 112.32,
+    "x2": 320.4,
+    "y1": 74.88,
+    "y2": 121.67999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.9-1.png"
+}, {
+  "caption": "Fig. 7.6",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 323.7009582519531,
+    "y2": 327.6860046386719
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.6",
+  "page": 112,
+  "regionBoundary": {
+    "x1": 166.32,
+    "x2": 266.4,
+    "y1": 183.6,
+    "y2": 307.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure7.6-1.png"
+}, {
+  "caption": "Fig. 9.7",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.7",
+  "page": 145,
+  "regionBoundary": {
+    "x1": 123.83999999999999,
+    "x2": 308.15999999999997,
+    "y1": 459.35999999999996,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.7-1.png"
+}, {
+  "caption": "Fig. 9.6",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 195.90093994140625,
+    "y2": 199.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.6",
+  "page": 145,
+  "regionBoundary": {
+    "x1": 154.79999999999998,
+    "x2": 277.2,
+    "y1": 75.6,
+    "y2": 179.28
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.6-1.png"
+}, {
+  "caption": "Fig. 10.1",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 510.240966796875,
+    "y2": 514.2260131835938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.1",
+  "page": 154,
+  "regionBoundary": {
+    "x1": 162.72,
+    "x2": 269.28,
+    "y1": 398.88,
+    "y2": 494.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.1-1.png"
+}, {
+  "caption": "Fig. 1.5",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.5",
+  "page": 26,
+  "regionBoundary": {
+    "x1": 155.51999999999998,
+    "x2": 277.2,
+    "y1": 471.59999999999997,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.5-1.png"
+}, {
+  "caption": "Fig. 1.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 137.8209228515625,
+    "y2": 141.80596923828125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.3",
+  "page": 23,
+  "regionBoundary": {
+    "x1": 112.32,
+    "x2": 320.4,
+    "y1": 74.88,
+    "y2": 121.67999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.3-1.png"
+}, {
+  "caption": "Fig. 4.5",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.5",
+  "page": 75,
+  "regionBoundary": {
+    "x1": 162.0,
+    "x2": 271.44,
+    "y1": 441.35999999999996,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure4.5-1.png"
+}, {
+  "caption": "Fig. 7.9",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 430.2609558105469,
+    "y2": 434.2460021972656
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.9",
+  "page": 119,
+  "regionBoundary": {
+    "x1": 162.0,
+    "x2": 271.44,
+    "y1": 304.56,
+    "y2": 414.71999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure7.9-1.png"
+}, {
+  "caption": "Fig. 3.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 572.700927734375,
+    "y2": 576.6859741210938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "3.3",
+  "page": 58,
+  "regionBoundary": {
+    "x1": 168.48,
+    "x2": 264.24,
+    "y1": 456.47999999999996,
+    "y2": 556.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure3.3-1.png"
+}, {
+  "caption": "Fig. 1.10",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86343383789062,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "1.10",
+  "page": 36,
+  "regionBoundary": {
+    "x1": 156.96,
+    "x2": 276.48,
+    "y1": 427.68,
+    "y2": 554.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure1.10-1.png"
+}, {
+  "caption": "Fig. 10.4",
+  "captionBoundary": {
+    "x1": 196.5360107421875,
+    "x2": 228.85162353515625,
+    "y1": 442.92095947265625,
+    "y2": 446.906005859375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.4",
+  "page": 168,
+  "regionBoundary": {
+    "x1": 147.6,
+    "x2": 284.4,
+    "y1": 264.96,
+    "y2": 426.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure10.4-1.png"
+}, {
+  "caption": "Fig. 7.1 Fig. 7.2",
+  "captionBoundary": {
+    "x1": 126.35099792480469,
+    "x2": 289.943115234375,
+    "y1": 368.220947265625,
+    "y2": 372.20599365234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.1",
+  "page": 107,
+  "regionBoundary": {
+    "x1": 100.8,
+    "x2": 349.2,
+    "y1": 284.4,
+    "y2": 352.08
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure7.1-1.png"
+}, {
+  "caption": "Fig. 13.3",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 570.6609497070312,
+    "y2": 574.64599609375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.3",
+  "page": 242,
+  "regionBoundary": {
+    "x1": 158.4,
+    "x2": 274.32,
+    "y1": 407.52,
+    "y2": 541.4399999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure13.3-1.png"
+}, {
+  "caption": "Fig. 9.2",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 315.90093994140625,
+    "y2": 319.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.2",
+  "page": 136,
+  "regionBoundary": {
+    "x1": 115.92,
+    "x2": 316.08,
+    "y1": 75.6,
+    "y2": 299.52
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure9.2-1.png"
+}, {
+  "caption": "Fig. 5.1",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 479.9409484863281,
+    "y2": 483.9259948730469
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.1",
+  "page": 79,
+  "regionBoundary": {
+    "x1": 144.0,
+    "x2": 288.0,
+    "y1": 330.47999999999996,
+    "y2": 464.4
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.1-1.png"
+}, {
+  "caption": "Fig. 5.9",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 313.3809509277344,
+    "y2": 317.3659973144531
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.9",
+  "page": 94,
+  "regionBoundary": {
+    "x1": 155.51999999999998,
+    "x2": 276.48,
+    "y1": 222.48,
+    "y2": 297.36
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.9-1.png"
+}, {
+  "caption": "Fig. 5.8",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 255.90093994140625,
+    "y2": 259.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.8",
+  "page": 90,
+  "regionBoundary": {
+    "x1": 163.44,
+    "x2": 268.56,
+    "y1": 75.6,
+    "y2": 239.04
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.8-1.png"
+}, {
+  "caption": "Fig. 7.3",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 154.8609619140625,
+    "y2": 158.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.3",
+  "page": 111,
+  "regionBoundary": {
+    "x1": 134.64,
+    "x2": 298.08,
+    "y1": 75.6,
+    "y2": 138.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure7.3-1.png"
+}, {
+  "caption": "Fig. 5.4",
+  "captionBoundary": {
+    "x1": 198.71099853515625,
+    "x2": 226.8231201171875,
+    "y1": 458.9409484863281,
+    "y2": 462.9259948730469
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "5.4",
+  "page": 83,
+  "regionBoundary": {
+    "x1": 149.76,
+    "x2": 282.24,
+    "y1": 315.36,
+    "y2": 443.52
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure5.4-1.png"
+}, {
+  "caption": "Fig. 12.1",
+  "captionBoundary": {
+    "x1": 196.55099487304688,
+    "x2": 228.86660766601562,
+    "y1": 207.78094482421875,
+    "y2": 211.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12.1",
+  "page": 222,
+  "regionBoundary": {
+    "x1": 134.64,
+    "x2": 297.36,
+    "y1": 74.88,
+    "y2": 191.51999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14771_9789819829224-Figure12.1-1.png"
+}]

@@ -101,23 +101,49 @@ def _delete_message(message_id: int) -> None:
     failure here shouldn't block startup, just gets logged."""
     try:
         _call("deleteMessage", {"chat_id": TELEGRAM_CHAT_ID, "message_id": message_id})
-    except RuntimeError as exc:
+    except (RuntimeError, requests.exceptions.RequestException) as exc:
         logging.warning("telegram_status: could not delete message %s: %s", message_id, exc)
 
 
 def startup_cleanup() -> None:
-    """Deletes every message this bot has sent in previous runs (see
-    SENT_MESSAGE_IDS_PATH's docstring for why it can't go further than that),
-    so a restart starts the channel clean instead of accumulating old status
-    boards and alerts. Call this once at worker startup, BEFORE
-    ensure_message() -- not from refresh(), which would otherwise delete and
-    repost the board on every single job update."""
+    """Resets the board message to a clean starting state and deletes every
+    *other* message this bot has sent in previous runs -- i.e. one-off alerts
+    (see SENT_MESSAGE_IDS_PATH's docstring for why it can't go further than
+    that) -- so a restart starts the channel clean instead of accumulating
+    old alerts. The board message itself is edited in place rather than
+    deleted: deleting it would force ensure_message() to post a brand new
+    message next, which pings a fresh notification and loses the message's
+    position/pin in the chat, instead of quietly resetting the one that's
+    already there. Call this once at worker startup, BEFORE ensure_message()
+    -- not from refresh(), which would otherwise repost the board on every
+    single job update."""
+    board_id = _load_message_id()
     for old_id in _load_tracked_message_ids():
-        _delete_message(old_id)
+        if old_id != board_id:
+            _delete_message(old_id)
     if os.path.exists(SENT_MESSAGE_IDS_PATH):
         os.remove(SENT_MESSAGE_IDS_PATH)
-    if os.path.exists(MESSAGE_ID_PATH):
-        os.remove(MESSAGE_ID_PATH)
+    if board_id is not None:
+        try:
+            _edit_message(board_id, "📋 Alt-Text Pipeline — starting up...")
+        except (RuntimeError, requests.exceptions.RequestException) as exc:
+            if isinstance(exc, RuntimeError) and "not found" in str(exc).lower():
+                # "message to edit not found" / "chat not found": the board is
+                # genuinely gone, so drop the id and let ensure_message() post
+                # a fresh one
+                logging.warning("telegram_status: board message %s is gone (%s) "
+                                "-- a new board will be posted", board_id, exc)
+                try:
+                    os.remove(MESSAGE_ID_PATH)
+                except FileNotFoundError:
+                    pass
+                return
+            # transient failure (network, flood control, ...): keep the id --
+            # dropping it here would orphan the still-existing board message
+            # and make ensure_message() post a duplicate
+            logging.warning("telegram_status: could not reset board message %s "
+                            "(keeping it): %s", board_id, exc)
+        _track_sent_message(board_id)
 
 
 def _edit_message(message_id: int, text: str) -> None:
@@ -203,10 +229,16 @@ def _format_job_line(job: job_store.Job) -> str:
     # A COMPLETE job only carries an error_message when a non-fatal step
     # failed after the alt text was already produced (embedding) -- worth
     # showing, but flagged as a caveat rather than reading like a failure.
+    # With no error_message, a low-confidence embed verdict (from the
+    # pre-generation precheck or the post-embed coverage check) is the next
+    # most important caveat -- routine "all good" embed notes stay off the
+    # board to keep it readable.
     detail = ""
     if job.error_message:
         marker = "" if job.state == "FAILED" else "⚠ "
         detail = f"  {marker}{job.error_message[:60]}"
+    elif job.embed_note and job.embed_note.startswith("LOW EMBED CONFIDENCE"):
+        detail = f"  ⚠ {job.embed_note[:60]}"
 
     return (
         f"{emoji} {job.state:<12} {job.pdf_filename[:24]:<24} "

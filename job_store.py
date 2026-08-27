@@ -54,6 +54,15 @@ class Job:
     updated_at: str
     started_at: str | None
     completed_at: str | None
+    # Embedding confidence/coverage. embed_precheck_coverage is the fraction of
+    # manifest figures the pre-generation dry run predicted it can tag (NULL
+    # until the precheck has run); embed_coverage is the fraction actually
+    # tagged (NULL until embedding ran, and stays NULL if embedding crashed).
+    # embed_note is the human-readable verdict shown to editors -- prefixed
+    # "LOW EMBED CONFIDENCE" when below job_pipeline.EMBED_MIN_COVERAGE.
+    embed_precheck_coverage: float | None = None
+    embed_coverage: float | None = None
+    embed_note: str | None = None
 
     @property
     def pdf_dir(self) -> str:
@@ -165,10 +174,21 @@ def init_db() -> None:
                 created_at TEXT NOT NULL,
                 updated_at TEXT NOT NULL,
                 started_at TEXT,
-                completed_at TEXT
+                completed_at TEXT,
+                embed_precheck_coverage REAL,
+                embed_coverage REAL,
+                embed_note TEXT
             )
         """)
         conn.execute("CREATE INDEX IF NOT EXISTS idx_jobs_state_created ON jobs(state, created_at)")
+        # Migration for DBs created before the embed-coverage columns existed --
+        # CREATE TABLE IF NOT EXISTS won't touch an existing table's schema.
+        existing = {row["name"] for row in conn.execute("PRAGMA table_info(jobs)")}
+        for col, decl in (("embed_precheck_coverage", "REAL"),
+                          ("embed_coverage", "REAL"),
+                          ("embed_note", "TEXT")):
+            if col not in existing:
+                conn.execute(f"ALTER TABLE jobs ADD COLUMN {col} {decl}")
 
 
 def _row_to_job(row: sqlite3.Row) -> Job:
@@ -295,3 +315,22 @@ def update_job_state(job_id: str, state: str, error: str | None = None) -> None:
 def set_pod_id(job_id: str, pod_id: str) -> None:
     with _connect() as conn:
         conn.execute("UPDATE jobs SET pod_id=?, updated_at=? WHERE job_id=?", (pod_id, _now(), job_id))
+
+
+def set_embed_precheck(job_id: str, coverage: float, note: str) -> None:
+    """Records the pre-generation embedding confidence check's verdict."""
+    with _connect() as conn:
+        conn.execute(
+            "UPDATE jobs SET embed_precheck_coverage=?, embed_note=?, updated_at=? WHERE job_id=?",
+            (coverage, note, _now(), job_id),
+        )
+
+
+def set_embed_result(job_id: str, coverage: float, note: str) -> None:
+    """Records the actual post-embedding coverage; the note supersedes the
+    precheck's (the prediction is still readable from embed_precheck_coverage)."""
+    with _connect() as conn:
+        conn.execute(
+            "UPDATE jobs SET embed_coverage=?, embed_note=?, updated_at=? WHERE job_id=?",
+            (coverage, note, _now(), job_id),
+        )

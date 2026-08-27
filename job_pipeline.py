@@ -96,17 +96,58 @@ def ensure_pod_ready(api_key: str) -> Pod:
     return pod
 
 
-# embed_alt_text.embed() reports each manifest row's outcome as a status
-# string; these are the prefixes that mean "this figure ended up as a real
-# <Figure> structure element" (the rest -- no-match, scan-failed,
-# page-out-of-range -- mean it didn't). Same classification print_report()
-# uses for its coverage summary.
-_EMBED_OK_PREFIXES = ("tagged", "shared", "existing")
+# Below this fraction of manifest figures tagged, a job is flagged as
+# under-embedded -- both by the pre-generation confidence check and by the
+# post-embedding coverage check. Documents whose structure the embedder
+# actually understands sit at 99-100% on the test corpus; anything materially
+# below that means whole figures will be silent for a screen-reader user, and
+# the editor needs to know rather than receiving a tagged PDF that *looks*
+# complete. Deliberately non-fatal either way: partial tagging plus a warning
+# beats discarding good alt text.
+EMBED_MIN_COVERAGE = 0.90
 
 
-def embed_alt_text_into_pdf(job: job_store.Job) -> str:
+def _coverage_note(tagged: int, total: int, coverage: float,
+                   verb: str, ok_prefix: str) -> tuple[str, str, bool]:
+    """Single source of the embed-confidence note for both the precheck and
+    the post-embed check, so the threshold comparison and the literal
+    "LOW EMBED CONFIDENCE" prefix telegram_status keys on can't drift apart.
+    Returns (text, note, low)."""
+    text = f"{tagged}/{total} figures {verb} ({coverage:.0%})"
+    low = coverage < EMBED_MIN_COVERAGE
+    note = f"LOW EMBED CONFIDENCE: only {text}" if low else f"{ok_prefix}: {text}"
+    return text, note, low
+
+
+def precheck_embedding(job: job_store.Job) -> None:
+    """Pre-generation confidence check: predicts embedding coverage by running
+    the real matching logic in dry-run mode (no alt text needed -- matching is
+    purely geometric), BEFORE any GPU time is spent. The verdict is persisted
+    on the job (embed_precheck_coverage / embed_note) so an under-embeddable
+    PDF is visible on the board while there's still time to cancel it.
+
+    Never raises -- a broken precheck must not take down a job that might
+    still generate perfectly good alt text. SystemExit is included for the
+    same reason as in embed_alt_text_into_pdf below."""
+    try:
+        pre = embed_alt_text.preflight(job.pdf_path, job.manifest_path, job.pdf_stem)
+        if not pre["ok"]:
+            note = f"LOW EMBED CONFIDENCE: cannot embed -- {pre['reason']}"
+            coverage = 0.0
+        else:
+            coverage = pre["coverage"]
+            _text, note, _low = _coverage_note(pre["tagged"], pre["total"], coverage,
+                                               verb="matchable", ok_prefix="embed precheck")
+        job_store.set_embed_precheck(job.job_id, coverage, note)
+        logging.info("job %s: %s", job.job_id, note)
+    except (Exception, SystemExit):
+        logging.exception("job %s: embed precheck itself failed (continuing)", job.job_id)
+
+
+def embed_alt_text_into_pdf(job: job_store.Job) -> dict:
     """Splices this job's generated alt text into a tagged copy of its source
-    PDF at job.tagged_pdf_path, and returns a short coverage summary.
+    PDF at job.tagged_pdf_path, and returns embed_alt_text.summarize_report()'s
+    summary dict (total / tagged / coverage / ...).
 
     embed_alt_text.embed() signals its own failure paths -- no /StructTreeRoot
     to splice into, no manifest rows for this pdf_name, an empty /K -- by
@@ -127,8 +168,7 @@ def embed_alt_text_into_pdf(job: job_store.Job) -> str:
     except SystemExit as exc:
         raise RuntimeError(str(exc) or "embed_alt_text aborted") from exc
 
-    tagged = sum(1 for e in report if e["status"].startswith(_EMBED_OK_PREFIXES))
-    return f"{tagged}/{len(report)} figure(s) tagged"
+    return embed_alt_text.summarize_report(report)
 
 
 def process_job(job: job_store.Job, api_key: str) -> None:
@@ -140,6 +180,7 @@ def process_job(job: job_store.Job, api_key: str) -> None:
         telegram_status.refresh()  # reflect the EXTRACTING state claim_next_queued_job() already set
         extract_images(input_dir=job.pdf_dir, output_dir=job.extract_dir, skip_done=False)
         job_store.update_job_state(job.job_id, "EXTRACTED")
+        precheck_embedding(job)  # before the pod: flags un-embeddable PDFs while no GPU money is being spent
         telegram_status.refresh()
 
         job_store.update_job_state(job.job_id, "POD_STARTING")
@@ -160,8 +201,17 @@ def process_job(job: job_store.Job, api_key: str) -> None:
         embed_warning = None
         try:
             summary = embed_alt_text_into_pdf(job)
-            logging.info("job %s: embedded alt text (%s) -> %s",
-                         job.job_id, summary, job.tagged_pdf_path)
+            coverage = summary["coverage"]
+            text, note, low = _coverage_note(summary["tagged"], summary["total"], coverage,
+                                             verb="tagged", ok_prefix="embedded")
+            if low:
+                # rides on error_message too so the COMPLETE state carries the
+                # caveat the same way an embed crash does (⚠ on the board,
+                # visible in the API) -- an under-tagged PDF must not look
+                # identical to a fully tagged one.
+                embed_warning = f"embedded, but only {text} -- tagged PDF is incomplete"
+            job_store.set_embed_result(job.job_id, coverage, note)
+            logging.info("job %s: %s -> %s", job.job_id, note, job.tagged_pdf_path)
         except (Exception, SystemExit) as exc:
             # Deliberately non-fatal. The alt text itself is already generated
             # and written to job.results_csv_path, so a PDF that can't be

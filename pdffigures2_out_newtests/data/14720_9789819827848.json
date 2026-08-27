@@ -1,0 +1,681 @@
+[{
+  "caption": "Fig. 14.2. A simplified sketch of the pyramidal neuron.",
+  "captionBoundary": {
+    "x1": 114.11100769042969,
+    "x2": 318.06536865234375,
+    "y1": 228.55685424804688,
+    "y2": 233.72598266601562
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "14.2",
+  "page": 101,
+  "regionBoundary": {
+    "x1": 101.52,
+    "x2": 330.47999999999996,
+    "y1": 73.44,
+    "y2": 217.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure14.2-1.png"
+}, {
+  "caption": "Fig. 14.3. The author’s associative neuron model. The main signal and the output signal have the same meaning.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.09039306640625,
+    "y1": 486.1968688964844,
+    "y2": 502.28619384765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "14.3",
+  "page": 101,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 361.44,
+    "y1": 364.32,
+    "y2": 477.35999999999996
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure14.3-1.png"
+}, {
+  "caption": "Fig. 12.1. A simple model of the two terminal synapse vs. a diode.",
+  "captionBoundary": {
+    "x1": 93.47100830078125,
+    "x2": 338.7291564941406,
+    "y1": 168.6768798828125,
+    "y2": 173.84600830078125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12.1",
+  "page": 88,
+  "regionBoundary": {
+    "x1": 63.36,
+    "x2": 368.64,
+    "y1": 72.72,
+    "y2": 157.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure12.1-1.png"
+}, {
+  "caption": "Fig. 16.2. The feedback loop in the reconstruction of visual memories with qualia.",
+  "captionBoundary": {
+    "x1": 65.1510009765625,
+    "x2": 367.0439758300781,
+    "y1": 146.71685791015625,
+    "y2": 151.885986328125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "16.2",
+  "page": 120,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 361.44,
+    "y1": 72.72,
+    "y2": 135.35999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure16.2-1.png"
+}, {
+  "caption": "Fig. 4.1. Cartesian theater and the chain of smaller and smaller observing homunculi inside the head.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 377.921875,
+    "y1": 544.3968505859375,
+    "y2": 560.4862060546875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "4.1",
+  "page": 42,
+  "regionBoundary": {
+    "x1": 52.559999999999995,
+    "x2": 379.44,
+    "y1": 397.44,
+    "y2": 535.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure4.1-1.png"
+}, {
+  "caption": "Fig. 6.3. A simplified sketch of a neuron with axon, dendrites and synapses.",
+  "captionBoundary": {
+    "x1": 76.79100036621094,
+    "x2": 355.268798828125,
+    "y1": 209.59686279296875,
+    "y2": 214.7659912109375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.3",
+  "page": 52,
+  "regionBoundary": {
+    "x1": 120.96,
+    "x2": 311.03999999999996,
+    "y1": 73.44,
+    "y2": 198.72
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure6.3-1.png"
+}, {
+  "caption": "Fig. 13.1. Analog-to-digital conversion prevents the direct experience of meaning. This applies to all sensory modalities.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.089599609375,
+    "y1": 412.036865234375,
+    "y2": 428.12615966796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "13.1",
+  "page": 93,
+  "regionBoundary": {
+    "x1": 59.76,
+    "x2": 373.68,
+    "y1": 307.44,
+    "y2": 403.2
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure13.1-1.png"
+}, {
+  "caption": "Fig. 7.1. Sensory signal transmission from a stimulated receptor cell to the receiving sensory cortex neuron in the brain.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 377.9632873535156,
+    "y1": 453.4368591308594,
+    "y2": 469.64630126953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.1",
+  "page": 57,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 379.44,
+    "y1": 354.96,
+    "y2": 444.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure7.1-1.png"
+}, {
+  "caption": "Fig. 12.3. Astrocyte connection to the synapse between the presynaptic neuron and postsynaptic neuron.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.06146240234375,
+    "y1": 556.516845703125,
+    "y2": 572.606201171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12.3",
+  "page": 89,
+  "regionBoundary": {
+    "x1": 82.8,
+    "x2": 349.2,
+    "y1": 355.68,
+    "y2": 547.1999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure12.3-1.png"
+}, {
+  "caption": "Fig. 12.2. A tripartite synapse and a three terminal FET transistor.",
+  "captionBoundary": {
+    "x1": 94.55099487304688,
+    "x2": 337.75732421875,
+    "y1": 171.19683837890625,
+    "y2": 176.365966796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "12.2",
+  "page": 89,
+  "regionBoundary": {
+    "x1": 99.36,
+    "x2": 332.64,
+    "y1": 73.44,
+    "y2": 160.56
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure12.2-1.png"
+}, {
+  "caption": "Fig. 16.1. Random access digital memory with data inputs, outputs and address input.",
+  "captionBoundary": {
+    "x1": 59.031005859375,
+    "x2": 373.1114807128906,
+    "y1": 336.796875,
+    "y2": 341.96600341796875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "16.1",
+  "page": 116,
+  "regionBoundary": {
+    "x1": 95.75999999999999,
+    "x2": 337.68,
+    "y1": 225.35999999999999,
+    "y2": 326.15999999999997
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure16.1-1.png"
+}, {
+  "caption": "Fig. 6.4. Repetition modifies synaptic transmission strength. (a) Initial state showing weak synaptic transmission. (b) Strengthened synaptic transmission following repeated stimulation.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.0633239746094,
+    "y1": 232.75686645507812,
+    "y2": 259.7663269042969
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "6.4",
+  "page": 53,
+  "regionBoundary": {
+    "x1": 54.0,
+    "x2": 379.44,
+    "y1": 73.44,
+    "y2": 222.48
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure6.4-1.png"
+}, {
+  "caption": "Fig. 23.1. The hand position caused by a random motor neuron excitation is seen and perceived. Position percept signals are associated with the simultaneous muscle tension command signals. Haphazard hand motions will eventually lead to the mapping of the reachable space in terms of motor neuron signals.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.0922546386719,
+    "y1": 181.7568359375,
+    "y2": 219.806640625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "23.1",
+  "page": 173,
+  "regionBoundary": {
+    "x1": 83.52,
+    "x2": 349.2,
+    "y1": 72.72,
+    "y2": 172.07999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure23.1-1.png"
+}, {
+  "caption": "Fig. 9.1. Scanning a rough surface with a rigid stick.",
+  "captionBoundary": {
+    "x1": 118.67100524902344,
+    "x2": 313.598876953125,
+    "y1": 347.95684814453125,
+    "y2": 353.1259765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "9.1",
+  "page": 73,
+  "regionBoundary": {
+    "x1": 83.52,
+    "x2": 349.2,
+    "y1": 142.56,
+    "y2": 337.68
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure9.1-1.png"
+}, {
+  "caption": "Fig. 14.5. The selection of the evoked item from many by the use of context and the Winner-Takes-All threshold.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.113525390625,
+    "y1": 229.75686645507812,
+    "y2": 245.84616088867188
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "14.5",
+  "page": 105,
+  "regionBoundary": {
+    "x1": 95.75999999999999,
+    "x2": 337.68,
+    "y1": 73.44,
+    "y2": 220.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure14.5-1.png"
+}, {
+  "caption": "Fig. 20.1. The perception-response chain model. Hearing one’s thoughts without inner feedback is only possible by talking aloud.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.0957946777344,
+    "y1": 152.71685791015625,
+    "y2": 168.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "20.1",
+  "page": 148,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 361.44,
+    "y1": 73.44,
+    "y2": 143.28
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure20.1-1.png"
+}, {
+  "caption": "Fig. 8.2. Sine waves with different frequencies.",
+  "captionBoundary": {
+    "x1": 128.1510009765625,
+    "x2": 303.93292236328125,
+    "y1": 232.27685546875,
+    "y2": 237.44598388671875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.2",
+  "page": 64,
+  "regionBoundary": {
+    "x1": 90.0,
+    "x2": 343.44,
+    "y1": 96.47999999999999,
+    "y2": 221.04
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure8.2-1.png"
+}, {
+  "caption": "Fig. 20.2. The perception-response chain model with feedback. Internal feedback allows the hearing of one’s thoughts without speaking aloud.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.1073913574219,
+    "y1": 173.71685791015625,
+    "y2": 189.80615234375
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "20.2",
+  "page": 149,
+  "regionBoundary": {
+    "x1": 59.76,
+    "x2": 373.68,
+    "y1": 72.72,
+    "y2": 164.16
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure20.2-1.png"
+}, {
+  "caption": "Fig. 7.2. Synaptic release of neurotransmitter molecules leads to the receiving neuron reaction and excitation mode.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 377.9811096191406,
+    "y1": 368.23687744140625,
+    "y2": 384.326171875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "7.2",
+  "page": 59,
+  "regionBoundary": {
+    "x1": 108.0,
+    "x2": 325.44,
+    "y1": 210.95999999999998,
+    "y2": 359.28
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure7.2-1.png"
+}, {
+  "caption": "Fig. 6.1. A MRI image of the author’s brain (by courtesy of the owner).",
+  "captionBoundary": {
+    "x1": 84.59100341796875,
+    "x2": 347.5774841308594,
+    "y1": 555.556884765625,
+    "y2": 560.7260131835938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.1",
+  "page": 49,
+  "regionBoundary": {
+    "x1": 101.52,
+    "x2": 331.2,
+    "y1": 404.64,
+    "y2": 544.3199999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure6.1-1.png"
+}, {
+  "caption": "Fig. 14.4. The principle of the associative learning and prediction of the next situation in a sequence of situations by the use of a delay operation. After the learning the sequence can be replayed by inputting A. A will then evoke B, B will evoke C, and so on.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.0940246582031,
+    "y1": 269.35687255859375,
+    "y2": 296.4864807128906
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "14.4",
+  "page": 103,
+  "regionBoundary": {
+    "x1": 90.0,
+    "x2": 343.44,
+    "y1": 188.64,
+    "y2": 260.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure14.4-1.png"
+}, {
+  "caption": "Fig. 15.2. The perception-response feedback loop.",
+  "captionBoundary": {
+    "x1": 122.63099670410156,
+    "x2": 309.56158447265625,
+    "y1": 559.516845703125,
+    "y2": 564.6859741210938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "15.2",
+  "page": 108,
+  "regionBoundary": {
+    "x1": 84.96,
+    "x2": 347.03999999999996,
+    "y1": 494.64,
+    "y2": 548.64
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure15.2-1.png"
+}, {
+  "caption": "Fig. 15.1. The general outline of the sensory perception process.",
+  "captionBoundary": {
+    "x1": 97.43099975585938,
+    "x2": 334.74188232421875,
+    "y1": 175.1568603515625,
+    "y2": 180.32598876953125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "15.1",
+  "page": 108,
+  "regionBoundary": {
+    "x1": 90.72,
+    "x2": 341.28,
+    "y1": 128.88,
+    "y2": 164.16
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure15.1-1.png"
+}, {
+  "caption": "Fig. 10.2. The intensity of pain caused by slow repetition of shocks (a) and by fast repetition of shocks (b). The repetition rate affects the experience.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.07586669921875,
+    "y1": 454.3968505859375,
+    "y2": 470.48614501953125
+  },
+  "figType": "Figure",
+  "imageText": ["(a)", "(b)"],
+  "name": "10.2",
+  "page": 80,
+  "regionBoundary": {
+    "x1": 72.0,
+    "x2": 360.0,
+    "y1": 340.56,
+    "y2": 444.24
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure10.2-1.png"
+}, {
+  "caption": "Fig. 10.1. The intensity of the pain caused by a single shock.",
+  "captionBoundary": {
+    "x1": 103.91099548339844,
+    "x2": 328.24224853515625,
+    "y1": 228.55685424804688,
+    "y2": 233.72598266601562
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "10.1",
+  "page": 80,
+  "regionBoundary": {
+    "x1": 108.72,
+    "x2": 324.0,
+    "y1": 72.72,
+    "y2": 217.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure10.1-1.png"
+}, {
+  "caption": "Fig. 8.1. The path from heard sound to sensory neuron reaction.",
+  "captionBoundary": {
+    "x1": 98.27099609375,
+    "x2": 333.89202880859375,
+    "y1": 300.0768737792969,
+    "y2": 305.2460021972656
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.1",
+  "page": 63,
+  "regionBoundary": {
+    "x1": 108.0,
+    "x2": 325.44,
+    "y1": 220.32,
+    "y2": 289.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure8.1-1.png"
+}, {
+  "caption": "Fig. 6.2. The outline of a biological cell (cut).",
+  "captionBoundary": {
+    "x1": 130.67100524902344,
+    "x2": 301.6372375488281,
+    "y1": 497.83685302734375,
+    "y2": 503.0059814453125
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "6.2",
+  "page": 50,
+  "regionBoundary": {
+    "x1": 119.52,
+    "x2": 313.2,
+    "y1": 347.76,
+    "y2": 487.44
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure6.2-1.png"
+}, {
+  "caption": "Fig. 8.3. The excitation modes of a sensory neuron can be internally experienced as an immaterial quale and externally observed as a material excitation mode.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.1820373535156,
+    "y1": 517.3968505859375,
+    "y2": 533.4862060546875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "8.3",
+  "page": 67,
+  "regionBoundary": {
+    "x1": 77.75999999999999,
+    "x2": 355.68,
+    "y1": 408.96,
+    "y2": 508.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure8.3-1.png"
+}, {
+  "caption": "Fig. 23.2. Random excitations produce random sounds. These are detected by the microphone and their frequencies are analyzed. Ensuing frequency signals will be associated with corresponding command signals. Imitation of sounds is now possible.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.1145935058594,
+    "y1": 198.6768798828125,
+    "y2": 225.8065185546875
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "23.2",
+  "page": 175,
+  "regionBoundary": {
+    "x1": 77.75999999999999,
+    "x2": 355.68,
+    "y1": 72.72,
+    "y2": 189.35999999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure23.2-1.png"
+}, {
+  "caption": "Fig. 14.1. The principle of associative linking with an associative neuron group (ASSO GROUP). (a) An unlearned asso group will not respond to any evoking stimulus (“cat”). (b) An asso group passes its input. (c) The asso group learns the associative link between its input and the evoking stimulus via repeated coincidences of these. (d) Thereafter the stimulus (“cat”) will evoke the associated pattern (the mental image).",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.1765441894531,
+    "y1": 373.7568664550781,
+    "y2": 422.726806640625
+  },
+  "figType": "Figure",
+  "imageText": ["(d)", "(c)", "(b)", "(a)"],
+  "name": "14.1",
+  "page": 99,
+  "regionBoundary": {
+    "x1": 124.56,
+    "x2": 306.0,
+    "y1": 73.44,
+    "y2": 364.32
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure14.1-1.png"
+}, {
+  "caption": "Fig. 24.1. The XCR-1 robot.",
+  "captionBoundary": {
+    "x1": 161.51100158691406,
+    "x2": 270.67333984375,
+    "y1": 579.556884765625,
+    "y2": 584.7260131835938
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "24.1",
+  "page": 183,
+  "regionBoundary": {
+    "x1": 144.72,
+    "x2": 287.28,
+    "y1": 404.64,
+    "y2": 568.0799999999999
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure24.1-1.png"
+}, {
+  "caption": "Fig. 22.1. Simplified overall block diagram of the HCA.",
+  "captionBoundary": {
+    "x1": 112.07099914550781,
+    "x2": 320.20263671875,
+    "y1": 395.35687255859375,
+    "y2": 400.5260009765625
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "22.1",
+  "page": 163,
+  "regionBoundary": {
+    "x1": 101.52,
+    "x2": 331.2,
+    "y1": 72.72,
+    "y2": 384.47999999999996
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure22.1-1.png"
+}, {
+  "caption": "Fig. 23.3. The principle of the execution of imagined actions. The imagined actions to be executed are fed back to the perception process to be perceived as virtual percepts. These can now become reproduced as actual acts by the imitation process.",
+  "captionBoundary": {
+    "x1": 54.11100769042969,
+    "x2": 378.15142822265625,
+    "y1": 224.71685791015625,
+    "y2": 251.84646606445312
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "23.3",
+  "page": 178,
+  "regionBoundary": {
+    "x1": 65.52,
+    "x2": 367.2,
+    "y1": 72.72,
+    "y2": 215.28
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure23.3-1.png"
+}, {
+  "caption": "Fig. 15.3. Associatively cross-connected perception-response feedback loop modalities.",
+  "captionBoundary": {
+    "x1": 55.550994873046875,
+    "x2": 376.72747802734375,
+    "y1": 238.75686645507812,
+    "y2": 243.92599487304688
+  },
+  "figType": "Figure",
+  "imageText": [],
+  "name": "15.3",
+  "page": 111,
+  "regionBoundary": {
+    "x1": 65.52,
+    "x2": 367.2,
+    "y1": 72.72,
+    "y2": 227.51999999999998
+  },
+  "renderDpi": 100,
+  "renderURL": "pdffigures2_out_newtests/figures/14720_9789819827848-Figure15.3-1.png"
+}]

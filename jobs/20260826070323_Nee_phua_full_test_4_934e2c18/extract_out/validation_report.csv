@@ -1,5 +1,0 @@
-pdf_name,fig_type,issue,detail
-full_test_4,Figure,missing_major,"no Figure numbered 7 (or 7.x) found at all (have majors [1, 2, 3, 4, 5, 6, 8])"
-full_test_4,Table,missing_major,"no Table numbered 1 (or 1.x) found at all (have majors [4, 5])"
-full_test_4,Table,missing_major,"no Table numbered 2 (or 2.x) found at all (have majors [4, 5])"
-full_test_4,Table,missing_major,"no Table numbered 3 (or 3.x) found at all (have majors [4, 5])"
