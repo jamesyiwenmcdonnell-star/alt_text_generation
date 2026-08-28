@@ -26,18 +26,90 @@ The worker refuses to start without all four of these set in your shell environm
 hardcoded anywhere, since `startup.py` forwards them from the host into the container:
 
 ```bash
-export RUNPOD_API_KEY="your-runpod-key"      # RunPod console -> Settings -> API Keys; rents the GPU pod
-export HF_TOKEN="your-hf-token"              # huggingface.co token; forwarded into the pod's environment
-                                              # to pull the InternVL3.5-8B model weights on first boot
+export RUNPOD_API_KEY="your-runpod-key"      # rents, polls and terminates the GPU pod
+export HF_TOKEN="your-hf-token"              # forwarded into the pod's environment to pull the
+                                              # InternVL3.5-8B model weights on first boot
 export TELEGRAM_BOT_TOKEN="your-bot-token"   # from @BotFather; posts the live status board
 export TELEGRAM_CHAT_ID="your-chat-id"       # the channel/chat the bot posts the board into
 ```
+
+Quote the value with plain straight quotes or not at all. Quotes pasted from a document or chat
+app are often curly (`"..."`), and those become *part of the value* rather than shell syntax —
+a token wrapped in them produces a malformed API URL and an unhelpful 404.
+
+### Creating the RunPod key (`RUNPOD_API_KEY`)
+
+1. Sign up at [runpod.io](https://www.runpod.io/), then add credit under **Billing**. Pods bill
+   per second against a prepaid balance, and pod creation fails outright on a zero balance.
+2. Go to **Settings → API Keys → Create API Key**.
+3. Give it **read/write** permission. The pipeline doesn't only read pod status — it creates and
+   terminates pods (`pod.py`), so a read-only key gets as far as the first job and then fails.
+4. Copy it there and then; RunPod shows the full key only once, at creation.
+
+### Creating the Hugging Face token (`HF_TOKEN`)
+
+1. Sign up at [huggingface.co](https://huggingface.co/), then go to
+   **Settings → Access Tokens → Create new token**.
+2. A **Read** token is sufficient — it only ever downloads model weights, never uploads.
+3. While logged in, open the model page for
+   [`OpenGVLab/InternVL3_5-8B`](https://huggingface.co/OpenGVLab/InternVL3_5-8B) and accept the
+   access conditions if that page asks for them. If the model is gated and the token's account
+   hasn't been granted access, the pod boots normally and only fails partway through the weight
+   download — a slow, confusing failure several minutes into a job rather than at startup.
+4. Note where this token ends up: `controller.py` places it in the *pod's* environment
+   (`RUNPOD_POD_CONFIG["env"]`) so vLLM on the rented machine can authenticate to Hugging Face.
+   It doesn't stay on your Mac. Scope it read-only accordingly.
 
 `gpu_ids_snapshot.txt` and `gpu_types.json` (candidate GPU types, cheapest-first) already ship
 in the repo with real RunPod ids — nothing to generate for a fresh setup. If RunPod's GPU
 catalog changes later, `gpu_utils.check_for_id_drift()` / `list_all_gpu_ids()` refresh them.
 
-## 3. File structure
+## 3. How the RunPod pod works
+
+Nothing model-related is installed on your Mac. A "pod" is a GPU container rented from RunPod
+for as long as it's alive, and `controller.py` boots a stock `vllm/vllm-openai:v0.10.1` image on
+one, serving `OpenGVLab/InternVL3_5-8B` behind an OpenAI-compatible HTTP API on port 8000
+(exposed as `8000/http`). `runpod_VL.py` then posts each extracted figure to that endpoint and
+gets alt text back. Both credentials above feed this single step: the RunPod key rents the
+machine, the HF token lets vLLM inside it download the weights.
+
+**Which GPU it picks.** `gpu_utils.pick_available_gpu()` walks `gpu_ids_snapshot.txt` in file
+order — A40, L40, RTX A6000, RTX 6000 Ada — and takes the first one RunPod reports stock for.
+`High`, `Medium` and `Low` all count as allocatable: rejecting `Low` doesn't find something
+better, it just skips a GPU that would have worked, and every candidate sitting at `Low` is
+routine. File order *is* the preference order, so preferring a different card means reordering
+that file. If nothing has capacity the job fails with "No available GPU among the candidates",
+which is a RunPod capacity problem rather than a bug in the pipeline.
+
+**Booting takes minutes, not seconds.** `Pod.wait_for_pod()` polls for up to 420s (7 minutes).
+A pod RunPod reports as `RUNNING` is *not* yet usable — vLLM still has to pull and load ~8B
+parameters of weights. Readiness means the pod's own `/health` endpoint answers, which is why
+`app_startup_pod_checker()` keeps returning `STARTING` long after the pod visibly exists.
+
+**One pod, reused across jobs.** At the expected volume (≤10 PDFs/day) a fresh pod per job would
+spend most of its life booting, so a single pod is shared. `ensure_pod_ready()` reuses the saved
+one when it's both inside `POD_MAX_LIFETIME_S` (currently **1 hour**, set in `job_pipeline.py`)
+and still healthy on a live status check — RunPod can evict a pod underneath you, so the cached
+state is never trusted. Otherwise it retires that pod and starts a fresh one. By design there is
+never more than one pod alive.
+
+**Two ways it gets retired.** Lazily, when the next job notices the TTL has passed; or
+proactively, on the worker's idle tick (`expired_pod_or_none()` → `retire_pod()`) so an unused
+pod isn't left billing until some future job happens to ask for one. Separately,
+`worker.py`'s `recover_from_crash()` terminates every live pod at startup, on the assumption
+that anything still running after a restart is leftover from a crash.
+
+**It survives a daemon restart.** `pod_state.txt` (written by `controller.save_pod()`) holds the
+pod id, port and creation time, so a restarted worker reconnects to a still-warm pod instead of
+orphaning it and renting a second one alongside.
+
+> **Billing.** A pod charges for wall-clock time from creation to termination, not per request —
+> an idle pod costs the same as a busy one. That's why a failed termination doesn't just get
+> logged but raises its own Telegram alert (`alert_orphan_pod`): a leaked pod bills silently
+> until somebody notices. If anything looks off, check the RunPod console directly; it is the
+> only authoritative view of what you're actually paying for.
+
+## 4. File structure
 
 ```
 PROJECT/
@@ -62,14 +134,14 @@ PROJECT/
 ├── gpu_ids_snapshot.txt / gpu_types.json   # RunPod GPU candidates, preference order
 ├── jobs.db                    # generated on first run: sqlite job queue
 ├── jobs/                      # generated per submission: jobs/<job_id>/{pdf,extract_out,...}
-└── pdffigures2_out/            # generated by manual/dev extraction runs (see step 5) -- NOT what the
+└── pdffigures2_out/            # generated by manual/dev extraction runs (see step 6) -- NOT what the
                                   # daemon uses for real jobs; each job gets its own jobs/<job_id>/extract_out/
 ```
 
 `docker/pdffigures2-build/*` and the `.py` files are delivered with the project; `pdffigures2/pdffigures2.jar`,
 `jobs.db`, and `jobs/` are generated, not something to create by hand.
 
-## 4. One-time build
+## 5. One-time build
 
 ```bash
 cd PROJECT
@@ -90,7 +162,7 @@ chmod +x docker/pdffigures2-build/build.sh docker/pdffigures2-build/shell.sh
 ```
 
 Confirm it worked: `ls pdffigures2/pdffigures2.jar` should exist. This step is also run
-automatically by `startup.py` (step 5) if the jar is missing, so it's safe to skip straight
+automatically by `startup.py` (step 6) if the jar is missing, so it's safe to skip straight
 there on a fresh clone — this section exists for when the automatic path fails and you need to
 see what it's actually doing, or when you're rebuilding after patching pdffigures2's Scala
 source yourself (see the note at the end of this section).
@@ -102,7 +174,7 @@ you. Keep a backup of the working jar (`cp pdffigures2/pdffigures2.jar pdffigure
 before rebuilding, and re-run extraction on a known corpus afterward to check for regressions —
 `build.sh`'s dependency cache (a Docker volume) makes a repeat build fast.
 
-## 5. First start
+## 6. First start
 
 ```bash
 python3 startup.py
@@ -153,7 +225,7 @@ python3 pdf_batch_runner.py --input-dir ./PDFTesting --jar ./pdffigures2/pdffigu
 This path is for extraction only. It has no GPU pod, generates no alt text, and never touches
 `jobs.db` — for the full generate-and-embed pipeline, submit through the API instead.
 
-## 6. What to check afterward
+## 7. What to check afterward
 
 - **The Telegram board** — one continuously-edited message showing every job's live state.
 - **`GET /jobs/{id}`** — a job's current state, plus `embed_precheck_coverage` / `embed_coverage` /

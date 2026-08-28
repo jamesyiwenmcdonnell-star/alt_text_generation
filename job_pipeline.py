@@ -8,7 +8,7 @@ confirmed sequential, one-PDF-at-a-time processing model).
 Pod lifecycle: at <=10 PDFs/day, cold-starting a fresh pod for every job
 would spend most of its time on the 5-7 minute boot rather than actual work.
 Instead one pod is shared across jobs and kept alive for up to
-POD_MAX_LIFETIME_S (~4h), reused by ensure_pod_ready() for each new job that
+POD_MAX_LIFETIME_S (~1h), reused by ensure_pod_ready() for each new job that
 arrives within that window, and only recreated once it expires or is found
 dead. It's retired lazily (next job that needs one notices the TTL) or
 proactively by the worker's idle-tick sweep -- see retire_expired_pod_if_any().
