@@ -4,16 +4,20 @@ Reference doc for how the alt-text pipeline actually behaves in production —
 written for stakeholders who need to understand what the system does and
 what guardrails exist, not how to operate it day-to-day (see
 [COMMANDS.md](COMMANDS.md)) or set it up (see [SETUP.md](SETUP.md)). The
-embedding stage has its own deep reference in [EMBEDDING.md](EMBEDDING.md),
+embedding stage has its own deep reference in [EMBEDDING_behaviour.md](EMBEDDING_behaviour.md),
 including how it measures and reports incomplete tagging.
 
 ## What it does
 
-Editors submit a PDF via HTTP. The system extracts every figure/table,
+Editors submit a PDF via HTTP. The system extracts every figure,
 generates screen-reader alt text for each one using a vision-language model,
 and embeds that alt text back into the PDF as real, screen-reader-visible
 structure — then makes both the raw alt-text data and the tagged PDF
-available for download. One editor-facing intake API; the actual work runs
+available for download. **Figures only — tables are not deliverables**: a
+prose description on a `<Figure>` tag is the wrong accessibility structure
+for a data table (it needs navigable `<Table>/<TR>/<TD>` markup), so tables
+are filtered out at the manifest and never generated, embedded, or counted
+toward coverage (`DELIVERABLE_FIG_TYPES` in `pdf_batch_runner.py`). One editor-facing intake API; the actual work runs
 as a background pipeline.
 
 ## Pipeline stages
@@ -24,7 +28,9 @@ in a database: `QUEUED → EXTRACTING → EXTRACTED → POD_STARTING → GENERAT
 
 1. **Extraction** — `pdffigures2` (an open-source Java tool) locates every
    figure and table in the PDF and produces a manifest (image crops + page/
-   caption/bounding-box metadata).
+   caption/bounding-box metadata); tables are then dropped from the manifest
+   as non-deliverables (their crops still land on disk, unreferenced).
+   PDFS ARE LIMITED TO 300MB
 2. **Pod startup** — a GPU pod is provisioned on RunPod (cloud GPU rental) to
    serve the vision-language model, or an already-running one is reused (see
    below).
@@ -60,6 +66,10 @@ runtime if done per job at this volume. Instead:
 - **Termination failures are treated as a billing risk**, not just a log
   line — they trigger a dedicated, separate Telegram alert distinct from
   routine status updates.
+- **Costs per hour** InternVL3.5-8B costs $0.44 USD per hr of usage if the 
+  Nividia A40 GPU is used. If this GPU is unavailable when starting up a pod, 
+  the handeler will switch to the next compatible and cheapest option. The 
+  maximum cost the handler will spend is $1.09 per hr. 
 
 ## Failure handling
 
@@ -124,6 +134,6 @@ anything is written to disk or queued.
   on how the source PDF is structured internally. Both a predicted and a
   measured coverage figure are recorded per job, and an under-tagged PDF is
   flagged rather than served as if complete — see
-  [EMBEDDING.md](EMBEDDING.md).
+  [EMBEDDING_behaviour.md](EMBEDDING_behaviour.md).
 - No retry logic — a `FAILED` job requires manual resubmission.
 - No priority/expedite mechanism — strictly first-in-first-out.

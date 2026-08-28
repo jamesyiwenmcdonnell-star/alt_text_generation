@@ -50,6 +50,21 @@ DEFAULT_INPUT_DIR = SCRIPT_DIR / "PDFTesting"
 DEFAULT_JAR_PATH = SCRIPT_DIR / "pdffigures2" / "pdffigures2.jar"
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "pdffigures2_out"
 
+# Which pdffigures2 figTypes the pipeline delivers. pdffigures2 always extracts
+# and rasterizes Tables alongside Figures (no CLI switch to turn that off), but
+# tables are NOT deliverables: a prose /Alt on a <Figure> element is the wrong
+# accessibility structure for a data table (it needs <Table>/<TR>/<TD> to be
+# navigable), so shipping them mislabeled is worse than leaving them untagged.
+# Filtering here -- at the manifest, the single input every downstream stage
+# (generation, embedding, coverage math) is driven by -- makes excluded types
+# cease to exist for the whole pipeline: no GPU calls, no structure elements,
+# and no inflation of the embed-coverage denominator. The rasterized table
+# PNGs still land in figures/ (pdffigures2's doing); they're just unreferenced.
+# validate_figure_sequences() honors the same list, so non-deliverable types
+# don't generate validation noise either. To deliver tables again, add "Table"
+# here -- and build real <Table> structure support in embed_alt_text.py first.
+DELIVERABLE_FIG_TYPES = ("Figure",)
+
 
 # --------------------------------------------------------------------------- #
 # File management
@@ -204,6 +219,7 @@ def build_manifest(data_dir: Path, figures_dir: Path, output_csv: Path, logger: 
     resolved against figures_dir. Returns the number of figures written.
     """
     rows = []
+    n_excluded = 0
     doc_jsons = sorted(data_dir.glob("*.json"))
 
     for doc_json in doc_jsons:
@@ -224,6 +240,9 @@ def build_manifest(data_dir: Path, figures_dir: Path, output_csv: Path, logger: 
 
         for fig in figures:
             fig_type = fig.get("figType", "")
+            if fig_type not in DELIVERABLE_FIG_TYPES:
+                n_excluded += 1
+                continue
             name = fig.get("name", "")
             boundary = fig.get("regionBoundary", {}) or {}
 
@@ -256,7 +275,8 @@ def build_manifest(data_dir: Path, figures_dir: Path, output_csv: Path, logger: 
         writer.writeheader()
         writer.writerows(rows)
 
-    logger.info("manifest: %d figures across %d PDFs -> %s", len(rows), len(doc_jsons), output_csv)
+    logger.info("manifest: %d figures across %d PDFs -> %s (%d non-deliverable "
+                "item(s) excluded, e.g. Tables)", len(rows), len(doc_jsons), output_csv, n_excluded)
     return len(rows)
 
 
@@ -335,6 +355,8 @@ def validate_figure_sequences(data_dir: Path, logger: logging.Logger) -> list[di
         by_type: dict[str, list[tuple[int, ...]]] = {}
         for fig in figures:
             fig_type = fig.get("figType", "")
+            if fig_type not in DELIVERABLE_FIG_TYPES:
+                continue  # not a deliverable (see DELIVERABLE_FIG_TYPES) -- no validation noise for it
             name = fig.get("name", "")
             parsed = parse_figure_name(name)
             if parsed is None:

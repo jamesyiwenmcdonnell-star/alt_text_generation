@@ -3,7 +3,7 @@
 How the `EMBEDDING` stage turns generated alt text into real, screen-reader-visible
 structure — and, just as importantly, how it reports when it couldn't. This is the
 deep reference for one pipeline stage; for the system as a whole see
-[BEHAVIORS.md](BEHAVIORS.md), for day-to-day operation [COMMANDS.md](COMMANDS.md),
+[GENERAL_BEHAVIORS.md](GENERAL_BEHAVIORS.md), for day-to-day operation [COMMANDS.md](COMMANDS.md),
 for first-time setup [SETUP.md](SETUP.md).
 
 ## The problem this stage solves
@@ -82,10 +82,11 @@ of PDF artwork leaves each figure wrapped in a balanced `BDC…EMC` block, and t
 line up with pdffigures2's regions almost 1:1. This is the highest-quality signal
 available and the reason well-behaved documents reach 100%.
 
-**Pass 2 — `BT…ET` text blocks.** The fallback for LaTeX-typeset tables, which
-have no `/EmbeddedDocument` wrapper. Requires the block to sit almost entirely
-inside the figure region, and refuses to wrap a span that would swallow a text
-block belonging to something else.
+**Pass 2 — `BT…ET` text blocks.** The fallback for figures typeset as text
+rather than included artwork (originally LaTeX-typeset tables, back when tables
+were still deliverables — the mechanism serves any text-built figure). Requires
+the block to sit almost entirely inside the figure region, and refuses to wrap
+a span that would swallow a text block belonging to something else.
 
 **Pass 3 — bare XObject `Do` operators.** The last resort, for documents with no
 `/EmbeddedDocument` blocks at all. Wrapping a `Do` is the safest splice in the
@@ -219,7 +220,8 @@ shows it, including Preview.app.**
 - **Dry run, no write:** `embed_alt_text.py --pdf <pdf> --manifest <manifest> --dry-run`
   prints the same per-row outcomes and coverage the pipeline would record
 - **macOS:** Acrobat Pro (`View → Show/Hide → Navigation Panes → Tags`); free
-  Acrobat Reader's `View → Read Out Loud` will speak it
+  Acrobat Reader's `View → Show/Hide → Side Panls → Strucrure tree` hovering over
+  the image with a mouse will show the alt text
 - **Windows:** PAC 2024 (free, best dedicated tool); NVDA for a real screen-reader test
 
 Everything runs inside the `pdffigures2-builder` container — pikepdf is not
@@ -245,7 +247,9 @@ message the pre-check reports as an `ok=False` verdict.
   whitespace, and the model dutifully describes it ("The image is entirely blank
   with no discernible content"). A screen reader will announce that verbatim.
 - **Coverage counts structure, not quality.** A figure tagged with a poor
-  description counts toward coverage exactly like a good one.
+  description counts toward coverage exactly like a good one.\
 - **The filename warning is the only signal in the file itself.** Nothing is
   written into the PDF to mark it as partially tagged; a renamed download that
   gets renamed again loses the warning.
+- **PDFs must be below 300MB.** This prevents the pipeline from exceeding the memory
+  allocated, causing a crash

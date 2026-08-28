@@ -53,9 +53,18 @@ def main() -> None:
 
     job_store.init_db()
     recover_from_crash(api_key)
-    telegram_status.startup_cleanup()  # wipe messages from previous runs before posting a fresh board
-    telegram_status.ensure_message()
-    telegram_status.refresh()
+    # Deliberately non-fatal, as a block: the status board is cosmetic, and no
+    # Telegram failure -- outage, revoked token, quote-wrapped credentials --
+    # is a reason to refuse to process jobs. Unguarded, these three lines put
+    # the container in a permanent restart loop and took the intake API down
+    # with them (see telegram_status.refresh_safely()).
+    try:
+        telegram_status.startup_cleanup()  # wipe messages from previous runs before posting a fresh board
+        telegram_status.ensure_message()
+        telegram_status.refresh()
+    except Exception:
+        logging.exception("telegram status board unavailable at startup -- "
+                          "continuing without it")
 
     logging.info("worker started, polling every %ds", POLL_INTERVAL_S)
     while True:

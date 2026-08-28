@@ -65,7 +65,13 @@ def retire_pod(pod: Pod | None, api_key: str) -> None:
         controller.clear_pod()
     except Exception:
         logging.exception("failed to terminate expired/dead pod %s", pod.pod_id)
-        telegram_status.alert_orphan_pod(pod.pod_id, job_id=None)
+        try:
+            telegram_status.alert_orphan_pod(pod.pod_id, job_id=None)
+        except Exception:
+            # The pod leak is already logged above, and it is the thing that
+            # matters. Failing to *announce* it must not additionally unwind
+            # worker.py's idle loop and kill the daemon.
+            logging.exception("could not send orphan-pod alert for %s", pod.pod_id)
 
 
 def expired_pod_or_none(api_key: str) -> Pod | None:
@@ -178,19 +184,19 @@ def process_job(job: job_store.Job, api_key: str) -> None:
     atomically) -- this does NOT re-set it. Never raises: failures are
     recorded on the job itself so the worker loop can move on to the next one."""
     try:
-        telegram_status.refresh()  # reflect the EXTRACTING state claim_next_queued_job() already set
+        telegram_status.refresh_safely()  # reflect the EXTRACTING state claim_next_queued_job() already set
         extract_images(input_dir=job.pdf_dir, output_dir=job.extract_dir, skip_done=False)
         job_store.update_job_state(job.job_id, "EXTRACTED")
         precheck_embedding(job)  # before the pod: flags un-embeddable PDFs while no GPU money is being spent
-        telegram_status.refresh()
+        telegram_status.refresh_safely()
 
         job_store.update_job_state(job.job_id, "POD_STARTING")
-        telegram_status.refresh()
+        telegram_status.refresh_safely()
         pod = ensure_pod_ready(api_key)  # usually fast: reuses the already-warm pod
         job_store.set_pod_id(job.job_id, pod.pod_id)
 
         job_store.update_job_state(job.job_id, "GENERATING")
-        telegram_status.refresh()
+        telegram_status.refresh_safely()
         generate_alt_text_for_manifest(
             pod.pod_id, api_key,
             manifest_path=job.manifest_path,
@@ -198,7 +204,7 @@ def process_job(job: job_store.Job, api_key: str) -> None:
         )
 
         job_store.update_job_state(job.job_id, "EMBEDDING")
-        telegram_status.refresh()
+        telegram_status.refresh_safely()
         embed_warning = None
         try:
             summary = embed_alt_text_into_pdf(job)
@@ -236,4 +242,4 @@ def process_job(job: job_store.Job, api_key: str) -> None:
         job_store.update_job_state(job.job_id, "FAILED", error=str(exc))
         logging.exception("job %s failed", job.job_id)
     finally:
-        telegram_status.refresh()
+        telegram_status.refresh_safely()

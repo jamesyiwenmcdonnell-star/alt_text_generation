@@ -21,15 +21,21 @@ Endpoints:
 """
 
 import csv
+import logging
 import os
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 import job_store
+import telegram_status
 
-MAX_UPLOAD_BYTES = 100 * 1024 * 1024  # 100MB -- generous for a scientific PDF; tune if editors hit it
+MAX_UPLOAD_BYTES = 300 * 1024 * 1024  # 300MB -- raised from 100MB; still far above the observed corpus
+                                      # (largest real PDF ~20MB). Uploads are read fully into memory
+                                      # before this check (submit_job), so don't raise this further
+                                      # without switching to a chunked read -- the API shares an 8GB
+                                      # VM with the worker and pdffigures2's 4GB JVM heap.
 
 app = FastAPI(
     title="Alt-Text Pipeline Intake API",
@@ -79,6 +85,25 @@ def _startup() -> None:
     job_store.init_db()
 
 
+def _refresh_board_safely() -> None:
+    """Telegram board refresh for the intake path. The worker owns the board
+    and refreshes it on every state change -- but while it's blocked inside a
+    long synchronous stage (waiting up to ~7 minutes for a RunPod pod to boot),
+    nothing refreshes, so jobs accepted during that window are queued in the DB
+    yet invisible on the board and look lost. Refreshing here right after a
+    submission closes that gap.
+
+    Runs as a BackgroundTask (after the 201 is already sent). The swallowing
+    itself now lives in telegram_status.refresh_safely(), which every caller in
+    the pipeline uses for the same reason: by this point the job is committed
+    to the DB, and the board is cosmetic -- a Telegram outage or missing bot
+    credentials must never turn a successful upload into an error. Both
+    processes editing the same board message is fine: each edit re-renders the
+    full board from the DB, so last write wins and both writers produce the
+    same content."""
+    telegram_status.refresh_safely()
+
+
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok"}
@@ -86,6 +111,7 @@ def health() -> dict:
 
 @app.post("/jobs", response_model=JobOut, status_code=201)
 async def submit_job(
+    background_tasks: BackgroundTasks,
     editor_id: str = Form(..., description="Identity of the editor's SharePoint subfolder this PDF came from"),
     file: UploadFile = File(..., description="The PDF to process"),
     source_reference: str | None = Form(None, description="Opaque passthrough id (e.g. a SharePoint item id) -- stored and echoed back, never interpreted"),
@@ -109,6 +135,10 @@ async def submit_job(
     job = job_store.create_job(editor_id=editor_id, pdf_filename=file.filename, source_reference=source_reference)
     with open(job.pdf_path, "wb") as f:
         f.write(content)
+
+    # After the response is sent, not inline: the refresh is an outbound HTTP
+    # call (up to ~15s on a bad day) and the submitter shouldn't wait on it.
+    background_tasks.add_task(_refresh_board_safely)
 
     return JobOut.from_job(job)
 

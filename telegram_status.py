@@ -16,8 +16,39 @@ from datetime import datetime, timedelta, timezone
 
 import job_store
 
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+_MODULE_LOGGER = logging.getLogger(__name__)
+
+_QUOTE_CHARS = "\"'\u201c\u201d\u2018\u2019"
+
+
+def _clean_env_value(name: str) -> str:
+    """Strips surrounding whitespace and quote characters off a credential read
+    from the environment. `export TELEGRAM_BOT_TOKEN="123:abc"` is correct, but
+    the quotes end up *inside* the value when it is pasted from somewhere that
+    turned them into curly quotes, or when a .env-style line is sourced
+    literally. The resulting token builds a URL like
+    .../bot%E2%80%9C123:abc%E2%80%9D/editMessageText, and Telegram answers 404
+    -- an error that says nothing about the actual cause and cost a long
+    debugging session once already. No Telegram token or chat id ever contains
+    a quote, so stripping one is always safe."""
+    raw = os.environ.get(name, "")
+    cleaned = raw.strip().strip(_QUOTE_CHARS)
+    if cleaned != raw.strip():
+        # Deliberately _MODULE_LOGGER and not logging.warning(): the bare
+        # logging.* helpers call basicConfig() themselves when the root logger
+        # has no handlers yet. This runs at *import* time, so that would pin
+        # the root logger at WARNING and silently turn worker.py's later
+        # logging.basicConfig(level=logging.INFO) into a no-op, costing the
+        # daemon every INFO line it emits. A Logger object falls back to
+        # logging.lastResort instead and configures nothing.
+        _MODULE_LOGGER.warning(
+            "stripped surrounding quote characters from %s -- "
+            "the exported value itself must not be quoted", name)
+    return cleaned
+
+
+TELEGRAM_BOT_TOKEN = _clean_env_value("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = _clean_env_value("TELEGRAM_CHAT_ID")
 REQUEST_TIMEOUT = 15  # seconds
 
 # Telegram display only -- job_store.py keeps storing/comparing everything in
@@ -271,6 +302,27 @@ def _format_board() -> str:
 def refresh() -> None:
     message_id = ensure_message()
     _edit_message(message_id, _format_board())
+
+
+def refresh_safely() -> None:
+    """refresh(), with any failure logged and swallowed -- the form every
+    caller in the pipeline wants. The board only *reports on* the pipeline;
+    nothing in the pipeline depends on it, so a Telegram outage, a revoked bot
+    token or a mistyped chat id must never propagate into a caller.
+
+    Letting one propagate is not a cosmetic bug: an unguarded refresh() in
+    worker.py's startup took the entire container down in a permanent restart
+    loop (worker.py exits -> entrypoint.sh's `wait -n` returns -> the container
+    dies with the intake API still healthy inside it -> `--restart
+    unless-stopped` starts it all over), which also made `docker exec`
+    impossible and so hid the very logs that explained it.
+
+    Use refresh() directly only where a failed edit genuinely needs handling."""
+    try:
+        refresh()
+    except Exception:
+        logging.exception("telegram_status: board refresh failed "
+                          "(ignored -- the board is cosmetic)")
 
 
 def alert_orphan_pod(pod_id: str, job_id: str | None) -> None:
