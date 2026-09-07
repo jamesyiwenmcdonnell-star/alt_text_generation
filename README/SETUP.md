@@ -143,10 +143,15 @@ PROJECT/
 
 ## 5. One-time build
 
+`startup.py` (step 6) now does the clone and the bintray fixes for you, so on a fresh
+clone you can skip straight there. What follows is that same sequence by hand, for when
+the automatic path fails and you need to see what it's actually doing.
+
 ```bash
 cd PROJECT
 
-# get the source
+# get the source -- pdffigures2/ is a local build dependency, deliberately not
+# tracked by this repo (it's in .gitignore), so it won't exist on a fresh clone
 git clone https://github.com/allenai/pdffigures2.git pdffigures2
 
 # known build fix: the sbt-bintray plugin references a dead service (Bintray
@@ -161,11 +166,11 @@ chmod +x docker/pdffigures2-build/build.sh docker/pdffigures2-build/shell.sh
 ./docker/pdffigures2-build/build.sh
 ```
 
-Confirm it worked: `ls pdffigures2/pdffigures2.jar` should exist. This step is also run
-automatically by `startup.py` (step 6) if the jar is missing, so it's safe to skip straight
-there on a fresh clone — this section exists for when the automatic path fails and you need to
-see what it's actually doing, or when you're rebuilding after patching pdffigures2's Scala
-source yourself (see the note at the end of this section).
+Confirm it worked: `ls pdffigures2/pdffigures2.jar` should exist. `startup.py` runs all of
+the above automatically — it clones pdffigures2 if `build.sbt` is missing, re-applies the
+bintray fixes (idempotently), and builds the jar if the jar is missing. Run this section by
+hand only when the automatic path fails, or when you're rebuilding after patching
+pdffigures2's Scala source yourself (see the note at the end of this section).
 
 **After changing pdffigures2's source** (e.g. tuning a constant in `CaptionDetector.scala`):
 delete or rebuild over the existing jar and re-run `build.sh` — `startup.py` only builds when

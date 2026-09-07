@@ -45,22 +45,68 @@ def ensure_colima_running() -> None:
     print("==> Colima started")
 
 
+PDFFIGURES2_URL = "https://github.com/allenai/pdffigures2.git"
+
+# The two edits SETUP.md documents: sbt-bintray talks to a service that shut down
+# in 2021, and build.sbt's bintray* settings depend on that plugin. The `assembly`
+# task this project actually needs uses neither, so dropping both lets it build.
+BINTRAY_PATCHES = (
+    (PDFFIGURES2_SRC / "project" / "plugins.sbt", "sbt-bintray"),
+    (PDFFIGURES2_SRC / "build.sbt", "bintray"),
+)
+
+
+def strip_bintray_lines() -> None:
+    """Drop every bintray-referencing line. Idempotent -- a re-run is a no-op."""
+    for path, marker in BINTRAY_PATCHES:
+        original = path.read_text()
+        patched = "".join(
+            line for line in original.splitlines(keepends=True) if marker not in line
+        )
+        if patched != original:
+            path.write_text(patched)
+            print(f"==> stripped {marker} lines from {path}")
+
+
+def ensure_pdffigures2_source() -> None:
+    """Clone pdffigures2 and apply the bintray fixes if they aren't there yet.
+
+    Checks for build.sbt rather than the directory: the repo used to carry a
+    gitlink at this path, so a fresh clone can leave an *empty* pdffigures2/
+    behind. That passes an is_dir() check but sends sbt into a bare /build,
+    which fails with the unhelpful "Neither build.sbt nor a 'project' directory
+    in the current directory". `git clone` into an existing empty directory
+    works, so there is nothing to remove first.
+    """
+    if (PDFFIGURES2_SRC / "build.sbt").is_file():
+        # Cheap, and repairs a checkout cloned before this function existed.
+        strip_bintray_lines()
+        return
+
+    # A bare or absent pdffigures2/ is the normal fresh-clone state, so it is not
+    # an error -- just clone into it. Anything else in there is someone's
+    # half-finished checkout, which we must not clobber.
+    if PDFFIGURES2_SRC.exists() and any(PDFFIGURES2_SRC.iterdir()):
+        raise RuntimeError(
+            f"{PDFFIGURES2_SRC} has no build.sbt but is not empty -- refusing to overwrite it.\n"
+            f"Move it aside and re-run, or clone by hand:\n"
+            f"    git clone {PDFFIGURES2_URL} {PDFFIGURES2_SRC}"
+        )
+
+    print(f"==> {PDFFIGURES2_SRC} missing or empty -- cloning pdffigures2")
+    subprocess.run(
+        ["git", "clone", "--depth", "1", PDFFIGURES2_URL, str(PDFFIGURES2_SRC)],
+        check=True,
+    )
+    strip_bintray_lines()
+
+
 def ensure_jar_built() -> None:
     if JAR_PATH.exists():
         print(f"==> {JAR_PATH} already built")
         return
 
-    # Checks for build.sbt, not just the directory: an empty pdffigures2/ passes
-    # an is_dir() check but sends sbt into a bare /build, where it fails with the
-    # unhelpful "Neither build.sbt nor a 'project' directory in the current
-    # directory" instead of telling you the clone is missing. `git clone` into an
-    # existing empty directory works, so there's nothing to remove first.
-    if not (PDFFIGURES2_SRC / "build.sbt").is_file():
-        raise RuntimeError(
-            f"{PDFFIGURES2_SRC} is missing or empty (no build.sbt) -- clone it first:\n"
-            f"    git clone https://github.com/allenai/pdffigures2.git {PDFFIGURES2_SRC}\n"
-            f"then apply the bintray build fixes documented in SETUP.md before re-running."
-        )
+    ensure_pdffigures2_source()
 
     print(f"==> {JAR_PATH} missing -- building it via build.sh (can take several minutes on first run)")
     subprocess.run(["bash", str(BUILD_SCRIPT)], check=True, cwd=PROJECT_ROOT)
