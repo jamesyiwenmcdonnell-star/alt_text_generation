@@ -1,7 +1,6 @@
 # Key system behaviors
 
-Reference doc for how the alt-text pipeline actually behaves in production —
-written for stakeholders who need to understand what the system does and
+Reference doc written for stakeholders who need to understand what the system does and
 what guardrails exist, not how to operate it day-to-day (see
 [COMMANDS.md](COMMANDS.md)) or set it up (see [SETUP.md](SETUP.md)). The
 embedding stage has its own deep reference in [EMBEDDING_behaviour.md](EMBEDDING_behaviour.md),
